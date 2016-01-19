@@ -42,6 +42,8 @@ Plugin 'exvim/ex-vimentry'
 " ex-project
 " ---------------------------------------------------
 Plugin 'exvim/ex-project'
+let g:ex_project_winsize=20
+
 
 " ex-gsearch
 " ---------------------------------------------------
@@ -93,7 +95,7 @@ call exqfix#register_hotkey( 101, 0, '<leader>qq', ":EXQFixPaste<CR>", 'Open qui
 " ---------------------------------------------------
 Plugin 'exvim/ex-hierarchy'
 
-nnoremap <unique> <leader>hv :EXHierarchyCWord<CR>
+" nnoremap <unique> <leader>hv :EXHierarchyCWord<CR>
 
 " ex-taglist: invoke by <F4>
 " ---------------------------------------------------
@@ -205,7 +207,7 @@ let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:va
 
 " ex-autocomplpop: invoke when you input text
 " ---------------------------------------------------
-Plugin 'exvim/ex-autocomplpop'
+" Plugin 'exvim/ex-autocomplpop'
 
 " ex-showmarks: invoke by m... or <leader>mm, <leader>ma
 " ---------------------------------------------------
@@ -222,15 +224,15 @@ let g:showmarks_hlline_upper = 0
 
 " ex-visincr: invoke when select text and type ':II'
 " ---------------------------------------------------
-Plugin 'exvim/ex-visincr'
+" Plugin 'exvim/ex-visincr'
 
 " ex-matchit: invoke by %
 " ---------------------------------------------------
 Plugin 'exvim/ex-matchit'
 
-" ex-easyhl:
+" ex-easyhl: use y1 y2 y3
 " ---------------------------------------------------
-Plugin 'exvim/ex-easyhl'
+"Plugin 'exvim/ex-easyhl'
 
 " searchcompl: invoke by /
 " ---------------------------------------------------
@@ -238,30 +240,24 @@ Plugin 'exvim/ex-searchcompl'
 
 " ex-colorschemes
 " ---------------------------------------------------
-Plugin 'exvim/ex-colorschemes'
+""Plugin 'exvim/ex-colorschemes'
 
 " vim-color-solarized
 " ---------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
-
-" vim-color-gruvbox
-" ---------------------------------------------------
-Plugin 'morhetz/gruvbox'
-
-" let g:gruvbox_contrast_dark = 'soft'
 
 " DISABLE: vim-airline makes Vim editing slow when there are too many buffers opened
 "          if you don't mind, and love this plugin, uncomment the script below
 "          to enable it
 " vim-airline
 " ---------------------------------------------------
-" Plugin 'bling/vim-airline'
+ Plugin 'bling/vim-airline'
 
-" if has('gui_running')
-"     let g:airline_powerline_fonts = 1
-" else
-"     let g:airline_powerline_fonts = 0
-" endif
+ if has('gui_running')
+     let g:airline_powerline_fonts = 1
+ else
+     let g:airline_powerline_fonts = 0
+ endif
 
 " let g:airline#extensions#tabline#enabled = 0 " NOTE: When you open lots of buffers and typing text, it is so slow.
 " let g:airline#extensions#tabline#show_buffers = 1
@@ -274,7 +270,7 @@ Plugin 'morhetz/gruvbox'
 " let g:airline_section_warning = ''
 
 " ctrlp: invoke by <ctrl-p>
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_follow_symlinks = 2
@@ -283,12 +279,11 @@ nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
 
 " vim-fugitive: invoke most by :Gdiff
 " ---------------------------------------------------
-Plugin 'tpope/vim-fugitive'
+""Plugin 'tpope/vim-fugitive'
 
 " vim-surround: invoke when you select words and press 's'
 " ---------------------------------------------------
 Plugin 'tpope/vim-surround'
-
 xmap s <Plug>VSurround
 
 " DISABLE
@@ -297,11 +292,11 @@ xmap s <Plug>VSurround
 
 " nerdtree: invoke by :NERDTreeToggle
 " ---------------------------------------------------
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 
-let g:NERDTreeWinSize = 30
-let g:NERDTreeMouseMode = 1
-let g:NERDTreeMapToggleZoom = '<Space>'
+" let g:NERDTreeWinSize = 30
+" let g:NERDTreeMouseMode = 1
+" let g:NERDTreeMapToggleZoom = '<Space>'
 
 " nerdcommenter: invoke by <leader>c<space>, <leader>cl, <leader>cu, <F11> or <C-F11>
 " ---------------------------------------------------
@@ -325,35 +320,103 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " DISABLE: use ex-autocomplpop instead
 " " neocomplcache: invoke when you insert words
 " Plugin 'Shougo/neocomplcache.vim'
-" " ---------------------------------------------------
+" ---------------------------------------------------
 
 " let g:neocomplcache_enable_at_startup = 1
 " let g:neocomplcache_auto_completion_start_length = 2
 " let g:neocomplcache_enable_smart_case = 1
 " let g:neocomplcache_enable_auto_select = 1 " let neocomplcache's completion behavior like AutoComplPop
-" " let g:neocomplcache_disable_auto_complete = 1 " Enable this if you like TAB for complete
+"" let g:neocomplcache_disable_auto_complete = 1 " Enable this if you like TAB for complete
 " " inoremap <C-p> <C-x><C-u>
 " " inoremap <expr><TAB>  pumvisible() ? '\<Down>' : '<TAB>'
 " " inoremap <expr><S-TAB>  pumvisible() ? '\<Up>' : ''
 
 " DISABLE: use ex-autocomplpop instead
 " " neocomplete: invoke when you insert words
-" Plugin 'Shougo/neocomplete.vim'
+ " Plugin 'Shougo/neocomplete.vim'
 " " ---------------------------------------------------
-
+" Use neocomplete.
 " let g:neocomplete#enable_at_startup = 1
+"Use smartcase.
 " let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#enable_auto_select = 1 " let neocomplete's completion behavior like AutoComplPop
-" " Enable omni completion.
+" Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+"Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+    " \ 'default' : '',
+    " \ 'vimshell' : $HOME.'/.vimshell_hist',
+    " \ 'scheme' : $HOME.'/.gosh_completions'
+        " \ }
+
+"Define keyword.
+" if !exists('g:neocomplete#keyword_patterns')
+    " let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+"Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+"Recommended key-mappings.
+"<CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"  " return neocomplete#close_popup() . "\<CR>"
+"  For no inserting <CR> key.
+"  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" endfunction
+"<TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"<C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  neocomplete#close_popup()
+" inoremap <expr><C-e>  neocomplete#cancel_popup()
+"Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+"For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+"Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+"Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+"AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+"Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+"Enable omni completion.
 " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" DISABLE: use ex-autocomplpop instead
+"Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"  " let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+"For perlomni.vim setting.
+"https://github.com/c9s/perlomni.vim
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'" DISABLE: use ex-autocomplpop instead
 " " YouCompleteMe
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " " ---------------------------------------------------
 
 " TODO: choose a snippet plugin
@@ -368,53 +431,53 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 " undotree: invoke by <Leader>u
 " ---------------------------------------------------
-Plugin 'mbbill/undotree'
+" Plugin 'mbbill/undotree'
 
-nnoremap <leader>u :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1
-let g:undotree_WindowLayout = 4
+" nnoremap <leader>u :UndotreeToggle<CR>
+" let g:undotree_SetFocusWhenToggle=1
+" let g:undotree_WindowLayout = 4
 
 " NOTE: this will prevent undotree closed then jump to minibufexpl
-function! g:CloseUndotree()
-    call UndotreeHide()
-    call ex#window#goto_edit_window()
-endfunction
+" function! g:CloseUndotree()
+    " call UndotreeHide()
+    " call ex#window#goto_edit_window()
+" endfunction
 
-function g:Undotree_CustomMap()
-    if has('gui_running')
-        nnoremap <silent> <script> <buffer> <ESC> :call g:CloseUndotree()<CR>
-    else
-        nnoremap <silent> <script> <buffer> <leader><ESC> :call g:CloseUndotree()<CR>
-    endif
-endfunction
+" function g:Undotree_CustomMap()
+    " if has('gui_running')
+        " nnoremap <silent> <script> <buffer> <ESC> :call g:CloseUndotree()<CR>
+    " else
+        " nnoremap <silent> <script> <buffer> <leader><ESC> :call g:CloseUndotree()<CR>
+    " endif
+" endfunction
 
 " tabular: invoke by <leader>= alignment-character
 " ---------------------------------------------------
-Plugin 'godlygeek/tabular'
-
-nnoremap <silent> <leader>= :call g:Tabular(1)<CR>
-xnoremap <silent> <leader>= :call g:Tabular(0)<CR>
-function! g:Tabular(ignore_range) range
-    let c = getchar()
-    let c = nr2char(c)
-    if a:ignore_range == 0
-        exec printf('%d,%dTabularize /%s', a:firstline, a:lastline, c)
-    else
-        exec printf('Tabularize /%s', c)
-    endif
-endfunction
+" Plugin 'godlygeek/tabular'
+"
+" nnoremap <silent> <leader>= :call g:Tabular(1)<CR>
+" xnoremap <silent> <leader>= :call g:Tabular(0)<CR>
+" function! g:Tabular(ignore_range) range
+"    let c = getchar()
+"    let c = nr2char(c)
+"     if a:ignore_range == 0
+"        " exec printf('%d,%dTabularize /%s', a:firstline, a:lastline, c)
+"     else
+"         exec printf('Tabularize /%s', c)
+"     endif
+" endfunction
 
 " vim-easymotion: invoke by <leader><leader> w,b,e,ge,f,F,h,i,j,k,/
 " ---------------------------------------------------
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 
-map <leader><leader>/ <Plug>(easymotion-sn)
-omap <leader><leader>/ <Plug>(easymotion-tn)
-map <leader><leader>j <Plug>(easymotion-j)
-map <leader><leader>k <Plug>(easymotion-k)
-map <leader><leader>l <Plug>(easymotion-lineforward)
-map <leader><leader>h <Plug>(easymotion-linebackward)
-let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+" map <leader><leader>/ <Plug>(easymotion-sn)
+" omap <leader><leader>/ <Plug>(easymotion-tn)
+" map <leader><leader>j <Plug>(easymotion-j)
+" map <leader><leader>k <Plug>(easymotion-k)
+" map <leader><leader>l <Plug>(easymotion-lineforward)
+" map <leader><leader>h <Plug>(easymotion-linebackward)
+" let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
 " LargeFile
 " ---------------------------------------------------
@@ -433,20 +496,20 @@ let g:LargeFile= 5 " files >= 5MB will use LargeFile rules
 
 " ex-cref: invoke by <leader>cr
 " ---------------------------------------------------
-Plugin 'exvim/ex-cref'
+" Plugin 'exvim/ex-cref'
 
 " this is modified for default c syntax highlight settings
 " make it don't highlight error pattern
-let c_gnu = 1
-let c_no_curly_error = 1
-let c_no_bracket_error = 1
+" let c_gnu = 1
+" let c_no_curly_error = 1
+" let c_no_bracket_error = 1
 
 "}}}
 
 " web {{{
 
-Plugin 'ntpeters/vim-better-whitespace'
-nnoremap <unique> <leader>w :StripWhitespace<CR>
+""Plugin 'ntpeters/vim-better-whitespace'
+""nnoremap <unique> <leader>w :StripWhitespace<CR>
 
 " ex-typescript
 " ---------------------------------------------------
@@ -458,13 +521,13 @@ Plugin 'mattn/emmet-vim'
 
 " make sure emmet only enable in html,css files
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,jsp EmmetInstall
 
 " vim-indent-guides: invoke by <leader>ig
 " ---------------------------------------------------
-Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'nathanaelkane/vim-indent-guides'
 
-let g:indent_guides_guide_size = 1
+" let g:indent_guides_guide_size = 1
 
 " vim-javascript
 " ---------------------------------------------------
@@ -472,31 +535,27 @@ Plugin 'pangloss/vim-javascript'
 
 " vim-coffee-script
 " ---------------------------------------------------
-Plugin 'kchmck/vim-coffee-script'
+" Plugin 'kchmck/vim-coffee-script'
 
 " vim-html
 " ---------------------------------------------------
 Plugin 'exvim/ex-indenthtml.vim'
 
-
 " DISABLE: Slow to open big css file
 " vim-css-color
 " ---------------------------------------------------
-" Plugin 'skammer/vim-css-color'
+"" Plugin 'skammer/vim-css-color'
 
 " vim-css3-syntax
-Plugin 'hail2u/vim-css3-syntax'
-
-" vim-jade
-Plugin 'digitaltoad/vim-jade'
+""Plugin 'hail2u/vim-css3-syntax'
 
 " vim-less
 " ---------------------------------------------------
-Plugin 'groenewege/vim-less'
+" Plugin 'groenewege/vim-less'
 
 " vim-stylus
 " ---------------------------------------------------
-Plugin 'wavded/vim-stylus'
+" Plugin 'wavded/vim-stylus'
 
 " vim-markdown
 " ---------------------------------------------------

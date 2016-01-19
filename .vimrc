@@ -53,24 +53,33 @@ if WINDOWS()
     if has('multi_byte')
         " Windows cmd.exe still uses cp850. If Windows ever moved to
         " Powershell as the primary terminal, this would be utf-8
-        set termencoding=cp850
+        " set termencoding=cp850
+	 set termencoding=utf-8
         " Let Vim use utf-8 internally, because many scripts require this
-        set encoding=utf-8
+	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
         setglobal fileencoding=utf-8
+	set encoding=utf-8
+        
         " Windows has traditionally used cp1252, so it's probably wise to
         " fallback into cp1252 instead of eg. iso-8859-15.
         " Newer Windows files might contain utf-8 or utf-16 LE so we might
         " want to try them first.
-        set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+        " set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+	
+	" 英文版的Windows7，Vim7.4—英文Windows下的Vim不知道如何显示双倍字符
+	" 宽度的字体！你必须告诉它：  
+	" set gfn=Monaco:h10:cANSI  
+	" set gfw=NSimsun:h12 
     endif
-
+	
 else
     " set default encoding to utf-8
     set encoding=utf-8
     set termencoding=utf-8
+    language messages zh_CN.utf-8
 endif
 scriptencoding utf-8
-
+ language messages zh_CN.utf-8
 "/////////////////////////////////////////////////////////////////////////////
 " Bundle steup
 "/////////////////////////////////////////////////////////////////////////////
@@ -121,7 +130,6 @@ else
 endif
 colorscheme solarized
 " colorscheme exlightgray
-" colorscheme gruvbox
 
 "/////////////////////////////////////////////////////////////////////////////
 " General
@@ -197,11 +205,11 @@ if has('gui_running')
     function! s:set_gui_font()
         if has('gui_gtk2')
             if getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ 12
+                set guifont=DejaVu\ Sans\ Mono\ 14
             else
-                set guifont=Luxi\ Mono\ 12
+                set guifont=Luxi\ Mono\ 14
             endif
         elseif has('x11')
             " Also for GTK 1
@@ -214,13 +222,13 @@ if has('gui_running')
             endif
         elseif WINDOWS()
             if getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
-                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11:cANSI
+                set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13:cANSI
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
-                set guifont=DejaVu\ Sans\ Mono:h11:cANSI
+                set guifont=DejaVu\ Sans\ Mono:h13:cANSI
             elseif getfontname( 'Consolas' ) != ''
-                set guifont=Consolas:h11:cANSI " this is the default visual studio font
+                set guifont=Consolas:h13:cANSI " this is the default visual studio font
             else
-                set guifont=Lucida_Console:h11:cANSI
+                set guifont=Lucida_Console:h13:cANSI
             endif
         endif
     endfunction
@@ -232,7 +240,7 @@ endif
 
 set wildmenu " turn on wild menu, try typing :h and press <Tab>
 set showcmd " display incomplete commands
-set cmdheight=1 " 1 screen lines to use for the command-line
+set cmdheight=2 " 1 screen lines to use for the command-line
 set ruler " show the cursor position all the time
 set hidden " allow to change buffer without saving
 set shortmess=aoOtTI " shortens messages to avoid 'press a key' prompt
@@ -260,11 +268,12 @@ if has('gui_running')
 endif
 
 set showfulltag " show tag with function protype.
-set guioptions+=b " present the bottom scrollbar when the longest visible line exceed the window
+set guioptions-=b " present the bottom scrollbar when the longest visible line exceed the window
 
 " disable menu & toolbar
 set guioptions-=m
 set guioptions-=T
+set guioptions-=R
 
 " ------------------------------------------------------------------
 " Desc: Text edit
@@ -294,8 +303,8 @@ function! g:MyDiff()
     silent execute '!' .  'diff ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
 endfunction
 
-set cindent shiftwidth=2 " set cindent on to autoinent when editing c/c++ file, with 4 shift width
-set tabstop=2 " set tabstop to 4 characters
+set cindent shiftwidth=4 " set cindent on to autoinent when editing c/c++ file, with 4 shift width
+set tabstop=4 " set tabstop to 4 characters
 set expandtab " set expandtab on, the tab will be change to space automaticaly
 set ve=block " in visual block mode, cursor can be positioned where there is no actual character
 
@@ -472,7 +481,6 @@ endif
 " easy diff goto
 noremap <C-k> [c
 noremap <C-j> ]c
-
 " enhance '<' '>' , do not need to reselect the block after shift it.
 vnoremap < <gv
 vnoremap > >gv
