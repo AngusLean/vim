@@ -1,0 +1,3 @@
+在.vim文件夹bundle\youcomplete中运行:
+
+python install.py --clang-completer --tern-completer
