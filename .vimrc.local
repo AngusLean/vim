@@ -11,17 +11,22 @@ nnoremap <esc> :nohl<cr>   "搜索完后按ESC关闭高亮"
 set matchpairs=(:),{:},[:],<:>   "匹配括号的规则。"
 set mouse=a                    " 在任何模式下启用鼠标
 
-" Ctrl + K 插入模式下光标向上移动
-imap <c-k> <Up>
+" 切换目录
+func! ChangeDir()
+  let ch_dir = substitute(expand('%:p:h'), "\\", "/", "g")
+  if exists('g:exvim_project_root')
+    let prj_dir = substitute(g:exvim_project_root, "\\", "/", "g")
+    if match(ch_dir, prj_dir) != -1
+      let ch_dir = prj_dir
+    end
+    unlet prj_dir
+  end
+  execute "lcd " . ch_dir
+  unlet ch_dir
+endfunc
 
-" Ctrl + J 插入模式下光标向下移动
-imap <c-j> <Down>
-
-" Ctrl + H 插入模式下光标向左移动
-imap <c-h> <Left>
-
-" Ctrl + L 插入模式下光标向右移动
-imap <c-l> <Right>
+au BufEnter * call ChangeDir()
+nmap <silent><leader>cd :call ChangeDir()<CR>
 
 " 用空格键来开关折叠
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
@@ -62,6 +67,9 @@ endif
 " -----------------------------------------------------------------------------
 "  < 编译、连接、运行配置 (目前只配置了C、C++、Java语言)>
 " -----------------------------------------------------------------------------
+
+"autocmd FileType python nmap <F6> :call RunWith("py -3")<cr>
+
 " F9 一键保存、编译、连接存并运行
 nmap <F9> :call Run()<CR>
 imap <F9> <ESC>:call Run()<CR>
@@ -89,6 +97,14 @@ let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<
 let s:linux_CPPFlags = 'g++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 
 let s:JavaFlags = 'javac\ %'
+
+function RunWith (command)
+  execute "w"
+  exe ":ccl"
+  " clean是在linux下的命令
+"  execute "!clear;time " . a:command . " " . expand("%")
+  execute "!" . a:command . " " . expand("%")
+endfunction
 
 func! Compile()
     exe ":ccl"
@@ -243,6 +259,13 @@ func! Link()
 endfunc
 
 func! Run()
+" 不需要编译的解释型脚本语言 
+    "python默认为python3
+    if expand("%:e") == "py"
+        call RunWith("py -3")
+        return
+    endif
+" 需要编译的语言。 C/C++/Java   
     let s:ShowWarning = 0
     call Link()
     let s:ShowWarning = 1
@@ -391,3 +414,4 @@ function! ViewInBrowser(name)
         echohl WarningMsg | echo " please choose the correct source file"
     endif
 endfunction
+

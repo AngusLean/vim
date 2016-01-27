@@ -17,15 +17,15 @@ Plugin 'jiangmiao/auto-pairs'
 ""Plugin 'terryma/vim-multiple-cursors'
 Plugin  'kristijanhusak/vim-multiple-cursors' 
 
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
-endfunction
+" function! Multiple_cursors_before()
+    " exe 'NeoCompleteLock'
+    " echo 'Disabled autocomplete'
+" endfunction
 
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
+" function! Multiple_cursors_after()
+    " exe 'NeoCompleteUnlock'
+    " echo 'Enabled autocomplete'
+" endfunction
 
 " =============================================================================
 "        << 判断操作系统是 Windows 还是 Linux 和判断是终端还是 Gvim >>
@@ -108,7 +108,7 @@ nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<C
 " 补全功能在注释中同样有效 
 let g:ycm_complete_in_comments=1  
 " 开启标签补全
-" let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 " set tags+='e:\.symbs\cpp_src\tags' "C++标准库的tags
 " 从第一个键入字符就开始罗列匹配项 
 let g:ycm_min_num_of_chars_for_completion=1
@@ -126,7 +126,7 @@ inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
 Plugin 'SirVer/ultisnips'
 " UltiSnips 的 tab 键与 YCM 冲突，重新设定
-" let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsExpandTrigger="<leader><tab>"
 
 let g:UltiSnipsExpandTrigger="<c-j>"
 " let g:UltiSnipsExpandTrigger="<c-y>"
