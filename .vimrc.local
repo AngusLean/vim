@@ -7,7 +7,6 @@ noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
-nnoremap <esc> :nohl<cr>   "搜索完后按ESC关闭高亮"
 set matchpairs=(:),{:},[:],<:>   "匹配括号的规则。"
 set mouse=a                    " 在任何模式下启用鼠标
 
@@ -26,14 +25,14 @@ func! ChangeDir()
 endfunc
 
 au BufEnter * call ChangeDir()
-nmap <silent><leader>cd :call ChangeDir()<CR>
+" nmap <silent><leader>cd :call ChangeDir()<CR>
 
 " 用空格键来开关折叠
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-let javascript_enable_domhtmlcss=1 "设置javascript语法高亮文件支持DOM的高亮"
+"  <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" let javascript_enable_domhtmlcss=1 "设置javascript语法高亮文件支持DOM的高亮"
 
 " 设置字体
-set guifont=YaHei\ Consolas\ Hybrid\ 12
+" set guifont=YaHei\ Consolas\ Hybrid\ 12
 
 "光标不闪烁
 ""set gcr=a:block-blinkon0
@@ -61,6 +60,24 @@ if has("gui_running")
 else
     let g:isGUI = 0
 endif
+if g:isGUI
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    nmap <silent> <c-F11> :if &guioptions =~# 'm' <Bar>
+        \set guioptions-=m <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=r <Bar>
+        \set guioptions-=L <Bar>
+    \else <Bar>
+        \set guioptions+=m <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=r <Bar>
+        \set guioptions+=L <Bar>
+    \endif<CR>
+endif
+
 
 
 "-----------------------------------------------------------------------------"
@@ -264,6 +281,11 @@ func! Run()
     if expand("%:e") == "py"
         call RunWith("py -3")
         return
+    elseif expand("%:e") == 'vbs'
+        execute "w"
+        exe ":ccl"
+        execute "!" . expand("%")
+        return
     endif
 " 需要编译的语言。 C/C++/Java   
     let s:ShowWarning = 0
@@ -415,3 +437,33 @@ function! ViewInBrowser(name)
     endif
 endfunction
 
+" 替换函数。参数说明：
+" confirm：是否替换前逐一确认
+" wholeword：是否整词匹配
+" replace：被替换字符串
+function! Replace(confirm, wholeword, replace)
+    wa
+    let flag = ''
+    if a:confirm
+        let flag .= 'gec'
+    else
+        let flag .= 'ge'
+    endif
+    let search = ''
+    if a:wholeword
+        let search .= '\<' . escape(expand('<cword>'), '/\.*$^~[') . '\>'
+    else
+        let search .= expand('<cword>')
+    endif
+    let replace = escape(a:replace, '/\&~')
+    execute 'argdo %s/' . search . '/' . replace . '/' . flag . '| update'
+endfunction
+" 不确认、非整词
+nnoremap <Leader>R :call Replace(0, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+" 不确认、整词
+nnoremap <Leader>rw :call Replace(0, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+" 确认、非整词
+nnoremap <Leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+" 确认、整词
+nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>

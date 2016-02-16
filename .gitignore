@@ -46,4 +46,5 @@ graphviz
 vimfiles/exVim.lnk
 *.dat
 unins000.exe
-
+**exvim*.exe
+使用必看
