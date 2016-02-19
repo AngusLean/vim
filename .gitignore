@@ -40,7 +40,7 @@ quick_gen_project_*_autogen.sh.meta
 # project files
 vimfiles/bundle/*
 bin
-dist*
+
 vim74
 graphviz
 vimfiles/exVim.lnk

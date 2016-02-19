@@ -33,14 +33,12 @@ Name: "modifypath"; Description: Add Environment Path;
 Source: "C:\Y_exVim\dist\vimrc_for_win_installer"; DestDir: "{%HOMEPATH}"; DestName: ".vimrc"; Flags: ignoreversion
 Source: "C:\Y_exVim\bin\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Y_exVim\windows\*"; DestDir: "{app}\windows"; Flags: ignoreversion recursesubdirs createallsubdirs
-;Source: "C:\Y_exVim\\必须文件\*"; DestDir: "{app}\required"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Y_exVim\vim74\*"; DestDir: "{app}\vim74"; Flags: ignoreversion recursesubdirs createallsubdirs
-;Source: "C:\Y_exVim\vimfiles\*"; DestDir: "{app}\vimfiles"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Y_exVim\vimfiles\bundle\Vundle.vim\*"; DestDir: "{app}\vimfiles\bundle\Vundle.vim"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Y_exVim\vimfiles\dict\*"; DestDir: "{app}\vimfiles\dict"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Y_exVim\vimfiles\requirefile\*"; DestDir: "{app}\vimfiles\requirefile"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Y_exVim\dist\ctags_lang"; DestDir: "{%HOMEPATH}"; DestName: ".ctags"; Flags: ignoreversion
 Source: "C:\Y_exVim\dist\*"; DestDir: "{app}\dist"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Y_exVim\使用必看\*"; DestDir: "{app}\使用说明"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Y_exVim\使用说明\*"; DestDir: "{app}\使用说明"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Y_exVim\.vimrc"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Y_exVim\.vimrc.local"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Y_exVim\.vimrc.plugins"; DestDir: "{app}"; Flags: ignoreversion
@@ -48,7 +46,7 @@ Source: "C:\Y_exVim\.vimrc.plugins.local"; DestDir: "{app}"; Flags: ignoreversio
 Source: "C:\Y_exVim\.vimrc.mini"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Y_exVim\.gitignore"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Y_exVim\.gitattributes"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Y_exVim\使用必看\user_fonts\DejaVu Sans Mono for Powerline.ttf"; DestDir: "{fonts}"; FontInstall: "DejaVu Sans Mono for Powerline"; Flags: onlyifdoesntexist uninsneveruninstall
+Source: "C:\Y_exVim\使用说明\user_fonts\DejaVu Sans Mono for Powerline.ttf"; DestDir: "{fonts}"; FontInstall: "DejaVu Sans Mono for Powerline"; Flags: onlyifdoesntexist uninsneveruninstall
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
