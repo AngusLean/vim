@@ -30,7 +30,7 @@ xcuserdata/
 *.vimentry.meta
 *.vimproject
 *.vimproject.meta
-.vimfiles.*/
+
 .exvim.*/
 quick_gen_project_*_autogen.bat
 quick_gen_project_*_autogen.bat.meta
@@ -39,6 +39,7 @@ quick_gen_project_*_autogen.sh.meta
 
 # project files
 vimfiles/bundle/*
+vimfiles/tools/*
 bin
 
 vim74
