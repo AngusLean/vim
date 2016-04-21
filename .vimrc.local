@@ -7,6 +7,7 @@ noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
+noremap Q q
 set matchpairs=(:),{:},[:],<:>   "匹配括号的规则。"
 set mouse=a                    " 在任何模式下启用鼠标
 set autoread
@@ -126,7 +127,9 @@ let s:Sou_Error = 0
 let s:windows_CFlags = 'gcc\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 let s:linux_CFlags = 'gcc\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 
-let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+let s:windows_CPPFlags = 'clang++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+" let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+
 let s:linux_CPPFlags = 'g++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 
 let s:JavaFlags = 'javac\ %'

@@ -16,7 +16,23 @@ flags = [
     'c++',
     'c',
     '-I', 
-    '.' 
+    '.',
+    '-isystem',
+    'C:\\Program Files\\LLVM\\lib\\clang\\3.7.0\\include',
+    '-isystem',
+    'c:\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\5.1.0\\include',
+    '-isystem',
+    'c:\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\5.1.0\\include-fixed',
+    '-isystem',
+    'c:\\mingw64\\x86_64-w64-mingw32\\include\\c++',
+    '-isystem',
+    'c:\\mingw64\\x86_64-w64-mingw32\\include\\c++\\backward',
+    '-isystem',
+    'c:\\mingw64\\x86_64-w64-mingw32\\include\\c++\\x86_64-w64-mingw32',
+    '-isystem',
+    'c:\\mingw64\\x86_64-w64-mingw32\\include',
+    '-isystem',
+    'c:\\mingw64\\include'
 ] 
 compilation_database_folder = '' 
 if compilation_database_folder: 

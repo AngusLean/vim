@@ -9,3 +9,9 @@
 在 vim目录\vimfiles\bundle\youcomplete中运行(保证此处运行的python版本是2. 如果同时安装有python3. 则可以用py -2代替python):
 
 python install.py --clang-completer --tern-completer
+
+
+
+设置c++文件头，命令行运行：
+echo | clang -std=c++11 -stdlib=libc++ -v -E -x c++ -
+找到C++文件，然后添加到.ycm文件中去
