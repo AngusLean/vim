@@ -8,9 +8,10 @@ noremap <c-j> <c-w>j
 noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
 noremap Q q
+noremap Qa qa
 set matchpairs=(:),{:},[:],<:>   "匹配括号的规则。"
-set mouse=a                    " 在任何模式下启用鼠标
-set autoread
+" set mouse=a                    " 在任何模式下启用鼠标
+" set autoread
 
 "常规模式下输入cs清楚行尾空格
 nmap cl :%s/\s\+$//g<CR>:noh<CR>:set fileencoding=utf-8<cr>:%s/\t/<space><space><space><space>/g<CR>
@@ -94,7 +95,6 @@ if g:isGUI
         \set guioptions+=L <Bar>
     \endif<CR>
 endif
-
 
 
 "-----------------------------------------------------------------------------"

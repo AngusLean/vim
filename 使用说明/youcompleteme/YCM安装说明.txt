@@ -9,7 +9,7 @@
 在 vim目录\vimfiles\bundle\youcomplete中运行(保证此处运行的python版本是2. 如果同时安装有python3. 则可以用py -2代替python):
 
 python install.py --clang-completer --tern-completer
-
+获知直接把本目录下的install.bat复制到youcompleteme的根目录运行
 
 
 设置c++文件头，命令行运行：

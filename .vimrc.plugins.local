@@ -14,6 +14,7 @@ Plugin 'jiangmiao/auto-pairs'
 ""Plugin 'terryma/vim-multiple-cursors'
 Plugin  'kristijanhusak/vim-multiple-cursors' 
 
+nmap <F3> :NERDTreeToggle<CR>
 " function! Multiple_cursors_before()
     " exe 'NeoCompleteLock'
     " echo 'Disabled autocomplete'
