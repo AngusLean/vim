@@ -49,3 +49,4 @@ vimfiles/exVim.lnk
 unins000.exe
 **exvim*.exe
 使用必看
+**/__pycache__/*

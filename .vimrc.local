@@ -17,8 +17,7 @@ set matchpairs=(:),{:},[:],<:>   "匹配括号的规则。"
 nmap cl :%s/\s\+$//g<CR>:noh<CR>:set fileencoding=utf-8<cr>:%s/\t/<space><space><space><space>/g<CR>
 "常规模式下输入 cM 清除行尾 ^M 符号
 nmap cm :%s/\r$//g<CR>:noh<CR>:set fileencoding=gbk<cr>
-" 当文件在外部被修改，自动更新该文件
-set autoread
+
 " 切换目录
 func! ChangeDir()
   let ch_dir = substitute(expand('%:p:h'), "\\", "/", "g")
@@ -42,8 +41,19 @@ function QfMakeConv()
 endfunction
 au QuickfixCmdPost make call QfMakeConv()
 
-au BufEnter * call ChangeDir()
-" nmap <silent><leader>cd :call ChangeDir()<CR>
+" au BufEnter * call ChangeDir()
+
+"自动清楚行尾空格
+" Strip trailing whitespace and newlines on save
+fun! <SID>StripTrailingWhitespace()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    %s/\($\n\s*\)\+\%$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespace()
+
 
 " 用空格键来开关折叠
 "  <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>

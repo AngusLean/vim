@@ -197,7 +197,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|o|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
+" nnoremap <unique> <leader>bs :CtrlPBuffer<CR>
+nnoremap <unique> <c-s-p> :CtrlPBuffer<CR>
 
 " vim-fugitive: invoke most by :Gdiff
 " ---------------------------------------------------
@@ -219,6 +220,7 @@ xmap s <Plug>VSurround
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMouseMode = 1
 let g:NERDTreeMapToggleZoom = '<Space>'
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " nerdcommenter: invoke by <leader>c<space>, <leader>cl, <leader>cu, <F11> or <C-F11>
 " ---------------------------------------------------
