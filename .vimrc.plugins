@@ -266,7 +266,7 @@ autocmd FileType html,css,jsp EmmetInstall
 
 " vim-javascript
 " ---------------------------------------------------
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 
 " vim-coffee-script
 " ---------------------------------------------------

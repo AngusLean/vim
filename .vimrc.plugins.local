@@ -12,6 +12,18 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin  'kristijanhusak/vim-multiple-cursors'
 
+Plugin  'mrtazz/DoxygenToolkit.vim'
+let g:DoxygenToolkit_briefTag_pre="@des  "
+let g:DoxygenToolkit_paramTag_pre="@Param "
+let g:DoxygenToolkit_returnTag="@Returns   "
+let g:DoxygenToolkit_blockHeader="-------------------------------"
+let g:DoxygenToolkit_blockFooter="---------------------------------"
+let g:DoxygenToolkit_authorName="Angus Lean"
+
+"更好用的javascript语法高亮插件
+Plugin 'othree/yajs.vim'
+let g:smc = 100
+
 "暂时不用这个插件。 ctrlp可以代替
 "Plugin 'Shougo/unite.vim'
 "nnoremap <c-f> :Unite buffer file<CR>
@@ -217,6 +229,26 @@ let g:ycm_key_invoke_completion = '<M-;>'
 " 回车即选中当前项
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 " =============================================================================
+
+
+
+Plugin  'maksimr/vim-jsbeautify'
+
+".vimrc
+map <leader>f :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <leader>f :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <leader>f :call JsonBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <leader>f :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <leader>f :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <leader>f :call RangeJsonBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <leader>f :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <leader>f :call RangeCSSBeautify()<cr>
+
 
 Plugin 'SirVer/ultisnips'
 " UltiSnips 的 tab 键与 YCM 冲突，重新设定
