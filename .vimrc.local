@@ -305,7 +305,7 @@ func! Link()
 endfunc
 
 func! Run()
-" 不需要编译的解释型脚本语言 
+" 不需要编译的解释型脚本语言
     "python默认为python3
     if expand("%:e") == "py"
         call RunWith("py -3")
@@ -316,7 +316,7 @@ func! Run()
         execute "!" . expand("%")
         return
     endif
-" 需要编译的语言。 C/C++/Java   
+" 需要编译的语言。 C/C++/Java
     let s:ShowWarning = 0
     call Link()
     let s:ShowWarning = 1
@@ -465,6 +465,7 @@ function! ViewInBrowser(name)
         echohl WarningMsg | echo " please choose the correct source file"
     endif
 endfunction
+
 
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认

@@ -12,13 +12,16 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin  'kristijanhusak/vim-multiple-cursors'
 
-Plugin  'mrtazz/DoxygenToolkit.vim'
-let g:DoxygenToolkit_briefTag_pre="@des  "
-let g:DoxygenToolkit_paramTag_pre="@Param "
-let g:DoxygenToolkit_returnTag="@Returns   "
-let g:DoxygenToolkit_blockHeader="-------------------------------"
-let g:DoxygenToolkit_blockFooter="---------------------------------"
-let g:DoxygenToolkit_authorName="Angus Lean"
+" Plugin  'mrtazz/DoxygenToolkit.vim'
+" let g:DoxygenToolkit_briefTag_pre="@des  "
+" let g:DoxygenToolkit_paramTag_pre="@Param "
+" let g:DoxygenToolkit_returnTag="@Returns   "
+" let g:DoxygenToolkit_blockHeader="-------------------------------"
+" let g:DoxygenToolkit_blockFooter="---------------------------------"
+" let g:DoxygenToolkit_authorName="Angus Lean"
+
+Plugin 'ntpeters/vim-better-whitespace'
+autocmd BufWritePre * StripWhitespace
 
 "更好用的javascript语法高亮插件
 Plugin 'othree/yajs.vim'
@@ -28,7 +31,7 @@ let g:smc = 100
 "Plugin 'Shougo/unite.vim'
 "nnoremap <c-f> :Unite buffer file<CR>
 
-
+" neocomplete与multicursor的冲突解决
 " function! Multiple_cursors_before()
     " exe 'NeoCompleteLock'
     " echo 'Disabled autocomplete'
@@ -260,4 +263,4 @@ let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 
 Plugin 'honza/vim-snippets'
-Bundle 'chrisgillis/vim-bootstrap3-snippets'
+" Bundle 'chrisgillis/vim-bootstrap3-snippets'
