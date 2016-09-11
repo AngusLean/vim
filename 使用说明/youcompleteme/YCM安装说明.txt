@@ -1,17 +1,18 @@
 
-1. °²×°Python2.7 64Î»
-2. °²×°vs2012-2015ÈÎÒâÒ»°æ±¾¡£ Èçvs_community 2015
-3. °²×°cmake (64Î»32Î»¾ù¿É)µ½»·¾³±äÁ¿ 
-4. °²×°7-zip 64Î»¡£
+1. å®‰è£…Python2.7 64ä½
+2. å®‰è£…vs2012-2015ä»»æ„ä¸€ç‰ˆæœ¬ã€‚ å¦‚vs_community 2015
+3. å®‰è£…cmake (64ä½32ä½å‡å¯)åˆ°ç¯å¢ƒå˜é‡ 
+4. å®‰è£…7-zip 64ä½ã€‚
 
-ÔÚvimrc.plugin.localÖĞ×¢ÊÍµôneocomplete£¬È¡Ïû×¢ÊÍyoucompleteme£¬È»ºóÔËĞĞÃüÁî PluginInstall
+åœ¨vimrc.plugin.localä¸­æ³¨é‡Šæ‰neocompleteï¼Œå–æ¶ˆæ³¨é‡Šyoucompletemeï¼Œç„¶åè¿è¡Œå‘½ä»¤ PluginInstall
 
-ÔÚ vimÄ¿Â¼\vimfiles\bundle\youcompleteÖĞÔËĞĞ(±£Ö¤´Ë´¦ÔËĞĞµÄpython°æ±¾ÊÇ2. Èç¹ûÍ¬Ê±°²×°ÓĞpython3. Ôò¿ÉÒÔÓÃpy -2´úÌæpython):
+åœ¨ vimç›®å½•\vimfiles\bundle\youcompleteä¸­è¿è¡Œ(ä¿è¯æ­¤å¤„è¿è¡Œçš„pythonç‰ˆæœ¬æ˜¯2. å¦‚æœåŒæ—¶å®‰è£…æœ‰python3. åˆ™å¯ä»¥ç”¨py -2ä»£æ›¿python):
 
 python install.py --clang-completer --tern-completer
-»ñÖªÖ±½Ó°Ñ±¾Ä¿Â¼ÏÂµÄinstall.bat¸´ÖÆµ½youcompletemeµÄ¸ùÄ¿Â¼ÔËĞĞ
+è·çŸ¥ç›´æ¥æŠŠæœ¬ç›®å½•ä¸‹çš„install.batå¤åˆ¶åˆ°youcompletemeçš„æ ¹ç›®å½•è¿è¡Œ
 
 
-ÉèÖÃc++ÎÄ¼şÍ·£¬ÃüÁîĞĞÔËĞĞ£º
-echo | clang -std=c++11 -stdlib=libc++ -v -E -x c++ -
-ÕÒµ½C++ÎÄ¼ş£¬È»ºóÌí¼Óµ½.ycmÎÄ¼şÖĞÈ¥
+è®¾ç½®c++æ–‡ä»¶å¤´ï¼Œå‘½ä»¤è¡Œè¿è¡Œï¼š
+win:   echo | clang -std=c++11 -stdlib=libc++ -v -E -x c++ -
+linux:  echo | clang -v -E -x c++ -
+æ‰¾åˆ°C++æ–‡ä»¶ï¼Œç„¶åæ·»åŠ åˆ°.ycmæ–‡ä»¶ä¸­å»
