@@ -5,24 +5,23 @@
 " com! -nargs=+ Bundle
 
 " man.vim: invoked by :Man {name}
-source $VIMRUNTIME/ftplugin/man.vim
+"source $VIMRUNTIME/ftPlug/man.vim
 
-" let Vundle manage Vundle, required
+" 插件初始化函数list
+let g:init_func_list = []
+
 " ---------------------------------------------------
-Plugin 'gmarik/Vundle.vim'
 
-"}}}
-
-" general plugins {{{
+" general Plugs {{{
 
 " ex-config:
 " ---------------------------------------------------
-Plugin 'exvim/ex-config'
+Plug 'exvim/ex-config'
 nnoremap <unique> <leader>ve :call exconfig#edit_cur_vimentry ()<CR>
 
 " ex-utility:
 " ---------------------------------------------------
-Plugin 'exvim/ex-utility'
+Plug 'exvim/ex-utility'
 
 nnoremap <unique> <silent> <Leader>bd :EXbd<CR>
 nnoremap <unique> <silent> <C-l> :EXbn<CR>
@@ -33,73 +32,88 @@ nmap <unique> <silent> <Leader><Esc> :EXgp<CR><ESC>
 
 " ex-aftercolor
 " ---------------------------------------------------
-Plugin 'exvim/ex-aftercolors'
+Plug 'exvim/ex-aftercolors'
 
 " ex-vimentry
 " ---------------------------------------------------
-Plugin 'exvim/ex-vimentry'
+Plug 'exvim/ex-vimentry'
 
 " ex-project
 " ---------------------------------------------------
-Plugin 'exvim/ex-project'
+Plug 'exvim/ex-project'
 let g:ex_project_winsize=30
 
 
 " ex-gsearch
 " ---------------------------------------------------
-Plugin 'exvim/ex-gsearch'
+Plug 'exvim/ex-gsearch'
 
-call exgsearch#register_hotkey( 100, 0, '<leader>gs', ":EXGSearchToggle<CR>", 'Toggle global search window.' )
-call exgsearch#register_hotkey( 101, 0, '<leader>gg', ":EXGSearchCWord<CR>", 'Search current word.' )
-call exgsearch#register_hotkey( 102, 0, '<leader><S-f>', ":GS ", 'Shortcut for :GS' )
+let g:ex_gsearch_ignore_case = 0
+function! ExgsearchInit() abort "{{{
+    call exgsearch#register_hotkey( 100, 0, '<leader>gs', ":EXGSearchToggle<CR>", 'Toggle global search window.' )
+    call exgsearch#register_hotkey( 101, 0, '<leader>gg', ":EXGSearchCWord<CR>", 'Search current word.' )
+    call exgsearch#register_hotkey( 102, 0, '<leader><S-f>', ":GS ", 'Shortcut for :GS' )
+    call exgsearch#register_hotkey( 2, 1, 'q', ":EXGSearchClose<CR>" , 'Close window.')
+endfunction "}}}
+call add(g:init_func_list, function('ExgsearchInit'))
 
 " ex-tagselect
 " ---------------------------------------------------
-Plugin 'exvim/ex-tags'
+Plug 'exvim/ex-tags'
 
-call extags#register_hotkey( 100, 0, '<leader>ts', ":EXTagsToggle<CR>", 'Toggle tag select window.' )
-call extags#register_hotkey( 101, 0, '<leader>]', ":EXTagsCWord<CR>", 'Tag select current word.' )
-" DISABLE: nnoremap <unique> <leader>] :exec 'ts ' . expand('<cword>')<CR>
+function! ExtagsInit() abort "{{{
+    call extags#register_hotkey( 100, 0, '<leader>ts', ":EXTagsToggle<CR>", 'Toggle tag select window.' )
+    call extags#register_hotkey( 101, 0, '<leader>]', ":EXTagsCWord<CR>", 'Tag select current word.' )
+    " DISABLE: nnoremap <unique> <leader>] :exec 'ts ' . expand('<cword>')<CR>
+endfunction "}}}
+call add(g:init_func_list, function('ExtagsInit'))
 
 " ex-symbol
 " ---------------------------------------------------
-Plugin 'exvim/ex-symbol'
+Plug 'exvim/ex-symbol'
 
-call exsymbol#register_hotkey( 100, 0, '<leader>ss', ":EXSymbolList<CR>", 'List all symbols.' )
-call exsymbol#register_hotkey( 101, 0, '<leader>sq', ":EXSymbolOpen<CR>", 'Open symbols window.' )
-call exsymbol#register_hotkey( 102, 0, '<leader>sg', ":EXSymbolCWord<CR>", 'List symbols contains current word.' )
+function! Exsymbol() abort "{{{
+    call exsymbol#register_hotkey( 100, 0, '<leader>ss', ":EXSymbolList<CR>", 'List all symbols.' )
+    call exsymbol#register_hotkey( 101, 0, '<leader>sq', ":EXSymbolOpen<CR>", 'Open symbols window.' )
+    call exsymbol#register_hotkey( 102, 0, '<leader>sg', ":EXSymbolCWord<CR>", 'List symbols contains current word.' )
 
-if has('gui_running')
-    if has ('mac')
-        call exsymbol#register_hotkey( 102, 0, 'Ò', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
-    else
-        call exsymbol#register_hotkey( 102, 0, '<M-L>', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
+    if has('gui_running')
+        if has ('mac')
+            call exsymbol#register_hotkey( 102, 0, 'Ò', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
+        else
+            call exsymbol#register_hotkey( 102, 0, '<M-L>', ":EXSymbolList<CR>:redraw<CR>/", 'List all symbols and stay in search mode.' )
+        endif
     endif
-endif
+endfunction "}}}
+call add(g:init_func_list, function('Exsymbol'))
 let g:ex_symbol_select_cmd = 'TS'
 
 " ex-cscope
 " ---------------------------------------------------
-Plugin 'exvim/ex-cscope'
-
-call excscope#register_hotkey( 100, 0, '<leader>cd', ":EXCSToggle<CR>", 'Toggle cscope window.' )
-
+Plug 'exvim/ex-cscope'
+function! Excscope() abort "{{{
+    call excscope#register_hotkey( 100, 0, '<leader>cd', ":EXCSToggle<CR>", 'Toggle cscope window.' )
+endfunction "}}}
+call add(g:init_func_list, function('Excscope'))
 " ex-qfix
 " ---------------------------------------------------
-Plugin 'exvim/ex-qfix'
+Plug 'exvim/ex-qfix'
 
-call exqfix#register_hotkey( 100, 0, '<leader>qf', ":EXQFixToggle<CR>", 'Toggle quickfix window.' )
-call exqfix#register_hotkey( 101, 0, '<leader>qq', ":EXQFixPaste<CR>", 'Open quickfix window and paste error list from register *.' )
+function! Exqfix() abort "{{{
+    call exqfix#register_hotkey( 100, 0, '<leader>qf', ":EXQFixToggle<CR>", 'Toggle quickfix window.' )
+    call exqfix#register_hotkey( 101, 0, '<leader>qq', ":EXQFixPaste<CR>", 'Open quickfix window and paste error list from register *.' )
+endfunction "}}}
+call add(g:init_func_list, function('Exqfix'))
 
 " ex-hierarchy
 " ---------------------------------------------------
-Plugin 'exvim/ex-hierarchy'
+Plug 'exvim/ex-hierarchy'
 
 " nnoremap <unique> <leader>hv :EXHierarchyCWord<CR>
 
 " ex-taglist: invoke by <F4>
 " ---------------------------------------------------
-Plugin 'exvim/ex-taglist'
+Plug 'exvim/ex-taglist'
 
 " F4:  Switch on/off TagList
 nnoremap <unique> <silent> <F4> :TlistToggle<CR>
@@ -131,7 +145,7 @@ let tlist_hlsl_settings = 'c;d:macro;g:enum;s:struct;u:union;t:typedef;v:variabl
 let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:variable'
 
 " ---------------------------------------------------
-Plugin 'exvim/ex-showmarks'
+Plug 'exvim/ex-showmarks'
 
 " TODO: bootleq/ShowMarks on github is well organized in code, but have lots
 " bugs, consider merge his code and fixes the bugs
@@ -143,27 +157,27 @@ let g:showmarks_hlline_lower = 1
 let g:showmarks_hlline_upper = 0
 " ex-matchit: invoke by %
 " ---------------------------------------------------
-Plugin 'exvim/ex-matchit'
+Plug 'exvim/ex-matchit'
 
 
 " searchcompl: invoke by /
 " ---------------------------------------------------
-Plugin 'exvim/ex-searchcompl'
+Plug 'exvim/ex-searchcompl'
 
 " ex-colorschemes
 " ---------------------------------------------------
-""Plugin 'exvim/ex-colorschemes'
+""Plug 'exvim/ex-colorschemes'
 
 " vim-color-solarized
 " ---------------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " DISABLE: vim-airline makes Vim editing slow when there are too many buffers opened
-"          if you don't mind, and love this plugin, uncomment the script below
+"          if you don't mind, and love this Plug, uncomment the script below
 "          to enable it
 " vim-airline
 " ---------------------------------------------------
- Plugin 'bling/vim-airline'
+ Plug 'bling/vim-airline'
 
  if has('gui_running')
      let g:airline_powerline_fonts = 1
@@ -182,7 +196,7 @@ Plugin 'altercation/vim-colors-solarized'
 " let g:airline_section_warning = ''
 
 " ctrlp: invoke by <ctrl-p>
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_follow_symlinks = 2
@@ -202,20 +216,20 @@ nnoremap <unique> <c-s-p> :CtrlPBuffer<CR>
 
 " vim-fugitive: invoke most by :Gdiff
 " ---------------------------------------------------
-""Plugin 'tpope/vim-fugitive'
+""Plug 'tpope/vim-fugitive'
 
 " vim-surround: invoke when you select words and press 's'
 " ---------------------------------------------------
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 xmap s <Plug>VSurround
 
 " DISABLE
-" " Plugin 'tpope/vim-dispatch'
+" " Plug 'tpope/vim-dispatch'
 " " ---------------------------------------------------
 
 " nerdtree: invoke by :NERDTreeToggle
 " ---------------------------------------------------
- Plugin 'scrooloose/nerdtree'
+ Plug 'scrooloose/nerdtree'
 
 let g:NERDTreeWinSize = 30
 let g:NERDTreeMouseMode = 1
@@ -224,7 +238,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 
 " nerdcommenter: invoke by <leader>c<space>, <leader>cl, <leader>cu, <F11> or <C-F11>
 " ---------------------------------------------------
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 let g:NERDSpaceDelims = 1
 let g:NERDRemoveExtraSpaces = 1
@@ -236,7 +250,7 @@ let g:NERDCustomDelimiters = {
 
 " syntastic: invoke when you save file and have syntac-checker
 " ---------------------------------------------------
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " this will make html file by Angular.js ignore errors
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -245,14 +259,14 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 " " neocomplcache: invoke when you insert words
 " LargeFile
 " ---------------------------------------------------
-Plugin 'vim-scripts/LargeFile'
+Plug 'vim-scripts/LargeFile'
 let g:LargeFile= 5 " files >= 5MB will use LargeFile rules
 
 "}}}
 
 " emmet-vim
 " ---------------------------------------------------
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " make sure emmet only enable in html,css files
 let g:user_emmet_install_global = 0
@@ -260,25 +274,25 @@ autocmd FileType html,css,jsp EmmetInstall
 
 " vim-indent-guides: invoke by <leader>ig
 " ---------------------------------------------------
-" Plugin 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 
 " let g:indent_guides_guide_size = 1
 
 " vim-javascript
 " ---------------------------------------------------
-" Plugin 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 
 " vim-coffee-script
 " ---------------------------------------------------
-" Plugin 'kchmck/vim-coffee-script'
+" Plug 'kchmck/vim-coffee-script'
 
 " vim-html
 " ---------------------------------------------------
-Plugin 'exvim/ex-indenthtml.vim'
+Plug 'exvim/ex-indenthtml.vim'
 
 " tabular: invoke by <leader>= alignment-character
 " ---------------------------------------------------
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 nnoremap <silent> <leader>= :call g:Tabular(1)<CR>
 xnoremap <silent> <leader>= :call g:Tabular(0)<CR>
@@ -294,9 +308,9 @@ endfunction
 
 
 " vim-markdown
-" require tabular plugin
+" require tabular Plug
 " ---------------------------------------------------
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 
 let g:vim_markdown_initial_foldlevel=9999
 
@@ -305,7 +319,15 @@ let g:vim_markdown_initial_foldlevel=9999
 " TEST {{{
 " " test-loading
 " echomsg "test-loading: .vimrc"
-" Plugin 'exvim/test-loading'
+" Plug 'exvim/test-loading'
 "}}}
 
 " vim:ts=4:sw=4:sts=4 et fdm=marker:
+
+" exvim custon plugins dosen't work in Plug plugin manager ,so init it's plugin's
+" function after plugin loaded
+function! PluginLoadFinished() abort "{{{
+    for Fn in g:init_func_list
+        call Fn()
+    endfor
+endfunction "}}}

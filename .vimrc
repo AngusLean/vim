@@ -79,42 +79,47 @@ else
     language messages zh_CN.utf-8
 endif
 scriptencoding utf-8
- language messages zh_CN.utf-8
-"/////////////////////////////////////////////////////////////////////////////
-" Bundle steup
-"/////////////////////////////////////////////////////////////////////////////
+language messages zh_CN.utf-8
 
-" vundle#begin
-filetype off " required
 
+
+" 插件加载完成后调用一些初始化函数
 " set the runtime path to include Vundle
 if exists('g:exvim_custom_path')
     let g:ex_tools_path = g:exvim_custom_path.'/vimfiles/tools/'
-    exec 'set rtp+=' . fnameescape ( g:exvim_custom_path.'/vimfiles/bundle/Vundle.vim/' )
-    call vundle#rc(g:exvim_custom_path.'/vimfiles/bundle/')
 else
     let g:ex_tools_path = '~/.vim/tools/'
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#rc('~/.vim/bundle/')
 endif
 
-" load .vimrc.plugins & .vimrc.plugins.local
+"if has("python") || has("python3")
+"    let g:plug_threads = 10
+"else
+"    let g:plug_threads = 1
+"endif
+let g:plug_threads = 1
+
 if exists('g:exvim_custom_path')
-    let vimrc_plugins_path = g:exvim_custom_path.'/.vimrc.plugins'
-    let vimrc_plugins_local_path = g:exvim_custom_path.'/.vimrc.plugins.local'
+    let g:vimrc_plugins_path = g:exvim_custom_path.'/.vimrc.plugins'
+    let g:vimrc_plugins_local_path = g:exvim_custom_path.'/.vimrc.plugins.local'
+    call plug#begin(g:exvim_custom_path.'/vimfiles/plugged/')
 else
-    let vimrc_plugins_path = '~/.vimrc.plugins'
-    let vimrc_plugins_local_path = '~/.vimrc.plugins.local'
+    let g:vimrc_plugins_path = '~/.vimrc.plugins'
+    let g:vimrc_plugins_local_path = '~/.vimrc.plugins.local'
+    call plug#begin('~/.vim/plugged')
 endif
-if filereadable(expand(vimrc_plugins_path))
-    exec 'source ' . fnameescape(vimrc_plugins_path)
-endif
-if filereadable(expand(vimrc_plugins_local_path))
-    exec 'source ' . fnameescape(vimrc_plugins_local_path)
+exec 'source ' . fnameescape(g:vimrc_plugins_path)
+
+if filereadable(expand(g:vimrc_plugins_local_path))
+    exec 'source ' . fnameescape(g:vimrc_plugins_local_path)
 endif
 
-" vundle#end
-filetype plugin indent on " required
+call plug#end()
+
+
+"}}}
+" 插件加载完成后调用一些初始化函数
+call PluginLoadFinished()
+
 syntax on " required
 
 "/////////////////////////////////////////////////////////////////////////////
