@@ -14,6 +14,19 @@ function! WINDOWS()
     return  (has('win16') || has('win32') || has('win64'))
 endfunction
 
+let g:iswindows = 0
+let g:islinux = 0
+if(has("win32") || has("win64") || has("win95") || has("win16"))
+    let g:iswindows = 1
+else
+    let g:islinux = 1
+endif
+
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
 " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 " across (heterogeneous) systems easier.
 if !exists('g:exvim_custom_path')
@@ -59,19 +72,19 @@ if WINDOWS()
 	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
         setglobal fileencoding=utf-8
 	set encoding=utf-8
-        
+
         " Windows has traditionally used cp1252, so it's probably wise to
         " fallback into cp1252 instead of eg. iso-8859-15.
         " Newer Windows files might contain utf-8 or utf-16 LE so we might
         " want to try them first.
         " set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
-	
+
 	" 英文版的Windows7，Vim7.4—英文Windows下的Vim不知道如何显示双倍字符
-	" 宽度的字体！你必须告诉它：  
-	" set gfn=Monaco:h10:cANSI  
-	" set gfw=NSimsun:h12 
+	" 宽度的字体！你必须告诉它：
+	" set gfn=Monaco:h10:cANSI
+	" set gfw=NSimsun:h12
     endif
-	
+
 else
     " set default encoding to utf-8
     set encoding=utf-8
@@ -79,59 +92,67 @@ else
     language messages zh_CN.utf-8
 endif
 scriptencoding utf-8
-language messages zh_CN.utf-8
+ language messages zh_CN.utf-8
+"/////////////////////////////////////////////////////////////////////////////
+" Bundle steup
+"/////////////////////////////////////////////////////////////////////////////
 
+" vundle#begin
+filetype off " required
 
-
-" 插件加载完成后调用一些初始化函数
 " set the runtime path to include Vundle
 if exists('g:exvim_custom_path')
     let g:ex_tools_path = g:exvim_custom_path.'/vimfiles/tools/'
 else
     let g:ex_tools_path = '~/.vim/tools/'
 endif
-
-"if has("python") || has("python3")
-"    let g:plug_threads = 10
-"else
-"    let g:plug_threads = 1
-"endif
-let g:plug_threads = 1
-
-if exists('g:exvim_custom_path')
-    let g:vimrc_plugins_path = g:exvim_custom_path.'/.vimrc.plugins'
-    let g:vimrc_plugins_local_path = g:exvim_custom_path.'/.vimrc.plugins.local'
-    call plug#begin(g:exvim_custom_path.'/vimfiles/plugged/')
+if g:iswindows
+  let g:plug_threads = 1
 else
-    let g:vimrc_plugins_path = '~/.vimrc.plugins'
-    let g:vimrc_plugins_local_path = '~/.vimrc.plugins.local'
+  if has("python") || has("python3")
+          let g:plug_threads = 10
+  else
+          let g:plug_threads = 1
+  endif
+endif
+" load .vimrc.plugins & .vimrc.plugins.local
+if exists('g:exvim_custom_path')
+    call plug#begin(g:exvim_custom_path.'/vimfiles/plugged/')
+    let vimrc_plugins_path = g:exvim_custom_path.'/.vimrc.plugins'
+    let vimrc_plugins_config_path = g:exvim_custom_path.'/.vimrc.plugins.config'
+else
     call plug#begin('~/.vim/plugged')
+    let vimrc_plugins_path = '~/.vimrc.plugins'
+    let vimrc_plugins_config_path = '~/.vimrc.plugins.config'
 endif
-exec 'source ' . fnameescape(g:vimrc_plugins_path)
-
-if filereadable(expand(g:vimrc_plugins_local_path))
-    exec 'source ' . fnameescape(g:vimrc_plugins_local_path)
+if filereadable(expand(vimrc_plugins_path))
+    exec 'source ' . fnameescape(vimrc_plugins_path)
 endif
 
+" set plugin in runtime path
 call plug#end()
 
+"call plugin settings
+if filereadable(expand(vimrc_plugins_config_path))
+    exec 'source ' . fnameescape(vimrc_plugins_config_path)
+endif
 
-"}}}
-" 插件加载完成后调用一些初始化函数
-call PluginLoadFinished()
-
+filetype plugin indent on " required
 syntax on " required
 
 "/////////////////////////////////////////////////////////////////////////////
 " Default colorscheme setup
 "/////////////////////////////////////////////////////////////////////////////
-
+syntax enable
 if has('gui_running')
     set background=dark
 else
     set background=dark
-    set t_Co=256 " make sure our terminal use 256 color
-    let g:solarized_termcolors = 256
+    " if you set you terminal to solarized colorscheme ,you don't need
+    " above two lines. in gnome-terminal,you should visit the:
+    "    https://github.com/Anthony25/gnome-terminal-colors-solarized
+    " set t_Co=256 " make sure our terminal use 256 color
+    " let g:solarized_termcolors = 256
 endif
 colorscheme solarized
 " colorscheme exlightgray
