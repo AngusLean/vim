@@ -19,7 +19,14 @@ if g:isGUI
                 \set guioptions+=L <Bar>
                 \endif<CR>
 endif
+"neocomplete and YouCompleteMe only have one
+let g:exvim_plug_groups = ['YouCompleteMe']
 
+if count(g:exvim_plug_groups , 'neocomplete')
+    Plug 'Shougo/neocomplete.vim'
+elseif count(g:exvim_plug_groups , 'YouCompleteMe')
+    Plug 'Valloric/YouCompleteMe'
+endif
 
 Plug 'Yggdroot/indentLine'
 "注释插件"
@@ -43,11 +50,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-if g:iswindows
-    Plug 'Shougo/neocomplete.vim'
-else
-    Plug 'Valloric/YouCompleteMe'
-endif
+
 
 Plug 'exvim/ex-config'
 
