@@ -106,14 +106,15 @@ if exists('g:exvim_custom_path')
 else
     let g:ex_tools_path = '~/.vim/tools/'
 endif
-if g:iswindows
-  let g:plug_threads = 1
-else
+
+
   if has("python") || has("python3")
           let g:plug_threads = 10
   else
           let g:plug_threads = 1
   endif
+if g:iswindows
+  let g:plug_threads = 1
 endif
 " load .vimrc.plugins & .vimrc.plugins.local
 if exists('g:exvim_custom_path')

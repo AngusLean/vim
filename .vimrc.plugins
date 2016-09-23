@@ -43,11 +43,11 @@ Plug 'thinca/vim-quickrun'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-if g:iswindows
-    Plug 'Shougo/neocomplete.vim'
-else
+"if g:iswindows
+"    Plug 'Shougo/neocomplete.vim'
+"else
     Plug 'Valloric/YouCompleteMe'
-endif
+"endif
 
 Plug 'exvim/ex-config'
 
