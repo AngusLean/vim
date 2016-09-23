@@ -40,14 +40,19 @@ quick_gen_project_*_autogen.sh.meta
 
 # project files
 vimfiles/bundle/*
-vimfiles/tools/*
-bin
 
+vimfiles/plugged/*
+bin
+__pycache__
 vim74
 graphviz
 vimfiles/exVim.lnk
+daSeas
 *.dat
 unins000.exe
 **exvim*.exe
+vim80
+BK
+dist
 使用必看
 **/__pycache__/*
