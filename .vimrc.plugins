@@ -2,23 +2,7 @@
 " man.vim: invoked by :Man {name}
 "source $VIMRUNTIME/ftPlug/man.vim
 
-if g:isGUI
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    nmap <silent> <c-F11> :if &guioptions =~# 'm' <Bar>
-                \set guioptions-=m <Bar>
-                \set guioptions-=T <Bar>
-                \set guioptions-=r <Bar>
-                \set guioptions-=L <Bar>
-                \else <Bar>
-                \set guioptions+=m <Bar>
-                \set guioptions+=T <Bar>
-                \set guioptions+=r <Bar>
-                \set guioptions+=L <Bar>
-                \endif<CR>
-endif
+
 
 "neocomplete and YouCompleteMe only have one
 let g:exvim_plug_groups = ['YouCompleteMe']
