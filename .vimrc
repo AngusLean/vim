@@ -92,7 +92,7 @@ else
     language messages zh_CN.utf-8
 endif
 scriptencoding utf-8
- language messages zh_CN.utf-8
+language messages zh_CN.utf-8
 "/////////////////////////////////////////////////////////////////////////////
 " Bundle steup
 "/////////////////////////////////////////////////////////////////////////////
@@ -355,8 +355,8 @@ set ignorecase " set search/replace pattern to ignore case
 set smartcase " set smartcase mode on, If there is upper case character in the search patern, the 'ignorecase' option will be override.
 
 " set this to use id-utils for global search
-set grepprg=lid\ -Rgrep\ -s
-set grepformat=%f:%l:%m
+" set grepprg=lid\ -Rgrep\ -s
+" set grepformat=%f:%l:%m
 
 "/////////////////////////////////////////////////////////////////////////////
 " Auto Command
@@ -519,7 +519,7 @@ noremap <Down> gj
 " http://vim.sourceforge.net/tip_view.php?tip_id=
 " Then when you put the cursor on or in a word, press "\sw", and
 " the word will be swapped with the next word.  The words may
-" even be separated by punctuation (such as "abc = def").
+" even be by separated punctuation (such as "abc = def").
 nnoremap <silent> <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
 "/////////////////////////////////////////////////////////////////////////////

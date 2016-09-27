@@ -99,7 +99,6 @@ Plug 'vim-scripts/LargeFile'
 
 Plug 'mattn/emmet-vim'
 
-Plug 'exvim/ex-indenthtml.vim'
 
 Plug 'godlygeek/tabular'
 
@@ -107,3 +106,4 @@ Plug 'plasticboy/vim-markdown'
 
 "JavaScript doc syntax
 Plug 'othree/jsdoc-syntax.vim'
+
