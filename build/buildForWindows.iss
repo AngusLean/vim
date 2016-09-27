@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "yexVim"
-#define MyAppVersion "5.5"
+#define MyAppVersion "5.5.1"
 #define MyAppPublisher "cupofish@gmail.com"
 #define MyAppExeName "vim80\gvim.exe"
 
@@ -30,14 +30,14 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "modifypath"; Description: Add Environment Path;
 
 [Files]
-Source: "C:\Yvim\dist\vimrc_for_win_installer"; DestDir: "{%HOMEPATH}"; DestName: ".vimrc"; Flags: ignoreversion
+Source: "C:\Yvim\build\vimrc_for_win_installer"; DestDir: "{%HOMEPATH}"; DestName: ".vimrc"; Flags: ignoreversion
 Source: "C:\Yvim\bin\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Yvim\windows\*"; DestDir: "{app}\windows"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Yvim\vim80\*"; DestDir: "{app}\vim80"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Yvim\vimfiles\plugged\*"; DestDir: "{app}\vimfiles\plugged"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Yvim\vimfiles\requirefile\*"; DestDir: "{app}\vimfiles\requirefile"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Yvim\dist\ctags_lang"; DestDir: "{%HOMEPATH}"; DestName: ".ctags"; Flags: ignoreversion
-Source: "C:\Yvim\dist\*"; DestDir: "{app}\dist"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Yvim\build\ctags_lang"; DestDir: "{%HOMEPATH}"; DestName: ".ctags"; Flags: ignoreversion
+Source: "C:\Yvim\build\*"; DestDir: "{app}\dist"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Yvim\使用说明\*"; DestDir: "{app}\使用说明"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Yvim\.vimrc"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Yvim\.vimrc.local"; DestDir: "{app}"; Flags: ignoreversion
