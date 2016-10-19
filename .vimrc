@@ -229,7 +229,9 @@ if has('gui_running')
     " set guifont
     function! s:set_gui_font()
         if has('gui_gtk2')
-            if getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
+            if getfontname('SourceCodePro') != ''
+                set guifont=SourceCodePro\ 14
+            elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ 14
@@ -534,5 +536,6 @@ endif
 if filereadable(expand(vimrc_local_path))
     exec 'source ' . fnameescape(vimrc_local_path)
 endif
+
 
 " vim:ts=4:sw=4:sts=4 et fdm=marker:
