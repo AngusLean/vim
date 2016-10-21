@@ -45,7 +45,7 @@ nnoremap <leader>o :Unite -start-insert -no-split -buffer-name=outline outline<C
 "}}}
 
 Plug 'maksimr/vim-jsbeautify'
-Plug 'thinca/vim-quickrun'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -93,6 +93,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 
+"Plug 'troydm/easytree.vim'
+
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'scrooloose/syntastic'
@@ -101,7 +103,6 @@ Plug 'vim-scripts/LargeFile'
 
 Plug 'mattn/emmet-vim'
 
-
 Plug 'godlygeek/tabular'
 
 Plug 'plasticboy/vim-markdown'
@@ -109,4 +110,6 @@ Plug 'plasticboy/vim-markdown'
 "JavaScript doc syntax
 Plug 'othree/jsdoc-syntax.vim'
 
+Plug 'tao12345666333/vim-vue'
 
+Plug 'skywind3000/asyncrun.vim'
