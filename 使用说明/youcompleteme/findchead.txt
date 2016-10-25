@@ -1,0 +1,14 @@
+对于C++补全，首先确保电脑上安装有MinGW或者CLang(折腾去吧）。然后运行如下
+命令找到C++的库文件：
+gcc：
+POSIX shell: g++ -E -x c++ - -v < /dev/null
+windows： g++ -E -x c++ - -v < nul
+LLVM/CLang:
+POSIX shell: clang++ -E -x c++ - -v < /dev/null
+windows： clang++ -E -x c++ - -v < nul
+在#include <...> search starts here:和End of search list.之间的路径就是C++
+
+作者：竹青叶
+链接：https://www.zhihu.com/question/25437050/answer/31775249
+来源：知乎
+著作权归作者所有，转载请联系作者获得授权。
