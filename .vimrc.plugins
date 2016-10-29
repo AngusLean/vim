@@ -3,7 +3,6 @@
 "source $VIMRUNTIME/ftPlug/man.vim
 
 
-
 "neocomplete and YouCompleteMe only have one
 let g:exvim_plug_groups = ['YouCompleteMe']
 
@@ -97,7 +96,10 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+
+Plug 'maralla/validator.vim'
+
 
 Plug 'vim-scripts/LargeFile'
 
