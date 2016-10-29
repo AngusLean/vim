@@ -13,15 +13,15 @@ profile
 PLBlocks.framework/*
 *.pbxuser
 *.mode1v3
-*~.nib/ 
-*.perspective 
+*~.nib/
+*.perspective
 *.perspectivev3
 xcuserdata/
 
 # gcc files
 *.gch
 
-# exvim files 
+# exvim files
 *.err
 *.err.meta
 *.exvim
@@ -44,6 +44,7 @@ vimfiles/bundle/*
 vimfiles/plugged/*
 bin
 __pycache__
+*.pyc
 vim74
 graphviz
 vimfiles/exVim.lnk
