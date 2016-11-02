@@ -14,7 +14,6 @@ flags = [
     '-Wno-padded',
     '-x',
     'c++',
-    'c',
     '-I',
     '.',
     '-isystem',

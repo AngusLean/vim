@@ -48,35 +48,35 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'exvim/ex-config'
+"Plug 'exvim/ex-config'
 
-Plug 'exvim/ex-utility'
+"Plug 'exvim/ex-utility'
 
-Plug 'exvim/ex-aftercolors'
+"Plug 'exvim/ex-aftercolors'
 
-Plug 'exvim/ex-vimentry'
+"Plug 'exvim/ex-vimentry'
 
-Plug 'exvim/ex-project'
+"Plug 'exvim/ex-project'
 
-Plug 'exvim/ex-gsearch'
+"Plug 'exvim/ex-gsearch'
 
-Plug 'exvim/ex-tags'
+"Plug 'exvim/ex-tags', {'for':'cpp'}
 
-Plug 'exvim/ex-symbol'
+"Plug 'exvim/ex-symbol', {'for':'cpp'}
 
-Plug 'exvim/ex-cscope'
+"Plug 'exvim/ex-cscope', {'for':'cpp'}
 
-Plug 'exvim/ex-qfix'
+"Plug 'exvim/ex-qfix'
 
-Plug 'exvim/ex-hierarchy'
+"Plug 'exvim/ex-hierarchy' , {'for':'cpp'}
 
 "Plug 'exvim/ex-taglist'
 
 "Plug 'exvim/ex-showmarks'
 
-Plug 'exvim/ex-matchit'
+"Plug 'exvim/ex-matchit'
 
-Plug 'exvim/ex-searchcompl'
+"Plug 'exvim/ex-searchcompl'
 
 Plug 'altercation/vim-colors-solarized'
 
@@ -84,30 +84,32 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'Yggdroot/LeaderF' 
 
 "Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-surround'
 
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-"Plug 'troydm/easytree.vim'
+Plug 'troydm/easytree.vim'
 
 Plug 'scrooloose/nerdcommenter'
 
-"Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
-Plug 'maralla/validator.vim'
+"Plug 'maralla/validator.vim'
 
 
 Plug 'vim-scripts/LargeFile'
 
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 Plug 'godlygeek/tabular'
 
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 "JavaScript doc syntax
 Plug 'othree/jsdoc-syntax.vim'
