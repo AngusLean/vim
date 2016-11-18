@@ -4,6 +4,7 @@
 set foldenable                                        "启用折叠
 set foldmethod=indent                                 "indent 折叠方式
 set breakindent                                   "vim8中加入的复制内容保持缩进
+
 noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-h> <c-w>h
