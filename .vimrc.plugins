@@ -1,5 +1,5 @@
 "neocomplete and YouCompleteMe only have one
-let g:exvim_plug_groups = ['']
+let g:exvim_plug_groups = ['neocomplete']
 
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
@@ -7,7 +7,9 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     Plug 'Valloric/YouCompleteMe'
 endif
 
-Plug 'maralla/completor.vim'
+"Plug 'ternjs/tern_for_vim'
+
+"Plug 'maralla/completor.vim'
 
 "Plug 'exvim/ex-config'
 
@@ -52,7 +54,9 @@ Plug 'altercation/vim-colors-solarized'
 "多选
 Plug 'tpope/vim-surround'
 "左边文件浏览
-Plug 'troydm/easytree.vim'
+"Plug 'troydm/easytree.vim'
+Plug 'scrooloose/nerdtree'
+
 "Ctrlp文件查找
 Plug 'Yggdroot/LeaderF'
 "Plug 'ctrlpvim/ctrlp.vim'
@@ -79,26 +83,28 @@ noremap <F4> :Autoformat<CR>
 Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
 "Plug 'maksimr/vim-jsbeautify', { 'for': 'javascript' }
 "更好用的javascript语法高亮插件
+
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+let g:used_javascript_libs = 'vue'
 "// ==================JavaScript相关=====================
 
 " ==================Html相关=============================
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-Plug 'tao12345666333/vim-vue', { 'for': 'vue' }
-"//==================JavaScript相关======================
+Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
+Plug 'posva/vim-vue'
+"//==================Html相关======================
 
 " ==================Markdown相关=========================
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-"//==================JavaScript相关======================
+"//==================Markdown相关======================
 
 " ==================程序运行与语法检查相关===============
 Plug 'skywind3000/asyncrun.vim'
 "Plug 'thinca/vim-quickrun'
 "语法检查插件
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 "Plug 'w0rp/ale'
-"//==================JavaScript相关======================
-
+"//==================程序运行与语法检查相关======================
 
 " ==================Shougo大神专辑=======================
 
