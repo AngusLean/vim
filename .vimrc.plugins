@@ -1,5 +1,5 @@
 "neocomplete and YouCompleteMe only have one
-let g:exvim_plug_groups = ['neocomplete']
+let g:exvim_plug_groups = ['YouCompleteMe']
 
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
