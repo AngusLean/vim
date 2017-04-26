@@ -91,7 +91,7 @@ let g:used_javascript_libs = 'vue'
 
 " ==================Html相关=============================
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', { 'for': 'html,vue' }
 "//==================Html相关======================
 
 " ==================Markdown相关=========================
@@ -103,7 +103,7 @@ Plug 'skywind3000/asyncrun.vim'
 "Plug 'thinca/vim-quickrun'
 "语法检查插件
 "Plug 'scrooloose/syntastic'
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 "//==================程序运行与语法检查相关======================
 
 " ==================Shougo大神专辑=======================
