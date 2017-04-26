@@ -1,0 +1,132 @@
+"neocomplete and YouCompleteMe only have one
+let g:exvim_plug_groups = ['YouCompleteMe']
+
+if count(g:exvim_plug_groups , 'neocomplete')
+    Plug 'Shougo/neocomplete.vim'
+elseif count(g:exvim_plug_groups , 'YouCompleteMe')
+    Plug 'Valloric/YouCompleteMe'
+endif
+
+"Plug 'ternjs/tern_for_vim'
+
+"Plug 'maralla/completor.vim'
+
+"Plug 'exvim/ex-config'
+
+"Plug 'exvim/ex-utility'
+
+"Plug 'exvim/ex-aftercolors'
+
+"Plug 'exvim/ex-vimentry'
+
+"Plug 'exvim/ex-project'
+
+"Plug 'exvim/ex-gsearch'
+
+"Plug 'exvim/ex-tags', {'for':'cpp'}
+
+"Plug 'exvim/ex-symbol', {'for':'cpp'}
+
+"Plug 'exvim/ex-cscope', {'for':'cpp'}
+
+"Plug 'exvim/ex-qfix'
+
+"Plug 'exvim/ex-hierarchy' , {'for':'cpp'}
+
+"Plug 'exvim/ex-taglist'
+
+"Plug 'exvim/ex-showmarks'
+
+Plug 'exvim/ex-matchit'
+
+"Plug 'exvim/ex-searchcompl'
+
+"对齐线
+Plug 'Yggdroot/indentLine'
+"自动括号插件
+Plug 'jiangmiao/auto-pairs'
+"多光标选择输入插件.下面的第一个与neocpmplete冲突"
+Plug  'kristijanhusak/vim-multiple-cursors'
+"空白的特殊处理
+Plug 'ntpeters/vim-better-whitespace'
+"主题插件
+Plug 'altercation/vim-colors-solarized'
+"多选
+Plug 'tpope/vim-surround'
+"左边文件浏览
+"Plug 'troydm/easytree.vim'
+Plug 'scrooloose/nerdtree'
+
+"Ctrlp文件查找
+Plug 'Yggdroot/LeaderF'
+"Plug 'ctrlpvim/ctrlp.vim'
+"注释插件
+Plug 'scrooloose/nerdcommenter'
+"Plug 'chemzqm/mycomment.vim'
+"注释插件"
+" Plug 'tomtom/tcomment_vim'
+" 状态栏
+Plug 'itchyny/lightline.vim'
+"文本对齐插件
+Plug 'godlygeek/tabular'
+"大文件处理
+Plug 'vim-scripts/LargeFile'
+"代码片段
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" ==================代码美化相关=======================
+Plug 'Chiel92/vim-autoformat'
+noremap <F4> :Autoformat<CR>
+" ==================JavaScript相关=======================
+"JavaScript doc syntax
+Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
+"Plug 'maksimr/vim-jsbeautify', { 'for': 'javascript' }
+"更好用的javascript语法高亮插件
+
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+let g:used_javascript_libs = 'vue'
+"// ==================JavaScript相关=====================
+
+" ==================Html相关=============================
+Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
+Plug 'posva/vim-vue'
+"//==================Html相关======================
+
+" ==================Markdown相关=========================
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+"//==================Markdown相关======================
+
+" ==================程序运行与语法检查相关===============
+Plug 'skywind3000/asyncrun.vim'
+"Plug 'thinca/vim-quickrun'
+"语法检查插件
+"Plug 'scrooloose/syntastic'
+"Plug 'w0rp/ale'
+"//==================程序运行与语法检查相关======================
+
+" ==================Shougo大神专辑=======================
+
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" custom vimproc build script
+
+function! VimprocBuild()
+    if g:iswindows
+        exec 'mingw32-make -f make_mingw64.mak'
+    elseif g:islinux
+        exec 'make'
+    endif
+endfunction
+
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+
+"  文件内跳转{{{
+Plug 'Shougo/unite-outline' " 函数跳转等变量跳转{{{
+nnoremap <leader>o :Unite -start-insert -no-split -buffer-name=outline outline<CR>
+"}}}
+
+"Plug 'dyng/ctrlsf.vim'
+
+"//==================JavaScript相关======================
