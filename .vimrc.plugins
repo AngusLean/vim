@@ -48,7 +48,7 @@ noremap <F4> :Autoformat<CR>
 " ==================JavaScript相关=======================
 "JavaScript doc syntax
 Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
-"Plug 'maksimr/vim-jsbeautify', { 'for': 'javascript' }
+Plug 'maksimr/vim-jsbeautify'
 "更好用的javascript语法高亮插件
 
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
