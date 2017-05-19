@@ -157,7 +157,7 @@ else
     " let g:solarized_termcolors = 256
 endif
 colorscheme solarized
-" colorscheme exlightgray
+"colorscheme exlightgray
 
 "/////////////////////////////////////////////////////////////////////////////
 " General

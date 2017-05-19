@@ -67,11 +67,14 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 " ==================程序运行与语法检查相关===============
 Plug 'skywind3000/asyncrun.vim'
-"Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-quickrun'
+
 "语法检查插件
-"Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+
 Plug 'w0rp/ale'
 "=================== 文件查找与替换=========================
 Plug 'dyng/ctrlsf.vim'
 "//==================程序运行与语法检查相关======================
 
+Plug 'tyru/open-browser.vim'
