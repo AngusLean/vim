@@ -1,38 +1,38 @@
 "======================================================================
-"»ù±¾ÉèÖÃ
+"åŸºæœ¬è®¾ç½®
 "======================================================================
-set foldenable                                    "ÆôÓÃÕÛµş
-set foldmethod=indent                             "indent ÕÛµş·½Ê½
-set breakindent                                   "vim8ÖĞ¼ÓÈëµÄ¸´ÖÆÄÚÈİ±£³ÖËõ½ø
-set matchpairs=(:),{:},[:],<:>                    "Æ¥ÅäÀ¨ºÅµÄ¹æÔò¡£
-" ÓÃ¿Õ¸ñ¼üÀ´¿ª¹ØÕÛµş
+set foldenable                                    "å¯ç”¨æŠ˜å 
+set foldmethod=indent                             "indent æŠ˜å æ–¹å¼
+set breakindent                                   "vim8ä¸­åŠ å…¥çš„å¤åˆ¶å†…å®¹ä¿æŒç¼©è¿›
+set matchpairs=(:),{:},[:],<:>                    "åŒ¹é…æ‹¬å·çš„è§„åˆ™ã€‚
+" ç”¨ç©ºæ ¼é”®æ¥å¼€å…³æŠ˜å 
 "  <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-" ÉèÖÃ×ÖÌå
+" è®¾ç½®å­—ä½“
 " set guifont=YaHei\ Consolas\ Hybrid\ 12
-"¹â±ê²»ÉÁË¸
+"å…‰æ ‡ä¸é—ªçƒ
 set gcr=a:block-blinkon0
 
 "======================================================================
-"¿ì½İ¼ü
+"å¿«æ·é”®
 "======================================================================
-"ÇĞ»»´°¿Ú
+"åˆ‡æ¢çª—å£
 noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
-"·ÖºÅ½øÈëÃüÁîÄ£Ê½
+"åˆ†å·è¿›å…¥å‘½ä»¤æ¨¡å¼
 nnoremap ; :
-"vwÑ¡ÖĞµ±Ç°µ¥´Ê
+"vwé€‰ä¸­å½“å‰å•è¯
 nmap vw viw
-"Q»òQaÍË³ö
+"Qæˆ–Qaé€€å‡º
 noremap Q q
 noremap Qa qa
 
 "======================================================================
-" Æ½Ì¨Ïà¹ØÉèÖÃ
+" å¹³å°ç›¸å…³è®¾ç½®
 "======================================================================
 if g:islinux
-    set guifont=Source\ Code\ Pro\ Bold\ 11
+    " set guifont=Source\ Code\ Pro\ Bold\ 13
     "fix webpack-hot-reload not work in linux
     set backupcopy=yes
 endif
@@ -40,6 +40,3 @@ if has('win32') || has('win64')
 	noremap <space>gc :silent !start cmd.exe<cr>
 	noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
 endif
-
-
-
