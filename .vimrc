@@ -304,7 +304,8 @@ set guioptions-=b " present the bottom scrollbar when the longest visible line e
 set guioptions-=m
 set guioptions-=T
 set guioptions-=R
-
+set guioptions-=r
+set guioptions-=L
 " ------------------------------------------------------------------
 " Desc: Text edit
 " ------------------------------------------------------------------
@@ -391,12 +392,6 @@ if has('autocmd')
         au BufEnter * :syntax sync fromstart " ensure every file does syntax highlighting (full)
         au BufNewFile,BufRead *.avs set syntax=avs " for avs syntax file.
 
-        " DISABLE {
-        " NOTE: will have problem with exvim, because exvim use exES_CWD as working directory for tag and other thing
-        " Change current directory to the file of the buffer ( from Script#65"CD.vim"
-        " au   BufEnter *   execute ":lcd " . expand("%:p:h")
-        " } DISABLE end
-
         " ------------------------------------------------------------------
         " Desc: file types
         " ------------------------------------------------------------------
@@ -417,7 +412,6 @@ if has('autocmd')
     function! s:check_if_expand_tab()
         let has_noexpandtab = search('^\t','wn')
         let has_expandtab = search('^    ','wn')
-
         "
         if has_noexpandtab && has_expandtab
             let idx = inputlist ( ['ERROR: current file exists both expand and noexpand TAB, python can only use one of these two mode in one file.\nSelect Tab Expand Type:',
@@ -487,11 +481,6 @@ nnoremap <silent> <leader>y3 :let @*=fnamemodify(bufname('%'),":p")<CR>
 " F8 or <leader>/:  Set Search pattern highlight on/off
 nnoremap <ESC> :let @/=""<CR>
 nnoremap <leader>/ :let @/=""<CR>
-" DISABLE: though nohlsearch is standard way in Vim, but it will not erase the
-"          search pattern, which is not so good when use it with exVim's <leader>r
-"          filter method
-" nnoremap <F8> :nohlsearch<CR>
-" nnoremap <leader>/ :nohlsearch<CR>
 
 " map Ctrl-Tab to switch window
 nnoremap <S-Up> <C-W><Up>
@@ -519,13 +508,6 @@ vnoremap > >gv
 noremap <Up> gk
 noremap <Down> gj
 
-" TODO: I should write a better one, make it as plugin exvim/swapword
-" VimTip 329: A map for swapping words
-" http://vim.sourceforge.net/tip_view.php?tip_id=
-" Then when you put the cursor on or in a word, press "\sw", and
-" the word will be swapped with the next word.  The words may
-" even be by separated punctuation (such as "abc = def").
-nnoremap <silent> <leader>sw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o>
 
 "/////////////////////////////////////////////////////////////////////////////
 " local setup
