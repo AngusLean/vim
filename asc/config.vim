@@ -1,10 +1,16 @@
 "======================================================================
 "基本设置
 "======================================================================
-set foldenable                                        "启用折叠
-set foldmethod=indent                                 "indent 折叠方式
+set foldenable                                    "启用折叠
+set foldmethod=indent                             "indent 折叠方式
 set breakindent                                   "vim8中加入的复制内容保持缩进
-set matchpairs=(:),{:},[:],<:>   "匹配括号的规则。"
+set matchpairs=(:),{:},[:],<:>                    "匹配括号的规则。
+" 用空格键来开关折叠
+"  <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" 设置字体
+" set guifont=YaHei\ Consolas\ Hybrid\ 12
+"光标不闪烁
+set gcr=a:block-blinkon0
 
 "======================================================================
 "快捷键
@@ -22,15 +28,6 @@ nmap vw viw
 noremap Q q
 noremap Qa qa
 
-" 用空格键来开关折叠
-"  <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-
-" 设置字体
-" set guifont=YaHei\ Consolas\ Hybrid\ 12
-
-"光标不闪烁
-set gcr=a:block-blinkon0
-
 "======================================================================
 " 平台相关设置
 "======================================================================
@@ -39,5 +36,10 @@ if g:islinux
     "fix webpack-hot-reload not work in linux
     set backupcopy=yes
 endif
+if has('win32') || has('win64')
+	noremap <space>gc :silent !start cmd.exe<cr>
+	noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
+endif
+
 
 

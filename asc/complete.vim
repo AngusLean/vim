@@ -5,7 +5,7 @@
 
 "neocomplete {{{
 if count(g:exvim_plug_groups , 'neocomplete')
- " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+    " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
     " Use neocomplete.
@@ -18,17 +18,17 @@ if count(g:exvim_plug_groups , 'neocomplete')
 
     " Define dictionary.
     let g:neocomplete#sources#dictionary#dictionaries = {
-        \ 'default' : '',
-        \ 'arduino' : $VIM.'/vimfiles/requirefile/dict/arduino.dict',
-        \ 'c' : $VIM.'/vimfiles/requirefile/dict/c.dict',
-        \ 'cpp' : $VIM.'/vimfiles/requirefile/dict/cpp.dict',
-        \ 'css' : $VIM.'/vimfiles/requirefile/dict/css.dict',
-        \ 'java' : $VIM.'/vimfiles/requirefile/dict/java.dict',
-        \ 'javascript' : $VIM.'/vimfiles/requirefile/dict/javascript.dict',
-        \ 'php' : $VIM.'/vimfiles/requirefile/dict/php.dict',
-        \ 'vim' : $VIM.'/vimfiles/requirefile/dict/vim.dict',
-        \ 'matlab' : $VIM.'/vimfiles/requirefile/dict/matlab.dict',
-    \ }
+                \ 'default' : '',
+                \ 'arduino' : $VIM.'/vimfiles/requirefile/dict/arduino.dict',
+                \ 'c' : $VIM.'/vimfiles/requirefile/dict/c.dict',
+                \ 'cpp' : $VIM.'/vimfiles/requirefile/dict/cpp.dict',
+                \ 'css' : $VIM.'/vimfiles/requirefile/dict/css.dict',
+                \ 'java' : $VIM.'/vimfiles/requirefile/dict/java.dict',
+                \ 'javascript' : $VIM.'/vimfiles/requirefile/dict/javascript.dict',
+                \ 'php' : $VIM.'/vimfiles/requirefile/dict/php.dict',
+                \ 'vim' : $VIM.'/vimfiles/requirefile/dict/vim.dict',
+                \ 'matlab' : $VIM.'/vimfiles/requirefile/dict/matlab.dict',
+                \ }
 
     " Define keyword.
     if !exists('g:neocomplete#keyword_patterns')
@@ -88,8 +88,8 @@ if count(g:exvim_plug_groups , 'neocomplete')
     "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
     "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-"}}}
-"Valloric/YouCompleteMe {{{
+    "}}}
+    "Valloric/YouCompleteMe {{{
 elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     let g:ycm_confirm_extra_conf=0   "设置加载py文件不提示
     "设置离开插入模式自动关闭预览窗口
