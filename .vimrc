@@ -72,13 +72,6 @@ if WINDOWS()
 	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
         setglobal fileencoding=utf-8
 	set encoding=utf-8
-
-        " Windows has traditionally used cp1252, so it's probably wise to
-        " fallback into cp1252 instead of eg. iso-8859-15.
-        " Newer Windows files might contain utf-8 or utf-16 LE so we might
-        " want to try them first.
-        " set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
-
 	" 英文版的Windows7，Vim7.4—英文Windows下的Vim不知道如何显示双倍字符
 	" 宽度的字体！你必须告诉它：
 	" set gfn=Monaco:h10:cANSI
@@ -100,16 +93,7 @@ language messages zh_CN.utf-8
 " Bundle steup
 "/////////////////////////////////////////////////////////////////////////////
 
-" vundle#begin
-filetype off " required
-
-" set the runtime path to include Vundle
-if exists('g:exvim_custom_path')
-    let g:ex_tools_path = g:exvim_custom_path.'/vimfiles/tools/'
-else
-    let g:ex_tools_path = '~/.vim/tools/'
-endif
-
+filetype off
 
 if has("python") || has("python3")
         let g:plug_threads = 10
@@ -163,7 +147,6 @@ colorscheme solarized
 " General
 "/////////////////////////////////////////////////////////////////////////////
 
-"set path=.,/usr/include/*,, " where gf, ^Wf, :find will search
 set backup " make backup file and leave it around
 
 " setup back and swap directory
@@ -304,8 +287,10 @@ set guioptions-=b " present the bottom scrollbar when the longest visible line e
 set guioptions-=m
 set guioptions-=T
 set guioptions-=R
-set guioptions-=r
-set guioptions-=L
+if has("gui_running")
+    set guioptions-=r
+    set guioptions-=L
+endif
 " ------------------------------------------------------------------
 " Desc: Text edit
 " ------------------------------------------------------------------
@@ -346,7 +331,6 @@ set nf=
 " ------------------------------------------------------------------
 " Desc: Fold text
 " ------------------------------------------------------------------
-
 set foldmethod=marker foldmarker={,} foldlevel=9999
 set diffopt=filler,context:9999
 
@@ -359,10 +343,6 @@ set incsearch " do incremental searching
 set hlsearch " highlight search terms
 set ignorecase " set search/replace pattern to ignore case
 set smartcase " set smartcase mode on, If there is upper case character in the search patern, the 'ignorecase' option will be override.
-
-" set this to use id-utils for global search
-" set grepprg=lid\ -Rgrep\ -s
-" set grepformat=%f:%l:%m
 
 "/////////////////////////////////////////////////////////////////////////////
 " Auto Command
@@ -488,15 +468,6 @@ nnoremap <S-Down> <C-W><Down>
 nnoremap <S-Left> <C-W><Left>
 nnoremap <S-Right> <C-W><Right>
 
-" easy buffer navigation
-" NOTE: if we already map to EXbn,EXbp. skip setting this
-if !hasmapto(':EXbn<CR>') && mapcheck('<C-l>','n') == ''
-    nnoremap <C-l> :bn<CR>
-endif
-if !hasmapto(':EXbp<CR>') && mapcheck('<C-h>','n') == ''
-    noremap <C-h> :bp<CR>
-endif
-
 " enhance '<' '>' , do not need to reselect the block after shift it.
 vnoremap < <gv
 vnoremap > >gv
@@ -517,5 +488,5 @@ exec 'set rtp+='.s:home
 IncScript asc/config.vim
 IncScript asc/misc.vim
 IncScript asc/complete.vim
-
+IncScript asc/runcurrent.vim
 " vim:ts=4:sw=4:sts=4 et fdm=marker:
