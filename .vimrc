@@ -510,17 +510,15 @@ noremap <Down> gj
 
 
 "/////////////////////////////////////////////////////////////////////////////
-" local setup
+" 加载配置
 "/////////////////////////////////////////////////////////////////////////////
 
-let vimrc_local_path = '~/.vimrc.local'
-if exists('g:exvim_custom_path')
-    let vimrc_local_path = g:exvim_custom_path.'/.vimrc.local'
-endif
+let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+command! -nargs=1 IncScript exec 'so '.s:home.'/'.'<args>'
+exec 'set rtp+='.s:home
 
-if filereadable(expand(vimrc_local_path))
-    exec 'source ' . fnameescape(vimrc_local_path)
-endif
+IncScript asc/config.vim
+IncScript asc/misc.vim
 
 
 " vim:ts=4:sw=4:sts=4 et fdm=marker:

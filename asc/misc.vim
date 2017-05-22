@@ -1,9 +1,8 @@
 "======================================================================
 "
 " misc.vim - edit details
-"
-" created by: skywind in 2016/9/19 1:00:44
-" last change: 2016/9/19 1:00:44
+" created by: anguslean in 2017/05/22 15:20:53
+" last change: 2017/05/22 15:20:59
 "
 "======================================================================
 
@@ -13,7 +12,6 @@
 function! s:snip(text)
 	call append(line('.') - 1, a:text)
 endfunc
-
 
 "-----------------------------------------------------------------------
 " guess comment
@@ -107,105 +105,12 @@ function! <SID>snip_copyright(author)
 endfunc
 
 
-"----------------------------------------------------------------------
-" bundle setup
-"----------------------------------------------------------------------
-function! <SID>snip_bundle()
-	let l:text = []
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ['" Bundle Header']
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ["set nocompatible"]
-	let l:text += ["filetype off"]
-	let l:text += ["set rtp+=~/.vim/bundle/Vundle.vim"]
-	let l:text += ["call vundle#begin()"]
-	let l:text += ["Plugin 'VundleVim/Vundle.vim'"]
-	let l:text += [""]
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ['" Plugins']
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ["\" Plugin 'SirVer/ultisnips'"]
-	let l:text += ["\" Plugin 'honza/vim-snippets'"]
-	let l:text += [""]
-	let l:text += [""]
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ['" Bundle Footer']
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ["call vundle#end()"]
-	let l:text += ["filetype on"]
-	let l:text += [""]
-	let l:text += [""]
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += ['" Settings']
-	let l:text += ['"----------------------------------------------------------------------']
-	let l:text += [""]
-	let l:text += [""]
-	call append(line('.') - 1, l:text)
-endfunc
-
-
-"----------------------------------------------------------------------
-" main test
-"----------------------------------------------------------------------
-function! <SID>snip_main()
-	let l:ext = expand('%:e')
-	let l:text = []
-	if &filetype == 'vim'
-	elseif index(['c', 'cpp', 'h', 'hpp', 'hh', 'cc', 'cxx'], l:ext) >= 0
-		let l:text += ['#include <stdio.h>']
-		let l:text += ['#include <stdlib.h>']
-		let l:text += ['']
-		let l:text += ['int main(void)']
-		let l:text += ['{']
-		let l:text += ["\tprintf(\"Hello World !!\\n\");"]
-		let l:text += ["\treturn 0;"]
-		let l:text += ['{']
-	elseif &filetype == 'python'
-		let l:text += ['#! /usr/bin/env python']
-		let l:text += ['# -*- coding: utf-8 -*-']
-		let l:text += ['import sys']
-		let l:text += ['import time']
-		let l:text += ['import os']
-		let l:text += ['import codecs']
-		let l:text += ['']
-		let l:text += ['']
-		let l:text += ['']
-		let l:text += ['if __name__ == "__main__":']
-		let l:text += ["\tprint('Hello, World !!')"]
-	endif
-	call append(line('.') - 1, l:text)
-endfunc
-
 
 "-----------------------------------------------------------------------
 " hot keys
 "-----------------------------------------------------------------------
 noremap <space>e- :call <SID>snip_comment_block('-')<cr>
 noremap <space>e= :call <SID>snip_comment_block('=')<cr>
-noremap <space>ec :call <SID>snip_copyright('skywind')<cr>
-noremap <space>eb :call <SID>snip_bundle()<cr>
-noremap <space>em :call <SID>snip_main()<cr>
+noremap <space>ec :call <SID>snip_copyright('AngusLean')<cr>
 noremap <space>et "=strftime("%Y/%m/%d %H:%M:%S")<CR>gp
-
-
-"----------------------------------------------------------------------
-" insert mode fast
-"----------------------------------------------------------------------
-inoremap <c-x>( ()<esc>i
-inoremap <c-x>[ []<esc>i
-inoremap <c-x>' ''<esc>i
-inoremap <c-x>" ""<esc>i
-inoremap <c-x>< <><esc>i
-inoremap <c-x>{ {<esc>o}<esc>ko
-
-if has('gui_running')
-	inoremap <M-(> ()<esc>i
-	inoremap <M-[> []<esc>i
-	inoremap <M-'> ''<esc>i
-	inoremap <M-"> ""<esc>i
-	inoremap <M-<> <><esc>i
-	inoremap <M-{> {<esc>o}<esc>ko
-endif
-
-
 
