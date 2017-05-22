@@ -3,8 +3,6 @@
 "  < 编译、连接、运行配置 (目前只配置了C、C++、Java语言)>
 " -----------------------------------------------------------------------------
 
-"autocmd FileType python nmap <F6> :call RunWith("py -3")<cr>
-
 " F9 一键保存、编译、连接存并运行
 nmap <F8> :call Run()<CR>
 imap <F8> <ESC>:call Run()<CR>
@@ -35,12 +33,12 @@ let s:linux_CPPFlags = 'g++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 
 let s:JavaFlags = 'javac\ %'
 
-function RunWith (command)
+func! s:RunWith (command)
   execute "w"
   exe ":ccl"
   " clean是在linux下的命令
 "  execute "!clear;time " . a:command . " " . expand("%")
-  execute "!" . a:command . " " . expand("%")
+  execute "AsyncRun " . a:command . " " . expand("%")
 endfunction
 
 func! Compile()
@@ -199,7 +197,10 @@ func! Run()
 " 不需要编译的解释型脚本语言
     "python默认为python3
     if expand("%:e") == "py"
-        call RunWith("py -3")
+        call s:RunWith("python3")
+        return
+    elseif expand("%:e") == "html" || expand("%:e") == "html"
+        call s:RunWith("firefox")
         return
     elseif expand("%:e") == 'vbs'
         execute "w"

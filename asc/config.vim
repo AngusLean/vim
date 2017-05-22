@@ -10,7 +10,7 @@ set matchpairs=(:),{:},[:],<:>                    "匹配括号的规则。
 " 设置字体
 " set guifont=YaHei\ Consolas\ Hybrid\ 12
 "光标不闪烁
-set gcr=a:block-blinkon0
+" set gcr=a:block-blinkon0
 
 "======================================================================
 "快捷键
@@ -40,3 +40,10 @@ if has('win32') || has('win64')
 	noremap <space>gc :silent !start cmd.exe<cr>
 	noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
 endif
+
+" highlight Cursor guifg=white guibg=black
+" highlight iCursor guifg=white guibg=steelblue
+" set guicursor=n-v-c:block-Cursor
+" set guicursor+=i:ver100-iCursor
+" set guicursor+=n-v-c:blinkon0
+" set guicursor+=i:blinkwait10
