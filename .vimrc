@@ -497,9 +497,6 @@ if !hasmapto(':EXbp<CR>') && mapcheck('<C-h>','n') == ''
     noremap <C-h> :bp<CR>
 endif
 
-" easy diff goto
-noremap <C-k> [c
-noremap <C-j> ]c
 " enhance '<' '>' , do not need to reselect the block after shift it.
 vnoremap < <gv
 vnoremap > >gv
@@ -519,6 +516,6 @@ exec 'set rtp+='.s:home
 
 IncScript asc/config.vim
 IncScript asc/misc.vim
-
+IncScript asc/complete.vim
 
 " vim:ts=4:sw=4:sts=4 et fdm=marker:
