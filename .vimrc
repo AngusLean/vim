@@ -486,6 +486,7 @@ command! -nargs=1 IncScript exec 'so '.s:home.'/'.'<args>'
 exec 'set rtp+='.s:home
 
 IncScript asc/config.vim
+IncScript asc/ignores.vim
 IncScript asc/misc.vim
 IncScript asc/complete.vim
 IncScript asc/runcurrent.vim

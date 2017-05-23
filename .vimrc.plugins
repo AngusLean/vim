@@ -42,10 +42,10 @@ Plug 'vim-scripts/LargeFile'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" ==================代码美化相关=======================
+"==================代码美化相关=======================
 Plug 'Chiel92/vim-autoformat'
 noremap <F4> :Autoformat<CR>
-" ==================JavaScript相关=======================
+"==================JavaScript相关=======================
 "JavaScript doc syntax
 Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
 Plug 'maksimr/vim-jsbeautify'
@@ -54,16 +54,16 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 let g:used_javascript_libs = 'vue'
-"// ==================JavaScript相关=====================
+"==================JavaScript相关=====================
 
 " ==================Html相关=============================
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
 Plug 'posva/vim-vue', { 'for': 'html,vue' }
-"//==================Html相关======================
+"==================Html相关======================
 
 " ==================Markdown相关=========================
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-"//==================Markdown相关======================
+"==================Markdown相关======================
 
 " ==================程序运行与语法检查相关===============
 Plug 'skywind3000/asyncrun.vim'
@@ -71,9 +71,8 @@ Plug 'thinca/vim-quickrun'
 
 "语法检查插件
 " Plug 'scrooloose/syntastic'
-
 Plug 'w0rp/ale'
 "=================== 文件查找与替换=========================
 Plug 'dyng/ctrlsf.vim'
-"==================程序运行与语法检查相关======================
-Plug 'tyru/open-browser.vim'
+
+Plug 'mhinz/vim-startify'
