@@ -150,9 +150,10 @@ colorscheme solarized
 set backup " make backup file and leave it around
 
 " setup back and swap directory
-let data_dir = $HOME.'/.data/'
+let data_dir = $HOME.'/.data/vim/'
 let backup_dir = data_dir . 'backup'
 let swap_dir = data_dir . 'swap'
+let session_dir = data_dir . 'session'
 if finddir(data_dir) == ''
     silent call mkdir(data_dir)
 endif
@@ -161,6 +162,9 @@ if finddir(backup_dir) == ''
 endif
 if finddir(swap_dir) == ''
     silent call mkdir(swap_dir)
+endif
+if finddir(session_dir) == ''
+    silent call mkdir(session_dir)
 endif
 unlet backup_dir
 unlet swap_dir
@@ -485,6 +489,7 @@ let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 command! -nargs=1 IncScript exec 'so '.s:home.'/'.'<args>'
 exec 'set rtp+='.s:home
 
+IncScript asc/start.vim
 IncScript asc/config.vim
 IncScript asc/ignores.vim
 IncScript asc/misc.vim

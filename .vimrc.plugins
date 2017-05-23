@@ -44,7 +44,6 @@ Plug 'honza/vim-snippets'
 
 "==================代码美化相关=======================
 Plug 'Chiel92/vim-autoformat'
-noremap <F4> :Autoformat<CR>
 "==================JavaScript相关=======================
 "JavaScript doc syntax
 Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
@@ -53,7 +52,6 @@ Plug 'maksimr/vim-jsbeautify'
 
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-let g:used_javascript_libs = 'vue'
 "==================JavaScript相关=====================
 
 " ==================Html相关=============================
@@ -75,4 +73,6 @@ Plug 'w0rp/ale'
 "=================== 文件查找与替换=========================
 Plug 'dyng/ctrlsf.vim'
 
+"启动画面处理
 Plug 'mhinz/vim-startify'
+" Plug 'vim-scripts/DrawIt'
