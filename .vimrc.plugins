@@ -63,6 +63,9 @@ Plug 'posva/vim-vue', { 'for': 'html,vue' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 "==================Markdown相关======================
 
+"====================python插件==========================
+Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
+
 " ==================程序运行与语法检查相关===============
 Plug 'skywind3000/asyncrun.vim'
 Plug 'thinca/vim-quickrun'

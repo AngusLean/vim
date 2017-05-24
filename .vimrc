@@ -90,15 +90,15 @@ language messages zh_CN.utf-8
 
 
 "/////////////////////////////////////////////////////////////////////////////
-" Bundle steup
+" vim-plug steup
 "/////////////////////////////////////////////////////////////////////////////
 
 filetype off
 
 if has("python") || has("python3")
-        let g:plug_threads = 10
+    let g:plug_threads = 10
 else
-        let g:plug_threads = 1
+    let g:plug_threads = 1
 endif
 
 " load .vimrc.plugins & .vimrc.plugins.local

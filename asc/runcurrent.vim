@@ -4,8 +4,8 @@
 " -----------------------------------------------------------------------------
 
 " F9 一键保存、编译、连接存并运行
-nmap <F8> :call <SID>async_run()<CR>
-nmap <c-F8> :call <SID>async_stoprun()<CR>
+nmap <F9> :call <SID>async_run()<CR>
+nmap <c-F9> :call <SID>async_stoprun()<CR>
 
 " Ctrl + F9 一键保存并编译
 " nmap <c-F9> :call Compile()<CR>
