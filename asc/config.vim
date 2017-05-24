@@ -22,15 +22,19 @@ noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
 "分号进入命令模式
 nnoremap ; :
-"vw选中当前单词
-nmap vw viw
 "Q或Qa退出
 noremap Q q
 noremap Qa qa
+"取消F1键
+nnoremap <F1> j
 
+"vw选中当前单词
+nmap vw viw
 "映射选择全部
 nmap <silent> <c-a> ggvG$
-nnoremap <F1> j
+
+"在quick-fix窗口直接q退出
+autocmd FileType q noremap <buffer> q :close<CR>
 
 "======================================================================
 " 平台相关设置
