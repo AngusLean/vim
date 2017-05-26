@@ -32,6 +32,7 @@ nnoremap <F1> j
 nmap vw viw
 "映射选择全部
 nmap <silent> <c-a> ggvG$
+cmap PLugStatus :PlugStatus
 
 "在quick-fix窗口直接q退出
 autocmd FileType q noremap <buffer> q :close<CR>
