@@ -8,6 +8,7 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
 endif
 Plug 'exvim/ex-matchit'
 
+
 "对齐线
 Plug 'Yggdroot/indentLine'
 "自动括号插件

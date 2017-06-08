@@ -207,6 +207,7 @@ if v:version >= 703
     set noacd " no autochchdir
 endif
 
+
 " set default guifont
 if has('gui_running')
     augroup ex_gui_font
