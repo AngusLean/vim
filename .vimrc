@@ -92,8 +92,9 @@ language messages zh_CN.utf-8
 "/////////////////////////////////////////////////////////////////////////////
 " vim-plug steup
 "/////////////////////////////////////////////////////////////////////////////
-
-filetype off
+let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+"exec 'set rtp+='.s:home
+command! -nargs=1 IncScript exec 'so '.s:home.'/'.'<args>'
 
 if has("python") || has("python3")
     let g:plug_threads = 10
@@ -101,27 +102,10 @@ else
     let g:plug_threads = 1
 endif
 
-" load .vimrc.plugins & .vimrc.plugins.local
-if exists('g:exvim_custom_path')
-    call plug#begin(g:exvim_custom_path.'/vimfiles/plugged/')
-    let vimrc_plugins_path = g:exvim_custom_path.'/.vimrc.plugins'
-    let vimrc_plugins_config_path = g:exvim_custom_path.'/.vimrc.plugins.config'
-else
-    call plug#begin('~/.vim/plugged')
-    let vimrc_plugins_path = '~/.vimrc.plugins'
-    let vimrc_plugins_config_path = '~/.vimrc.plugins.config'
-endif
-if filereadable(expand(vimrc_plugins_path))
-    exec 'source ' . fnameescape(vimrc_plugins_path)
-endif
-
-" set plugin in runtime path
+call plug#begin(s:home.'/vimfiles/plugged')
+IncScript .vimrc.plugins
 call plug#end()
-
-"call plugin settings
-if filereadable(expand(vimrc_plugins_config_path))
-    exec 'source ' . fnameescape(vimrc_plugins_config_path)
-endif
+IncScript .vimrc.plugins.config
 
 filetype plugin indent on " required
 syntax on " required
@@ -150,10 +134,10 @@ colorscheme solarized
 set backup " make backup file and leave it around
 
 " setup back and swap directory
-let data_dir = $HOME.'/.data/vim/'
-let backup_dir = data_dir . 'backup'
-let swap_dir = data_dir . 'swap'
-let session_dir = data_dir . 'session'
+let data_dir=$HOME.'/.data/vim/'
+let backup_dir=data_dir . 'backup'
+let swap_dir=data_dir . 'swap'
+let session_dir=data_dir . 'session'
 if finddir(data_dir) == ''
     silent call mkdir(data_dir)
 endif
@@ -170,8 +154,8 @@ unlet backup_dir
 unlet swap_dir
 unlet data_dir
 
-set backupdir=$HOME/.data/backup " where to put backup file
-set directory=$HOME/.data/swap " where to put swap file
+set backupdir=$HOME/.data/vim/backup " where to put backup file
+set directory=$HOME/.data/vim/swap " where to put swap file
 
 " Redefine the shell redirection operator to receive both the stderr messages and stdout messages
 set shellredir=>%s\ 2>&1
@@ -482,15 +466,14 @@ noremap <Up> gk
 noremap <Down> gj
 
 
+
+
+
 "/////////////////////////////////////////////////////////////////////////////
 " 加载配置
 "/////////////////////////////////////////////////////////////////////////////
 
-let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-command! -nargs=1 IncScript exec 'so '.s:home.'/'.'<args>'
-exec 'set rtp+='.s:home
-
-IncScript asc/start.vim
+"IncScript asc/start.vim
 IncScript asc/config.vim
 IncScript asc/ignores.vim
 IncScript asc/misc.vim
