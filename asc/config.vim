@@ -35,8 +35,11 @@ nmap <silent> <c-a> ggvG$
 cmap PLugStatus :PlugStatus
 
 "在quick-fix窗口直接q退出
-autocmd FileType q noremap <buffer> q :close<CR>
-
+"autocmd FileType q noremap <buffer> q :close<CR>
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
 "======================================================================
 " 平台相关设置
 "======================================================================
