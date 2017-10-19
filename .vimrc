@@ -140,7 +140,7 @@ else
     " set t_Co=256 " make sure our terminal use 256 color
     " let g:solarized_termcolors = 256
 endif
-colorscheme solarized
+" colorscheme solarized
 "colorscheme exlightgray
 
 "/////////////////////////////////////////////////////////////////////////////
@@ -487,8 +487,8 @@ noremap <Down> gj
 
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 command! -nargs=1 IncScript exec 'so '.s:home.'/'.'<args>'
-exec 'set rtp+='.s:home
-
+" exec 'set rtp+='.s:home
+exec 'set runtimepath+='.s:home
 IncScript asc/start.vim
 IncScript asc/config.vim
 IncScript asc/ignores.vim

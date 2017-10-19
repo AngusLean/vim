@@ -1,11 +1,22 @@
 "neocomplete and YouCompleteMe only have one
-let g:exvim_plug_groups = ['YouCompleteMe']
+let g:complete_plugin = 'ycm'
 
-if count(g:exvim_plug_groups , 'neocomplete')
+if exists('g:complete_plugin')
+    echo 'NOt exists'
+else
+    let g:complete_plugin = 'ycm'
+endif
+
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
+    Plug 'zchee/deoplete-jedi'
+elseif g:complete_plugin ==? 'neo'
     Plug 'Shougo/neocomplete.vim'
-elseif count(g:exvim_plug_groups , 'YouCompleteMe')
+elseif g:complete_plugin ==? 'ycm'
     Plug 'Valloric/YouCompleteMe'
 endif
+
 Plug 'exvim/ex-matchit'
 
 "对齐线
