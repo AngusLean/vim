@@ -19,6 +19,7 @@ endif
 
 Plug 'exvim/ex-matchit'
 
+
 "对齐线
 Plug 'Yggdroot/indentLine'
 "自动括号插件
@@ -29,6 +30,7 @@ Plug  'kristijanhusak/vim-multiple-cursors'
 Plug 'ntpeters/vim-better-whitespace'
 "主题插件
 Plug 'altercation/vim-colors-solarized'
+
 "多选
 Plug 'tpope/vim-surround'
 
@@ -88,5 +90,5 @@ Plug 'w0rp/ale'
 Plug 'dyng/ctrlsf.vim'
 
 "启动画面处理
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'

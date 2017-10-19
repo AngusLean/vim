@@ -98,8 +98,8 @@ elseif g:complete_plugin ==? 'ycm'
     "设置选择预览数据过后自动关闭
     let g:ycm_autoclose_preview_window_after_completion =1
     if g:iswindows
-        let g:ycm_python_binary_path="C:/Program Files/Python35/python.exe"
-        let g:ycm_global_ycm_extra_conf = 'C:/Yvim/vimfiles/requirefile/windows/.ycm_extra_conf.py'
+        let g:ycm_python_binary_path="C:/Program Files/Python36/python.exe"
+        let g:ycm_global_ycm_extra_conf = 'D:\Program Files (x86)\software\dev\vimconfig\vimfiles\requirefile\windows/.ycm_extra_conf.py'
     else
         let g:ycm_python_binary_path="/usr/bin/python3.5"
         let g:ycm_global_ycm_extra_conf = '~/software/exvim1/vimfiles/requirefile/linux/.ycm_extra_conf.py'
