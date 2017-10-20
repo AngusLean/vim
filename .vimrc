@@ -21,7 +21,7 @@ IncScript .vimrc.plugins
 call plug#end()
 IncScript .vimrc.plugins.config
 
-filetype plugin indent on 
+filetype plugin indent on
 syntax on " required
 
 IncScript asc/ui.vim

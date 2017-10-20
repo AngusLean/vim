@@ -66,6 +66,7 @@ nnoremap ; :
 "Q或Qa退出
 noremap Q q
 nnoremap Q <nop>
+nmap K <nop>
 noremap Qa qa
 "取消F1键
 nnoremap <F1> j
@@ -91,8 +92,8 @@ if g:islinux
     set backupcopy=yes
 endif
 if has('win32') || has('win64')
-	noremap <space>gc :silent !start cmd.exe<cr>
-	noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
+    noremap <space>gc :silent !start cmd.exe<cr>
+    noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
 endif
 
 " highlight Cursor guifg=white guibg=black
