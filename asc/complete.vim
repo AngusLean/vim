@@ -1,11 +1,10 @@
 
-let g:complete_plugin = 'ycm'
 "======================================================================
 "设置补全插件
 "======================================================================
 
 "neocomplete {{{
-if g:complete_plugin ==? 'neo'
+if count(g:exvim_plug_groups , 'neocomplete')
     " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
@@ -91,7 +90,7 @@ if g:complete_plugin ==? 'neo'
 
     "}}}
     "Valloric/YouCompleteMe {{{
-elseif g:complete_plugin ==? 'ycm'
+elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     let g:ycm_confirm_extra_conf=0   "设置加载py文件不提示
     "设置离开插入模式自动关闭预览窗口
     let g:ycm_autoclose_preview_window_after_insertion=1
