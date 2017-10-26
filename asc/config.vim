@@ -1,16 +1,57 @@
 "======================================================================
 "基本设置
 "======================================================================
-set foldenable                                    "启用折叠
-set foldmethod=indent                             "indent 折叠方式
-set breakindent                                   "vim8中加入的复制内容保持缩进
-set matchpairs=(:),{:},[:],<:>                    "匹配括号的规则。
-" 用空格键来开关折叠
-"  <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-" 设置字体
-" set guifont=YaHei\ Consolas\ Hybrid\ 12
-"光标不闪烁
-" set gcr=a:block-blinkon0
+
+
+"/////////////////////////////////////////////////////////////////////////////
+" Key Mappings
+"/////////////////////////////////////////////////////////////////////////////
+
+" NOTE: F10 looks like have some feature, when map with F10, the map will take no effects
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" define the copy/paste judged by clipboard
+if &clipboard ==# 'unnamed'
+    " fix the visual paste bug in vim
+    " vnoremap <silent>p :call g:()<CR>
+else
+    " general copy/paste.
+    " NOTE: y,p,P could be mapped by other key-mapping
+    map <leader>y "*y
+    map <leader>p "*p
+    map <leader>P "*P
+endif
+
+" copy folder path to clipboard, foo/bar/foobar.c => foo/bar/
+nnoremap <silent> <leader>y1 :let @*=fnamemodify(bufname('%'),":p:h")<CR>
+
+" copy file name to clipboard, foo/bar/foobar.c => foobar.c
+nnoremap <silent> <leader>y2 :let @*=fnamemodify(bufname('%'),":p:t")<CR>
+
+" copy full path to clipboard, foo/bar/foobar.c => foo/bar/foobar.c
+nnoremap <silent> <leader>y3 :let @*=fnamemodify(bufname('%'),":p")<CR>
+
+" F8 or <leader>/:  Set Search pattern highlight on/off
+nnoremap <ESC> :let @/=""<CR>
+nnoremap <leader>/ :let @/=""<CR>
+
+" map Ctrl-Tab to switch window
+nnoremap <S-Up> <C-W><Up>
+nnoremap <S-Down> <C-W><Down>
+nnoremap <S-Left> <C-W><Left>
+nnoremap <S-Right> <C-W><Right>
+
+" enhance '<' '>' , do not need to reselect the block after shift it.
+vnoremap < <gv
+vnoremap > >gv
+
+" map Up & Down to gj & gk, helpful for wrap text edit
+noremap <Up> gk
+noremap <Down> gj
+
+
 
 "======================================================================
 "快捷键
@@ -24,6 +65,8 @@ noremap <c-l> <c-w>l
 nnoremap ; :
 "Q或Qa退出
 noremap Q q
+nnoremap Q <nop>
+nmap K <nop>
 noremap Qa qa
 "取消F1键
 nnoremap <F1> j
@@ -35,8 +78,11 @@ nmap <silent> <c-a> ggvG$
 cmap PLugStatus :PlugStatus
 
 "在quick-fix窗口直接q退出
-autocmd FileType q noremap <buffer> q :close<CR>
-
+"autocmd FileType q noremap <buffer> q :close<CR>
+"aug QFClose
+"  au!
+"  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+"aug END
 "======================================================================
 " 平台相关设置
 "======================================================================
@@ -46,8 +92,8 @@ if g:islinux
     set backupcopy=yes
 endif
 if has('win32') || has('win64')
-	noremap <space>gc :silent !start cmd.exe<cr>
-	noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
+    noremap <space>gc :silent !start cmd.exe<cr>
+    noremap <space>ge :silent !start /b cmd.exe /C start .<cr>
 endif
 
 " highlight Cursor guifg=white guibg=black
