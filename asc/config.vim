@@ -1,17 +1,6 @@
 "======================================================================
 "基本设置
 "======================================================================
-
-
-"/////////////////////////////////////////////////////////////////////////////
-" Key Mappings
-"/////////////////////////////////////////////////////////////////////////////
-
-" NOTE: F10 looks like have some feature, when map with F10, the map will take no effects
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 " define the copy/paste judged by clipboard
 if &clipboard ==# 'unnamed'
     " fix the visual paste bug in vim
@@ -33,9 +22,7 @@ nnoremap <silent> <leader>y2 :let @*=fnamemodify(bufname('%'),":p:t")<CR>
 " copy full path to clipboard, foo/bar/foobar.c => foo/bar/foobar.c
 nnoremap <silent> <leader>y3 :let @*=fnamemodify(bufname('%'),":p")<CR>
 
-" F8 or <leader>/:  Set Search pattern highlight on/off
 nnoremap <ESC> :let @/=""<CR>
-nnoremap <leader>/ :let @/=""<CR>
 
 " map Ctrl-Tab to switch window
 nnoremap <S-Up> <C-W><Up>
@@ -52,7 +39,6 @@ noremap <Up> gk
 noremap <Down> gj
 
 
-
 "======================================================================
 "快捷键
 "======================================================================
@@ -64,25 +50,21 @@ noremap <c-l> <c-w>l
 "分号进入命令模式
 nnoremap ; :
 "Q或Qa退出
-noremap Q q
 nnoremap Q <nop>
 nmap K <nop>
 noremap Qa qa
+
 "取消F1键
 nnoremap <F1> j
 
 "vw选中当前单词
-nmap vw viw
 "映射选择全部
 nmap <silent> <c-a> ggvG$
-cmap PLugStatus :PlugStatus
+" ctrl-enter 插入新行, shift-enter 上方插入新行
+noremap <tab>o o<ESC>
+noremap <tab>O O<ESC>
 
-"在quick-fix窗口直接q退出
-"autocmd FileType q noremap <buffer> q :close<CR>
-"aug QFClose
-"  au!
-"  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-"aug END
+
 "======================================================================
 " 平台相关设置
 "======================================================================
