@@ -232,7 +232,7 @@ augroup vimrc
     autocmd QuickFixCmdPost * botright copen 8
 augroup END
 
-if g:isWindows
+if g:iswindows
     let g:asyncrun_encs = 'gbk'
 endif
 nnoremap <c-F9> :AsyncStop <cr>
