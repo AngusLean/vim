@@ -14,7 +14,7 @@
 "     $VIM_FILENOEXT - File name of current buffer without path and extension
 "     $VIM_CWD       - Current directory
 "     $VIM_RELDIR    - File path relativize to current directory
-"     $VIM_RELNAME   - File name relativize to current directory 
+"     $VIM_RELNAME   - File name relativize to current directory
 "     $VIM_ROOT      - Project root directory
 "     $VIM_CWORD     - Current word under cursor
 "     $VIM_CFILE     - Current filename under cursor
@@ -29,18 +29,18 @@
 " Settings:
 "     g:vimmake_path - change the path of tools rather than ~/.vim/
 "     g:vimmake_mode - dictionary of invoke mode of each tool
-" 
+"
 " Setup mode for command: ~/.vim/vimmake.{name}
-"     let g:vimmake_mode["name"] = "{mode}" 
-"     {mode} can be: 
+"     let g:vimmake_mode["name"] = "{mode}"
+"     {mode} can be:
 "		"normal"	- launch the tool and return to vim after exit (default)
 "		"quickfix"	- launch and redirect output to quickfix
 "		"bg"		- launch background and discard any output
 "		"async"		- run in async mode and redirect output to quickfix
-"	  
+"
 "	  note: "g:vimmake_mode" must be initialized to "{}" at first
-" 
-" Emake can be installed to /usr/local/bin to build C/C++ by: 
+"
+" Emake can be installed to /usr/local/bin to build C/C++ by:
 "     $ wget https://skywind3000.github.io/emake/emake.py
 "     $ sudo python emake.py -i
 "
@@ -188,7 +188,7 @@ let g:vimmake_windows = 0	" external reference, may be modified by user
 
 " check has advanced mode
 if v:version >= 800 || has('patch-7.4.1829') || has('nvim')
-	if has('job') && has('channel') && has('timers') && has('reltime') 
+	if has('job') && has('channel') && has('timers') && has('reltime')
 		let s:vimmake_advance = 1
 		let g:vimmake_advance = 1
 	elseif has('nvim')
@@ -312,7 +312,7 @@ endfunc
 " find quickfix window and scroll to the bottom then return last window
 function! s:Vimmake_Build_AutoScroll()
 	if s:build_quick == 0
-		let l:winnr = winnr()			
+		let l:winnr = winnr()
 		noautocmd windo call s:Vimmake_Build_Scroll()
 		noautocmd silent exec ''.l:winnr.'wincmd w'
 	else
@@ -382,7 +382,7 @@ function! s:Vimmake_Build_Update(count)
 	let l:efm1 = &g:efm
 	let l:efm2 = &l:efm
 	if g:vimmake_build_encoding == &encoding
-		let l:iconv = 0 
+		let l:iconv = 0
 	endif
 	if &g:efm != s:build_efm && g:vimmake_build_local != 0
 		let &l:efm = s:build_efm
@@ -396,7 +396,7 @@ function! s:Vimmake_Build_Update(count)
 		let l:text = s:build_output[s:build_tail]
 		if l:iconv != 0
 			try
-				let l:text = iconv(l:text, 
+				let l:text = iconv(l:text,
 					\ g:vimmake_build_encoding, &encoding)
 			catch /.*/
 			endtry
@@ -784,7 +784,7 @@ function! s:StringStrip(text)
 endfunc
 
 " extract options from command
-function! s:ExtractOpt(command) 
+function! s:ExtractOpt(command)
 	let cmd = a:command
 	let opts = {}
 	while cmd =~# '^-\%(\w\+\)\%([= ]\|$\)'
@@ -845,7 +845,7 @@ function! s:ScriptWrite(command, pause)
 	return l:tmp
 endfunc
 
-" get full file name 
+" get full file name
 function! vimmake#fullname(f)
 	let f = a:f
 	if f =~ "'."
@@ -1019,7 +1019,7 @@ function! s:run(opts)
 			try | call delete(l:script) | catch | endtry
 		endif
 		let g:vimmake_text = opts.text
-		if opts.post != '' 
+		if opts.post != ''
 			exec opts.post
 		endif
 		call s:AutoCmd('Stop')
@@ -1028,7 +1028,7 @@ function! s:run(opts)
 		call s:AutoCmd('Start')
 		exec '!'. escape(l:command, '%#')
 		let g:vimmake_text = opts.text
-		if opts.post != '' 
+		if opts.post != ''
 			exec opts.post
 		endif
 		call s:AutoCmd('Stop')
@@ -1076,7 +1076,7 @@ function! s:run(opts)
 			let g:vimmake_shell_error = v:shell_error
 		endif
 		let g:vimmake_text = opts.text
-		if opts.post != '' 
+		if opts.post != ''
 			exec opts.post
 		endif
 	elseif l:mode <= 5
@@ -1098,7 +1098,7 @@ function! s:run(opts)
 			endif
 		endif
 		let g:vimmake_text = opts.text
-		if opts.post != '' 
+		if opts.post != ''
 			exec opts.post
 		endif
 	endif
@@ -1157,7 +1157,7 @@ function! vimmake#run(bang, opts, args)
 		let l:macros['VIM_CFILE'] = expand("<cfile>")
 		let l:macros['<cwd>'] = l:macros['VIM_CWD']
 	endif
-	
+
 	" replace macros and setup environment variables
 	for [l:key, l:val] in items(l:macros)
 		let l:replace = (l:key[0] != '<')? '$('.l:key.')' : l:key
@@ -1173,12 +1173,12 @@ function! vimmake#run(bang, opts, args)
 	let l:opts.macros = l:macros
 	let l:opts.mode = get(l:opts, 'mode', g:vimmake_default)
 	let s:build_scroll = (a:bang == '!')? 0 : 1
-	
+
 	" check if need to save
 	let l:save = get(l:opts, 'save', '')
 
 	if l:save == '1'
-		silent! update 
+		silent! update
 	elseif l:save
 		silent! wall
 	endif
@@ -1218,7 +1218,7 @@ endfunc
 "----------------------------------------------------------------------
 " define commands
 "----------------------------------------------------------------------
-command! -bang -nargs=+ -complete=file VimMake 
+command! -bang -nargs=+ -complete=file VimMake
 		\ call vimmake#run("<bang>", '', <q-args>)
 
 command! -bang -nargs=0 VimStop call vimmake#stop('<bang>')
@@ -1246,8 +1246,8 @@ function! s:Cmd_VimTool(bang, ...)
 	if a:bang != '!'
 		try | silent wall | catch | endtry
 	endif
-	if type(l:value) == 0 
-		let l:mode = string(l:value) 
+	if type(l:value) == 0
+		let l:mode = string(l:value)
 	else
 		let l:mode = l:value
 	endif
@@ -1333,13 +1333,13 @@ function! s:ExecuteMe(mode)
 			elseif executable('mingw64-make')
 				let l:makeprg = 'mingw64-make run -f'
 			else
-				redraw 
+				redraw
 				call s:ErrorMsg('cannot find make/mingw32-make')
 				return
 			endif
 		endif
 		if (has('gui_running') || has('nvim')) && (s:vimmake_windows != 0)
-			let l:cmdline = l:makeprg. ' '.l:fname 
+			let l:cmdline = l:makeprg. ' '.l:fname
 			if !has('nvim')
 				silent exec '!start cmd /C '.l:cmdline . ' & pause'
 			else
@@ -1448,7 +1448,7 @@ function! s:Cmd_VimExecute(bang, ...)
 			exec '!'. l:cmd . ' ' . shellescape(expand("%"))
 		elseif &ft == 'python'
 			exec '!python ' . shellescape(expand("%"))
-		elseif &ft == 'javascript' 
+		elseif &ft == 'javascript'
 			exec '!node ' . shellescape(expand("%"))
 		elseif &ft == 'sh'
 			exec '!sh ' . shellescape(expand("%"))
@@ -1466,7 +1466,7 @@ function! s:Cmd_VimExecute(bang, ...)
 			call s:ExecuteMe(0)
 		endif
 	endif
-	if l:cwd > 0 
+	if l:cwd > 0
 		silent! exec cd . fnameescape(l:savecwd)
 	endif
 endfunc
@@ -1513,7 +1513,7 @@ function! s:Cmd_VimBuild(bang, ...)
 		endif
 		let l:cmd = l:cc . ' -Wall '. l:source . ' -o ' . l:output
 		let l:cmd .= (l:conf == '')? '' : (' '. l:conf)
-		exec vimmake .l:cmd . ' ' . l:flags 
+		exec vimmake .l:cmd . ' ' . l:flags
 	elseif index(['1', 'make'], l:what) >= 0
 		if l:conf == ''
 			exec vimmake .'@ make'
@@ -1538,7 +1538,7 @@ function! s:Cmd_VimBuild(bang, ...)
 			elseif executable('mingw64-make')
 				let l:makeprg = 'mingw64-make -f'
 			else
-				redraw 
+				redraw
 				call s:ErrorMsg('cannot find make/mingw32-make')
 				return
 			endif
@@ -1740,7 +1740,7 @@ function! vimmake#keymap()
 	noremap <silent><leader>cn :cn<cr>
 	noremap <silent><leader>co :copen 6<cr>
 	noremap <silent><leader>cl :cclose<cr>
-	
+
 	" VimTool startup
 	for l:index in range(10)
 		exec 'noremap <leader>c'.l:index.' :VimTool ' . l:index . '<cr>'
@@ -1751,13 +1751,7 @@ function! vimmake#keymap()
 			exec 'inoremap <S-'.l:button.'> <ESC>:VimTool '. l:index .'<cr>'
 		endif
 	endfor
-	
-	" set keymap to GrepCode 
-	noremap <silent><leader>cq :VimStop<cr>
-	noremap <silent><leader>cQ :VimStop!<cr>
-	noremap <silent><leader>cv :GrepCode <C-R>=expand("<cword>")<cr><cr>
-	noremap <silent><leader>cx :GrepCode! <C-R>=expand("<cword>")<cr><cr>
-	
+
 	" set keymap to cscope
 	if has("cscope")
 		noremap <leader>cs :VimScope s <C-R>=expand("<cword>")<CR><CR>
@@ -1778,7 +1772,7 @@ function! vimmake#keymap()
 		set cst
 		set csverb
 	endif
-	
+
 	" cscope update
 	noremap <leader>cz1 :call vimmake#update_tags('', 'ctags', '.tags')<cr>
 	noremap <leader>cz2 :call vimmake#update_tags('', 'cs', '.cscope')<cr>
@@ -1811,7 +1805,7 @@ function! vimmake#toggle_quickfix(size, ...)
 		endif
 	endfunc
 	let s:quickfix_open = 0
-	let l:winnr = winnr()			
+	let l:winnr = winnr()
 	noautocmd windo call s:WindowCheck(0)
 	noautocmd silent! exec ''.l:winnr.'wincmd w'
 	if l:mode == 0
@@ -1873,7 +1867,7 @@ function! vimmake#update_tags(cwd, mode, outname)
     let l:cwd = substitute(l:cwd, '\\', '/', 'g')
 	if a:mode == 'ctags' || a:mode == 'ct'
         let l:ctags = s:PathJoin(l:cwd, a:outname)
-		if filereadable(l:ctags) 
+		if filereadable(l:ctags)
 			try | call delete(l:ctags) | catch | endtry
 		endif
         let l:options = {}
@@ -1893,7 +1887,7 @@ function! vimmake#update_tags(cwd, mode, outname)
 		let l:options = {}
 		let l:options['post'] = l:command
 		let l:options['cwd'] = l:cwd
-		if filereadable(l:fullname) 
+		if filereadable(l:fullname)
 			try | call delete(l:fullname) | catch | endtry
 		endif
 		if a:mode == 'cscope' || a:mode == 'cs'

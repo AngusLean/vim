@@ -232,7 +232,9 @@ augroup vimrc
     autocmd QuickFixCmdPost * botright copen 8
 augroup END
 
-let g:asyncrun_encs = 'gbk'
+if g:iswindows
+    let g:asyncrun_encs = 'gbk'
+endif
 nnoremap <c-F9> :AsyncStop <cr>
 noremap <F10> :call asyncrun#quickfix_toggle(8)<cr>
 
@@ -246,6 +248,28 @@ let g:UltiSnipsListSnippets="<m-l>"
 " let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 " let g:UltiSnipsSnippetDirectories=['UltiSnips', s:home."/usnips"]
 
+
+"----------------------------------------------------------------------
+" vimmake / asyncrun
+"----------------------------------------------------------------------
+let g:vimmake_path = g:configPath.'/vimmake'
+"let g:vimmake_cwd = 1
+"let g:asyncrun_timer = 50
+"let g:vimmake_build_timer = 50
+"let g:vimmake_build_name = 'make'
+"let g:vimmake_save = 1
+"let s:python = executable('python2')? 'python2' : 'python'
+"let s:script = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+"let s:launch = s:script . '/vimfiles/requirefile/lib/launch.py'
+
+"if filereadable(s:launch)
+"	let s:hz = g:vimmake_build_timer * 10 * 80 / 100
+"	let g:vimmake_build_shell_bak = s:python
+"	let g:vimmake_build_shellflag = s:launch
+"	let g:asyncrun_shell_bak = s:python
+"	let g:asyncrun_shellflag = s:launch
+"	let $VIM_LAUNCH_HZ = ''. s:hz
+"endif
 
 "----------------------------------------------------------------------
 "YouCompleteMe
