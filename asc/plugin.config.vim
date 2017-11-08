@@ -3,11 +3,14 @@
 " Yggdroot/LeaderF  ctrlp replacement
 "======================================================================
 let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_Ctags = g:ctags_path
 let g:Lf_WildIgnore = {
         \ 'dir': ['.svn','.git','node_modules','.exvim*'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.dll','*.o','*.so',
         \   '*.py[co]']
         \}
+
+nnoremap <leader>fc :LeaderfFunction<CR>
 
 "======================================================================
 " tpope/vim-surround
@@ -41,13 +44,13 @@ let g:lightline = {
 "    \   'syntastic': 'SyntasticStatuslineFlag',
 "    \ },
 function! LightLineAsync()
-  if g:asyncrun_status == "running"
-    return "asyn-running"
-  elseif g:asyncrun_status == "success"
-    return "asyn-exit"
-  elseif g:asyncrun_status == "failure"
-    return "asyn-fail"
-  else
+"  if g:asyncrun_status == "running"
+"    return "asyn-running"
+"  elseif g:asyncrun_status == "success"
+"    return "asyn-exit"
+"  elseif g:asyncrun_status == "failure"
+"    return "asyn-fail"
+"  else
     return ""
 endfunction
 
@@ -191,6 +194,13 @@ function! g:Tabular(ignore_range) range
 endfunction
 
 "======================================================================
+" Plug 'majutsushi/tagbar'
+"======================================================================
+
+let g:tagbar_ctags_bin=g:ctags_path
+nmap <F2> :TagbarToggle<CR>
+
+"======================================================================
 " plasticboy/vim-markdown
 "======================================================================
 let g:vim_markdown_initial_foldlevel=9999
@@ -232,11 +242,59 @@ augroup vimrc
     autocmd QuickFixCmdPost * botright copen 8
 augroup END
 
+" function! RunBackendTask()
+    " exe 'AsyncRun ctags -R -f $(VIM_FILEDIR)/ctags.out --fields=+iaS %:p:h'
+" endfunction
+
 if g:iswindows
     let g:asyncrun_encs = 'gbk'
 endif
+
+" open quickfix
+function! Toggle_QuickFix(size, ...)
+	let l:mode = (a:0 == 0)? 2 : (a:1)
+	function! s:WindowCheck(mode)
+		if &buftype == 'quickfix'
+			let s:quickfix_open = 1
+			return
+		endif
+		if a:mode == 0
+			let w:quickfix_save = winsaveview()
+		else
+			if exists('w:quickfix_save')
+				call winrestview(w:quickfix_save)
+				unlet w:quickfix_save
+			endif
+		endif
+	endfunc
+	let s:quickfix_open = 0
+	let l:winnr = winnr()
+	noautocmd windo call s:WindowCheck(0)
+	noautocmd silent! exec ''.l:winnr.'wincmd w'
+	if l:mode == 0
+		if s:quickfix_open != 0
+			silent! cclose
+		endif
+	elseif l:mode == 1
+		if s:quickfix_open == 0
+			exec 'botright copen '. ((a:size > 0)? a:size : ' ')
+			wincmd k
+		endif
+	elseif l:mode == 2
+		if s:quickfix_open == 0
+			exec 'botright copen '. ((a:size > 0)? a:size : ' ')
+			wincmd k
+		else
+			silent! cclose
+		endif
+	endif
+	noautocmd windo call s:WindowCheck(1)
+	noautocmd silent! exec ''.l:winnr.'wincmd w'
+endfunc
+
 nnoremap <c-F9> :AsyncStop <cr>
-noremap <F10> :call asyncrun#quickfix_toggle(8)<cr>
+noremap <F10> :call Toggle_QuickFix(8)<cr>
+" noremap <F12> runBackTask
 
 "----------------------------------------------------------------------
 " UltiSnips
@@ -253,11 +311,12 @@ let g:UltiSnipsListSnippets="<m-l>"
 " vimmake / asyncrun
 "----------------------------------------------------------------------
 let g:vimmake_path = g:configPath.'/vimmake'
+let g:vimmake_save = 1
+let g:vimmake_build_encoding = 'gbk'
 "let g:vimmake_cwd = 1
 "let g:asyncrun_timer = 50
-"let g:vimmake_build_timer = 50
-"let g:vimmake_build_name = 'make'
-"let g:vimmake_save = 1
+let g:vimmake_build_timer = 50
+let g:vimmake_build_name = 'make'
 "let s:python = executable('python2')? 'python2' : 'python'
 "let s:script = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 "let s:launch = s:script . '/vimfiles/requirefile/lib/launch.py'

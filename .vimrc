@@ -13,13 +13,15 @@ if g:islinux
     let g:configPath =g:vimrc_home.'/vimfiles/requirefile/linux/'
 endif
 
+let g:ctags_path=g:configPath.'/ctags/ctags.exe'
+
+
 "/////////////////////////////////////////////////////////////////////////////
 " 设置配置加载工具类
 "/////////////////////////////////////////////////////////////////////////////
 
 command! -nargs=1 IncScript exec 'so '.g:vimrc_home.'/'.'<args>'
 exec 'set rtp+='.g:vimrc_home
-
 
 IncScript asc/basic.vim
 IncScript asc/ui.vim

@@ -40,7 +40,8 @@ Plug 'scrooloose/nerdtree'
 "Ctrlp文件查找
 Plug 'Yggdroot/LeaderF'
 
-"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+
 "
 "注释插件
 Plug 'scrooloose/nerdcommenter'
@@ -78,7 +79,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
 
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asyncrun.vim'
 " Plug 'thinca/vim-quickrun'
 
 "语法检查插件

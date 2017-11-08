@@ -1719,15 +1719,9 @@ command! -nargs=* -bang VimScope call s:Cmd_VimScope("<bang>", <f-args>)
 "----------------------------------------------------------------------
 function! vimmake#keymap()
 	noremap <silent><F5> :VimExecute run<cr>
-	noremap <silent><F6> :VimExecute filename<cr>
-	noremap <silent><F7> :VimBuild auto<cr>
-	noremap <silent><F8> :VimExecute auto<cr>
 	noremap <silent><F9> :VimBuild gcc<cr>
 	noremap <silent><F10> :call vimmake#toggle_quickfix(6)<cr>
 	inoremap <silent><F5> <ESC>:VimExecute run<cr>
-	inoremap <silent><F6> <ESC>:VimExecute filename<cr>
-	inoremap <silent><F7> <ESC>:VimBuild auto<cr>
-	inoremap <silent><F8> <ESC>:VimExecute auto<cr>
 	inoremap <silent><F9> <ESC>:VimBuild gcc<cr>
 	inoremap <silent><F10> <ESC>:call vimmake#toggle_quickfix(6)<cr>
 
