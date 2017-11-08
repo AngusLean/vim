@@ -1713,71 +1713,6 @@ endfunc
 
 command! -nargs=* -bang VimScope call s:Cmd_VimScope("<bang>", <f-args>)
 
-
-"----------------------------------------------------------------------
-" Keymap Setup
-"----------------------------------------------------------------------
-function! vimmake#keymap()
-	noremap <silent><F5> :VimExecute run<cr>
-	noremap <silent><F9> :VimBuild gcc<cr>
-	noremap <silent><F10> :call vimmake#toggle_quickfix(6)<cr>
-	inoremap <silent><F5> <ESC>:VimExecute run<cr>
-	inoremap <silent><F9> <ESC>:VimBuild gcc<cr>
-	inoremap <silent><F10> <ESC>:call vimmake#toggle_quickfix(6)<cr>
-
-	noremap <silent><F11> :cp<cr>
-	noremap <silent><F12> :cn<cr>
-	inoremap <silent><F11> <ESC>:cp<cr>
-	inoremap <silent><F12> <ESC>:cn<cr>
-
-	noremap <silent><leader>cp :cp<cr>
-	noremap <silent><leader>cn :cn<cr>
-	noremap <silent><leader>co :copen 6<cr>
-	noremap <silent><leader>cl :cclose<cr>
-
-	" VimTool startup
-	for l:index in range(10)
-		exec 'noremap <leader>c'.l:index.' :VimTool ' . l:index . '<cr>'
-		if has('gui_running')
-			let l:button = 'F'.l:index
-			if l:index == 0 | let l:button = 'F10' | endif
-			exec 'noremap <S-'.l:button.'> :VimTool '. l:index .'<cr>'
-			exec 'inoremap <S-'.l:button.'> <ESC>:VimTool '. l:index .'<cr>'
-		endif
-	endfor
-
-	" set keymap to cscope
-	if has("cscope")
-		noremap <leader>cs :VimScope s <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>cg :VimScope g <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>cc :VimScope c <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>ct :VimScope t <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>ce :VimScope e <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>cd :VimScope d <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>ca :VimScope a <C-R>=expand("<cword>")<CR><CR>
-		noremap <leader>cf :VimScope f <C-R>=expand("<cfile>")<CR><CR>
-		noremap <leader>ci :VimScope i <C-R>=expand("<cfile>")<CR><CR>
-		if v:version >= 800 || has('patch-7.4.2038')
-			set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
-		else
-			set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+
-		endif
-		set csto=0
-		set cst
-		set csverb
-	endif
-
-	" cscope update
-	noremap <leader>cz1 :call vimmake#update_tags('', 'ctags', '.tags')<cr>
-	noremap <leader>cz2 :call vimmake#update_tags('', 'cs', '.cscope')<cr>
-	noremap <leader>cz3 :call vimmake#update_tags('!', 'ctags', '.tags')<cr>
-	noremap <leader>cz4 :call vimmake#update_tags('!', 'cs', '.cscope')<cr>
-	noremap <leader>cz5 :call vimmake#update_tags('', 'py', '.cscopy')<cr>
-	noremap <leader>cz6 :call vimmake#update_tags('!', 'py', '.cscopy')<cr>
-endfunc
-
-command! -nargs=0 VimmakeKeymap call vimmake#keymap()
-
 function! vimmake#load()
 endfunc
 
@@ -1847,7 +1782,7 @@ function! vimmake#update_filelist(outname)
 endfunc
 
 if !exists('g:vimmake_ctags_flags')
-	let g:vimmake_ctags_flags = '--fields=+niazS --extra=+q --c++-kinds=+px'
+	let g:vimmake_ctags_flags = '--fields=+niazS --extras=+q --c++-kinds=+px'
 	let g:vimmake_ctags_flags.= ' --c-kinds=+p -n'
 endif
 
@@ -1903,6 +1838,67 @@ function! vimmake#python_system(command)
 	return content
 endfunc
 
+
+"----------------------------------------------------------------------
+" Keymap Setup
+"----------------------------------------------------------------------
+function! vimmake#keymap()
+	noremap <silent><F5> :VimExecute run<cr>
+	noremap <silent><F9> :VimBuild gcc<cr>
+	noremap <silent><F10> :call vimmake#toggle_quickfix(6)<cr>
+	inoremap <silent><F5> <ESC>:VimExecute run<cr>
+	inoremap <silent><F9> <ESC>:VimBuild gcc<cr>
+	inoremap <silent><F10> <ESC>:call vimmake#toggle_quickfix(6)<cr>
+
+	noremap <silent><F11> :cp<cr>
+	noremap <silent><F12> :cn<cr>
+	inoremap <silent><F11> <ESC>:cp<cr>
+	inoremap <silent><F12> <ESC>:cn<cr>
+
+	noremap <silent><leader>cp :cp<cr>
+	noremap <silent><leader>cn :cn<cr>
+	noremap <silent><leader>co :copen 6<cr>
+	noremap <silent><leader>cl :cclose<cr>
+
+	" VimTool startup
+	for l:index in range(10)
+		exec 'noremap <leader>c'.l:index.' :VimTool ' . l:index . '<cr>'
+		if has('gui_running')
+			let l:button = 'F'.l:index
+			if l:index == 0 | let l:button = 'F10' | endif
+			exec 'noremap <S-'.l:button.'> :VimTool '. l:index .'<cr>'
+			exec 'inoremap <S-'.l:button.'> <ESC>:VimTool '. l:index .'<cr>'
+		endif
+	endfor
+
+	" set keymap to cscope
+	if has("cscope")
+		noremap <leader>cs :VimScope s <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>cg :VimScope g <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>cc :VimScope c <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>ct :VimScope t <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>ce :VimScope e <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>cd :VimScope d <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>ca :VimScope a <C-R>=expand("<cword>")<CR><CR>
+		noremap <leader>cf :VimScope f <C-R>=expand("<cfile>")<CR><CR>
+		noremap <leader>ci :VimScope i <C-R>=expand("<cfile>")<CR><CR>
+		if v:version >= 800 || has('patch-7.4.2038')
+			set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
+		else
+			set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+
+		endif
+		set csto=0
+		set cst
+		set csverb
+	endif
+
+	" cscope update
+	noremap <leader>cz1 :call vimmake#update_tags(g:ctags_path, 'ctags', '.tags')<cr>
+	noremap <leader>cz2 :call vimmake#update_tags(g:ctags_path, 'cs', '.cscope')<cr>
+	noremap <leader>cz3 :call vimmake#update_tags(g:ctags_path 'py', '.cscopy')<cr>
+endfunc
+
+command! -nargs=0 VimmakeKeymap call vimmake#keymap()
 
 
 
