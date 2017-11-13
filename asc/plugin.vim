@@ -35,7 +35,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 
 "左边文件浏览
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 "Ctrlp文件查找
 Plug 'Yggdroot/LeaderF'
@@ -65,17 +65,17 @@ Plug 'honza/vim-snippets'
 "代码格式化
 Plug 'Chiel92/vim-autoformat'
 "JavaScript doc syntax
-Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
-Plug 'maksimr/vim-jsbeautify'
+"Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
+"Plug 'maksimr/vim-jsbeautify'
 
 "更好用的javascript语法高亮插件
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+"Plug 'othree/yajs.vim', { 'for': 'javascript' }
+"Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 
-Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
-Plug 'posva/vim-vue', { 'for': 'html,vue' }
+"Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
+"Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
 
