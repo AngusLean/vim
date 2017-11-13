@@ -15,7 +15,7 @@ endif
 
 let g:ctags_path=g:configPath.'/ctags/ctags.exe'
 if g:islinux
-    let g:configPath =‘ctags’
+    let g:configPath ='ctags'
 endif
 
 "/////////////////////////////////////////////////////////////////////////////

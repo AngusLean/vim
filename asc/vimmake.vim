@@ -1416,7 +1416,8 @@ function! s:Cmd_VimExecute(bang, ...)
 		let l:fname = shellescape(expand("%"))
 		if l:cmd == ''
 			if &ft == 'python'
-				let l:cmd = 'python'
+                let s:python = executable('python3')? 'python3' : 'python'
+				let l:cmd = s:python
 			elseif &ft == 'javascript'
 				let l:cmd = 'node'
 			elseif &ft == 'sh'
@@ -1447,7 +1448,8 @@ function! s:Cmd_VimExecute(bang, ...)
 		if l:cmd != ''
 			exec '!'. l:cmd . ' ' . shellescape(expand("%"))
 		elseif &ft == 'python'
-			exec '!python ' . shellescape(expand("%"))
+            let s:python = executable('python3')? 'python3' : 'python'
+			exec '!'.s:python.' ' . shellescape(expand("%"))
 		elseif &ft == 'javascript'
 			exec '!node ' . shellescape(expand("%"))
 		elseif &ft == 'sh'
