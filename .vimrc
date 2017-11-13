@@ -14,7 +14,9 @@ if g:islinux
 endif
 
 let g:ctags_path=g:configPath.'/ctags/ctags.exe'
-
+if g:islinux
+    let g:configPath =‘ctags’
+endif
 
 "/////////////////////////////////////////////////////////////////////////////
 " 设置配置加载工具类
