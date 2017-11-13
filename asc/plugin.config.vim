@@ -59,6 +59,7 @@ endfunction
 " scrooloose/nerdtree
 "======================================================================
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$']
 map <F3> :NERDTreeToggle<CR>
 
 "======================================================================
