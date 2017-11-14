@@ -38,12 +38,11 @@ let g:lightline = {
   \   'readonly': '(&filetype!="help"&& &readonly)'
   \ },
   \ 'separator': { 'left': "\ue0b0", 'right': "\u2b82" },
-  \ 'subseparator': { 'left': " >", 'right': "|" }
-  \ }
-
-   \ 'component_expand': {
-   \   'syntastic': 'SyntasticStatuslineFlag',
-   \ },
+  \ 'subseparator': { 'left': " >", 'right': "|" },
+  \ 'component_expand': {
+  \   'syntastic': 'SyntasticStatuslineFlag',
+  \ },
+  \}
 
 function! LightLineAsync()
   let s:running_status = g:vimmake_build_status
