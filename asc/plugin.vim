@@ -91,5 +91,7 @@ Plug 'dyng/ctrlsf.vim'
 "Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
 
+"右侧辅助菜单
+Plug 'skywind3000/quickmenu.vim'
 
 call plug#end()

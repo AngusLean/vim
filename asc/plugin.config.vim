@@ -3,6 +3,7 @@
 " Yggdroot/LeaderF  ctrlp replacement
 "======================================================================
 let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
 let g:Lf_Ctags = g:ctags_path
 let g:Lf_WildIgnore = {
         \ 'dir': ['.svn','.git','node_modules','.exvim*'],
@@ -40,17 +41,20 @@ let g:lightline = {
   \ 'subseparator': { 'left': " >", 'right': "|" }
   \ }
 
-"    \ 'component_expand': {
-"    \   'syntastic': 'SyntasticStatuslineFlag',
-"    \ },
+   \ 'component_expand': {
+   \   'syntastic': 'SyntasticStatuslineFlag',
+   \ },
+
 function! LightLineAsync()
-"  if g:asyncrun_status == "running"
-"    return "asyn-running"
-"  elseif g:asyncrun_status == "success"
-"    return "asyn-exit"
-"  elseif g:asyncrun_status == "failure"
-"    return "asyn-fail"
-"  else
+  let s:running_status = g:vimmake_build_status
+  " let s:running_status = g:asyncrun_status
+  if s:running_status == "running"
+    return "asyn-running"
+  elseif s:running_status == "success"
+    return "asyn-exit"
+  elseif s:running_status == "failure"
+    return "asyn-fail"
+  else
     return ""
 endfunction
 
@@ -250,6 +254,8 @@ augroup END
 if g:iswindows
     let g:asyncrun_encs = 'gbk'
 endif
+
+
 
 " open quickfix
 function! Toggle_QuickFix(size, ...)

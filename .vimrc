@@ -25,6 +25,8 @@ endif
 command! -nargs=1 IncScript exec 'so '.g:vimrc_home.'/'.'<args>'
 exec 'set rtp+='.g:vimrc_home
 
+nnoremap <leader>qq :so %
+
 IncScript asc/basic.vim
 IncScript asc/ui.vim
 
@@ -44,5 +46,7 @@ IncScript asc/config.vim
 IncScript asc/ignores.vim
 IncScript asc/misc.vim
 IncScript asc/complete.vim
+"IncScript asc/quickmenu.vim
+IncScript asc/menu.vim
 "IncScript asc/runcurrent.vim
 " vim:ts=4:sw=4:sts=4 et fdm=marker:

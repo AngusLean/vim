@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # mac-osx files
 .DS_store
 profile
@@ -58,64 +58,6 @@ BK
 dist
 使用必看
 **/__pycache__/*
-=======
-# mac-osx files
-.DS_store
-profile
 
-# visual-studio files
-*.ncb
-*.suo
-*.vcproj.*.user
-*.pdb
-*.idb
-
-# xcode files
-PLBlocks.framework/*
-*.pbxuser
-*.mode1v3
-*~.nib/
-*.perspective
-*.perspectivev3
-xcuserdata/
-
-# gcc files
-*.gch
-
-# exvim files
-*.err
-*.err.meta
-*.exvim
-*.exvim.meta
-*.vimentry
-*.vimentry.meta
-*.vimproject
-*.vimproject.meta
-plugged
-vim80
-.exvim.*/
-quick_gen_project_*_autogen.bat
-quick_gen_project_*_autogen.bat.meta
-quick_gen_project_*_autogen.sh
-quick_gen_project_*_autogen.sh.meta
-
-# project files
-vimfiles/bundle/*
-
-vimfiles/plugged/*
-bin
-__pycache__
-*.pyc
-vim74
-graphviz
-vimfiles/exVim.lnk
-daSeas
-*.dat
-unins000.exe
-**exvim*.exe
-vim80
-BK
-dist
-使用必看
-**/__pycache__/*
->>>>>>> 4b9747c13c68c2c6a210f67452fd3637e9fb0822
+*.cscope
+*.tags
