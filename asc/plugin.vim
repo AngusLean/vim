@@ -12,7 +12,16 @@ let g:exvim_plug_groups = ['YouCompleteMe']
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
 elseif count(g:exvim_plug_groups , 'YouCompleteMe')
-    Plug 'Valloric/YouCompleteMe'
+    " Plug 'Valloric/YouCompleteMe'
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
+
+      Plug 'zchee/deoplete-jedi'
+    endif
 endif
 
 "匹配插件
