@@ -98,6 +98,8 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     let g:ycm_autoclose_preview_window_after_completion =1
     if g:iswindows
         let g:ycm_python_binary_path="C:/Program Files/Python36/python.exe"
+        " let g:ycm_python_binary_path="D:\development\anaconda"
+
         let g:ycm_global_ycm_extra_conf = g:vimrc_home.'/vimfiles/requirefile/windows/.ycm_extra_conf.py'
     else
         let g:ycm_python_binary_path="/usr/bin/python3.5"

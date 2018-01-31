@@ -6,7 +6,7 @@ let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
 let g:Lf_Ctags = g:ctags_path
 let g:Lf_WildIgnore = {
-        \ 'dir': ['.svn','.git','node_modules','.exvim*'],
+        \ 'dir': ['.svn','.git','node_modules'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.dll','*.o','*.so',
         \   '*.py[co]']
         \}
@@ -88,10 +88,10 @@ nnoremap <leader>cc :NERDComToggleComment<CR>
 "======================================================================
 " scrooloose/syntastic
 "======================================================================
-let g:syntastic_javascript_checkers = ['eslint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" let g:syntastic_javascript_checkers = ['eslint']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 0
