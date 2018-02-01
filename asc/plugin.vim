@@ -12,7 +12,8 @@ let g:exvim_plug_groups = ['YouCompleteMe']
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
 elseif count(g:exvim_plug_groups , 'YouCompleteMe')
-    " Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe'
+elseif count(g:exvim_plug_groups , 'deoplete')
     if has('nvim')
       Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else

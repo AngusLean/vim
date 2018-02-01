@@ -186,6 +186,13 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
 			\ "config":1,
 			\ "zimbu":1,
 			\ }
+elseif count(g:exvim_plug_groups , 'deoplete')
+    let g:deoplete#enable_at_startup = 1
+    if g:iswindows
+        "vim8 in windows must install neovim by pip or pip3
+        let g:python3_host_prog = 'C:\Program Files\Python36\python.exe'
+        let pyxversion=3
+    endif
 endif
 "}}}
 
