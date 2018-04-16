@@ -1,4 +1,3 @@
-
 function! menu#WinOpen(what)
 	let root = expand('%:p:h')
 	let cd = haslocaldir()? 'lcd ' : 'cd '
