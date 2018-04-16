@@ -30,6 +30,10 @@ nnoremap <S-Down> <C-W><Down>
 nnoremap <S-Left> <C-W><Left>
 nnoremap <S-Right> <C-W><Right>
 
+"hex view/unview
+noremap <leader>xx :%!xxd<CR>
+noremap <leader>xz :%!xxd -r<CR>
+
 " enhance '<' '>' , do not need to reselect the block after shift it.
 vnoremap < <gv
 vnoremap > >gv

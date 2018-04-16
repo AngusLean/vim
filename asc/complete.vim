@@ -98,13 +98,14 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     let g:ycm_autoclose_preview_window_after_completion =1
     if g:iswindows
         let g:ycm_python_binary_path="C:/Program Files/Python36/python.exe"
+        " let g:ycm_python_binary_path="D:\development\anaconda"
+
         let g:ycm_global_ycm_extra_conf = g:vimrc_home.'/vimfiles/requirefile/windows/.ycm_extra_conf.py'
     else
         let g:ycm_python_binary_path="/usr/bin/python3.5"
         let g:ycm_global_ycm_extra_conf = '~/software/exvim1/vimfiles/requirefile/linux/.ycm_extra_conf.py'
     endif
-    let g:ycm_filetype_whitelist = { 'c': 1 ,'cpp' : 1,'h':1,'javascript':1,'html':1,'htm':1,'python':1 }
-
+   
     " YCM 集成 OmniCppComplete 补全引擎
     inoremap <leader>; <C-x><C-o>
     " 设置转到定义处的快捷键为ALT + G，
@@ -128,7 +129,8 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     " 语法关键字补全
     let g:ycm_seed_identifiers_with_syntax=1
     " 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
-    let g:ycm_key_invoke_completion = '<M-;>'
+    " let g:ycm_key_invoke_completion = '<M-;>'
+    let g:ycm_key_invoke_completion = '<c-z>'
     " 回车即选中当前项
     inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
     let g:ycm_filetype_whitelist = {
@@ -184,6 +186,17 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
 			\ "config":1,
 			\ "zimbu":1,
 			\ }
+    let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+elseif count(g:exvim_plug_groups , 'deoplete')
+    let g:deoplete#enable_at_startup = 1
+    if g:iswindows
+        "vim8 in windows must install neovim by pip or pip3
+        let g:python3_host_prog = 'C:\Program Files\Python36\python.exe'
+        let pyxversion=3
+    endif
 endif
 "}}}
 

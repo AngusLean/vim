@@ -6,7 +6,7 @@ let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
 let g:Lf_Ctags = g:ctags_path
 let g:Lf_WildIgnore = {
-        \ 'dir': ['.svn','.git','node_modules','.exvim*'],
+        \ 'dir': ['.svn','.git','node_modules'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.dll','*.o','*.so',
         \   '*.py[co]']
         \}
@@ -88,10 +88,10 @@ nnoremap <leader>cc :NERDComToggleComment<CR>
 "======================================================================
 " scrooloose/syntastic
 "======================================================================
-let g:syntastic_javascript_checkers = ['eslint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" let g:syntastic_javascript_checkers = ['eslint']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 0
@@ -108,6 +108,11 @@ let g:ale_linters = {
 \   'c':['gcc'],
 \   'python':['pylint'],
 \}
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 let g:ale_statusline_format = ['%d error(s)', '%d warning(s)', 'OK']
 "let g:ale_lint_on_text_changed = 0
 "let g:ale_lint_on_enter = 0
@@ -342,8 +347,6 @@ let g:vimmake_build_name = 'make'
 "======================================================================
 "deoplete
 "======================================================================
-let g:deoplete#enable_at_startup = 1
-
 
 "======================================================================
 "colorscheme
