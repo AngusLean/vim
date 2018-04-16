@@ -103,4 +103,6 @@ Plug 'dyng/ctrlsf.vim'
 "右侧辅助菜单
 Plug 'skywind3000/quickmenu.vim'
 
+" Plug 'thinca/vim-quickrun'
+
 call plug#end()
