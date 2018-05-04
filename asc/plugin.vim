@@ -7,7 +7,7 @@ endif
 call plug#begin(g:vimrc_home.'/vimfiles/plugged')
 
 "配置补全插件
-let g:exvim_plug_groups = ['YouCompleteMe']
+let g:exvim_plug_groups = ['deoplete']
 
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
@@ -30,6 +30,7 @@ elseif count(g:exvim_plug_groups , 'deoplete')
       Plug 'roxma/vim-hug-neovim-rpc'
 
       Plug 'zchee/deoplete-jedi'
+      Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
     endif
 endif
 
@@ -90,7 +91,8 @@ Plug 'Chiel92/vim-autoformat'
 "Plug 'othree/yajs.vim', { 'for': 'javascript' }
 "Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 
-"Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
+Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
+Plug 'leafgarland/typescript-vim'
 "Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
