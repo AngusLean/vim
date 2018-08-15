@@ -110,7 +110,7 @@ Plug 'dyng/ctrlsf.vim'
 "启动画面处理
 "Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
-
+Plug 'ludovicchabant/vim-gutentags'
 "右侧辅助菜单
 Plug 'skywind3000/quickmenu.vim'
 
