@@ -105,7 +105,7 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
         let g:ycm_python_binary_path="/usr/bin/python3.5"
         let g:ycm_global_ycm_extra_conf = '~/software/exvim1/vimfiles/requirefile/linux/.ycm_extra_conf.py'
     endif
-   
+
     " YCM 集成 OmniCppComplete 补全引擎
     inoremap <leader>; <C-x><C-o>
     " 设置转到定义处的快捷键为ALT + G，
@@ -192,6 +192,10 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
 			\ }
 elseif count(g:exvim_plug_groups , 'deoplete')
     let g:deoplete#enable_at_startup = 1
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+    set completeopt-=preview
     if g:iswindows
         "vim8 in windows must install neovim by pip or pip3
         let g:python3_host_prog = 'C:\Program Files\Python36\python.exe'
