@@ -30,7 +30,6 @@ elseif count(g:exvim_plug_groups , 'deoplete')
       Plug 'roxma/vim-hug-neovim-rpc'
 
       Plug 'zchee/deoplete-jedi'
-      Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
     endif
 endif
 
@@ -92,8 +91,8 @@ Plug 'Chiel92/vim-autoformat'
 "Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
-Plug 'leafgarland/typescript-vim'
-"Plug 'posva/vim-vue', { 'for': 'html,vue' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
