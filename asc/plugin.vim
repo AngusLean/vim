@@ -87,7 +87,9 @@ Plug 'Chiel92/vim-autoformat'
 "Plug 'maksimr/vim-jsbeautify'
 
 "更好用的javascript语法高亮插件
-"Plug 'othree/yajs.vim', { 'for': 'javascript' }
+" Plug 'othree/yajs.vim', { 'for': 'javascript' }
+" Plug 'mxw/vim-jsx'
+Plug 'chemzqm/vim-jsx-improve'
 "Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
