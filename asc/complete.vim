@@ -103,7 +103,7 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
         let g:ycm_global_ycm_extra_conf = g:vimrc_home.'/vimfiles/requirefile/windows/.ycm_extra_conf.py'
     else
         let g:ycm_python_binary_path="/usr/bin/python3.5"
-        let g:ycm_global_ycm_extra_conf = '~/software/exvim1/vimfiles/requirefile/linux/.ycm_extra_conf.py'
+        let g:ycm_global_ycm_extra_conf = '/home/it033/software/vimconfig/vim-master/vimfiles/requirefile/linux/.ycm_extra_conf.py'
     endif
 
     " YCM 集成 OmniCppComplete 补全引擎

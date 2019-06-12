@@ -8,6 +8,7 @@ call plug#begin(g:vimrc_home.'/vimfiles/plugged')
 
 "配置补全插件
 let g:exvim_plug_groups = ['deoplete']
+" let g:exvim_plug_groups = ['YouCompleteMe']
 
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
@@ -25,11 +26,10 @@ elseif count(g:exvim_plug_groups , 'deoplete')
     if has('nvim')
       Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else
-      Plug 'Shougo/deoplete.nvim'
       Plug 'roxma/nvim-yarp'
       Plug 'roxma/vim-hug-neovim-rpc'
-
-      Plug 'zchee/deoplete-jedi'
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'zchee/deoplete-jedi',{'for': 'python'}
     endif
 endif
 
@@ -89,11 +89,13 @@ Plug 'Chiel92/vim-autoformat'
 "更好用的javascript语法高亮插件
 " Plug 'othree/yajs.vim', { 'for': 'javascript' }
 " Plug 'mxw/vim-jsx'
-Plug 'chemzqm/vim-jsx-improve'
+" Plug 'chemzqm/vim-jsx-improve'
 "Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript'
 
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+" Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -104,7 +106,6 @@ Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
 " Plug 'thinca/vim-quickrun'
 
 "语法检查插件
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'dyng/ctrlsf.vim'
 
