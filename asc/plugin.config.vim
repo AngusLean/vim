@@ -136,9 +136,7 @@ let g:ctrlsf_selected_line_hl = 'op'
 " 工程目录的顶级文件夹
 " let g:ctrlsf_vcs_folder = ['.exvim', '.git', '.hg', '.svn', '.bzr', '_darcs']
 " make result windows compact
-if g:iswindows
-    let g:ctrlsf_ackprg='pt'
-endif
+let g:ctrlsf_ackprg='pt'
 let g:ctrlsf_indent = 2
 let g:ctrlsf_regex_pattern = 1
 vmap     <C-F> <Plug>CtrlSFVwordPath
