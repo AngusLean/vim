@@ -61,3 +61,7 @@ augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0

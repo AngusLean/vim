@@ -1,12 +1,6 @@
 "neocomplete and YouCompleteMe only have one
 let g:complete_plugin = 'ycm'
 
-if exists('g:complete_plugin')
-    echo 'NOt exists'
-else
-    let g:complete_plugin = 'ycm'
-endif
-
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
