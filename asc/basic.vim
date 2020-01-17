@@ -59,7 +59,7 @@ if WINDOWS()
         " set termencoding=cp850
 	 set termencoding=utf-8
         " Let Vim use utf-8 internally, because many scripts require this
-	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+	set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,gbk,gb2312,latin1
         setglobal fileencoding=utf-8
 	set encoding=utf-8
     endif
