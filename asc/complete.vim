@@ -97,7 +97,7 @@ elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     "设置选择预览数据过后自动关闭
     let g:ycm_autoclose_preview_window_after_completion =1
     if g:iswindows
-        let g:ycm_python_binary_path="C:/Program Files/Python36/python.exe"
+        let g:ycm_python_binary_path="C:\Users\admin\AppData\Local\Programs\Python\Python38/python.exe"
         " let g:ycm_python_binary_path="D:\development\anaconda"
 
         let g:ycm_global_ycm_extra_conf = g:vimrc_home.'/vimfiles/requirefile/windows/.ycm_extra_conf.py'
@@ -198,7 +198,7 @@ elseif count(g:exvim_plug_groups , 'deoplete')
     set completeopt-=preview
     if g:iswindows
         "vim8 in windows must install neovim by pip or pip3
-        let g:python3_host_prog = 'C:\Program Files\Python36\python.exe'
+        let g:python3_host_prog = 'C:\Users\admin\AppData\Local\Programs\Python\Python38\python.exe'
         let pyxversion=3
     endif
 endif
