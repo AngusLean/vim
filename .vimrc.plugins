@@ -79,7 +79,9 @@ Plug 'thinca/vim-quickrun'
 
 "语法检查插件
 " Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
+
 "=================== 文件查找与替换=========================
 Plug 'dyng/ctrlsf.vim'
 
