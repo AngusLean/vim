@@ -64,7 +64,7 @@ endfunc
 "-----------------------------------------------------------------------
 " comment block
 "-----------------------------------------------------------------------
-function! <SID>snip_comment_block(repeat)
+function! s:snip_comment_block(repeat)
 	let l:comment = s:comment()
 	let l:complete = s:comment_bar(a:repeat, 71)
 	if l:comment == ''
@@ -80,7 +80,7 @@ endfunc
 "-----------------------------------------------------------------------
 " copyright
 "-----------------------------------------------------------------------
-function! <SID>snip_copyright(author)
+function! s:snip_copyright(author)
 	let l:c = s:comment()
 	let l:complete = s:comment_bar('=', 71)
 	let l:filename = expand("%:t")
@@ -108,8 +108,8 @@ endfunc
 "-----------------------------------------------------------------------
 " hot keys
 "-----------------------------------------------------------------------
-noremap <space>e- :call <SID>snip_comment_block('-')<cr>
-noremap <space>e= :call <SID>snip_comment_block('=')<cr>
-noremap <space>ec :call <SID>snip_copyright('AngusLean')<cr>
+noremap <space>e- :call snip_comment_block('-')<cr>
+noremap <space>e= :call snip_comment_block('=')<cr>
+noremap <space>ec :call snip_copyright('AngusLean')<cr>
 noremap <space>et "=strftime("%Y/%m/%d %H:%M:%S")<CR>gp
 

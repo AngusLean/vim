@@ -7,13 +7,13 @@ endif
 call plug#begin(g:vimrc_home.'/vimfiles/plugged')
 
 "配置补全插件
-let g:exvim_plug_groups = ['deoplete']
+let g:exvim_plug_groups = ['coc']
 " let g:exvim_plug_groups = ['YouCompleteMe']
 
 if count(g:exvim_plug_groups , 'neocomplete')
     Plug 'Shougo/neocomplete.vim'
 elseif count(g:exvim_plug_groups , 'YouCompleteMe')
-"Plug 'Valloric/YouCompleteMe'
+	"Plug 'Valloric/YouCompleteMe'
     if has("win64")
       Plug 'snakeleon/YouCompleteMe-x64'
     elseif has("win32")
@@ -31,6 +31,8 @@ elseif count(g:exvim_plug_groups , 'deoplete')
       Plug 'Shougo/deoplete.nvim'
       Plug 'zchee/deoplete-jedi',{'for': 'python'}
     endif
+elseif count(g:exvim_plug_groups , 'coc')
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
 "匹配插件
@@ -91,8 +93,8 @@ Plug 'Chiel92/vim-autoformat'
 " Plug 'mxw/vim-jsx'
 " Plug 'chemzqm/vim-jsx-improve'
 "Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': 'javascript' }
+Plug 'mhartington/nvim-typescript', { 'for': 'javascript' }
 
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
 " Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
@@ -102,8 +104,10 @@ Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
 Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
 
-" Plug 'skywind3000/asyncrun.vim'
-" Plug 'thinca/vim-quickrun'
+Plug 'skywind3000/asyncrun.vim'
+"右侧辅助菜单
+" Plug 'skywind3000/quickmenu.vim'
+Plug 'skywind3000/vim-quickui'
 
 "语法检查插件
 Plug 'w0rp/ale'
@@ -113,9 +117,5 @@ Plug 'dyng/ctrlsf.vim'
 "Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
 Plug 'ludovicchabant/vim-gutentags'
-"右侧辅助菜单
-Plug 'skywind3000/quickmenu.vim'
-
-" Plug 'thinca/vim-quickrun'
 
 call plug#end()

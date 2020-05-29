@@ -1,4 +1,3 @@
-
 let $GTAGSLABEL = 'native-pygments'
 let $GTAGSCONF = '/usr/local/lib/gtags/gtags.conf'
 
@@ -53,8 +52,8 @@ let g:lightline = {
   \}
 
 function! LightLineAsync()
-  let s:running_status = g:vimmake_build_status
-  " let s:running_status = g:asyncrun_status
+  " let s:running_status = g:vimmake_build_status
+  let s:running_status = g:asyncrun_status
   if s:running_status == "running"
     return "asyn-running"
   elseif s:running_status == "success"

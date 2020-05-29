@@ -30,8 +30,8 @@ nnoremap <leader>qq :so %
 IncScript asc/basic.vim
 IncScript asc/ui.vim
 
-IncScript asc/vimmake.vim
-VimmakeKeymap
+" IncScript asc/vimmake.vim
+" VimmakeKeymap
 
 
 IncScript asc/plugin.vim
@@ -44,9 +44,8 @@ IncScript asc/plugin.config.vim
 "IncScript asc/start.vim
 IncScript asc/config.vim
 IncScript asc/ignores.vim
-IncScript asc/misc.vim
+" IncScript asc/misc.vim
 IncScript asc/complete.vim
 "IncScript asc/quickmenu.vim
 IncScript asc/menu.vim
 "IncScript asc/runcurrent.vim
-" vim:ts=4:sw=4:sts=4 et fdm=marker:
