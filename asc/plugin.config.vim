@@ -8,7 +8,7 @@ let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
 let g:Lf_Ctags = g:ctags_path
 let g:Lf_WildIgnore = {
-        \ 'dir': ['.svn','.git','node_modules'],
+        \ 'dir': ['.svn','.git','.root','.project','node_modules'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.dll','*.o','*.so',
         \   '*.py[co]']
         \}
@@ -68,9 +68,8 @@ endfunction
 "----------------------------------------------------------------------
 " asynctask
 "----------------------------------------------------------------------
-
-noremap <silent><f5> :AsyncTask project-run<cr>
-noremap <silent><f6> :AsyncTask project-build<cr>
+noremap <silent><f5> :AsyncTask file-run<cr>
+noremap <silent><f6> :AsyncTask file-build<cr>
 
 "======================================================================
 " scrooloose/nerdtree
@@ -97,21 +96,6 @@ let g:NERDCustomDelimiters = {
             \ 'vimentry': { 'left': '--' },
             \ }
 nnoremap <leader>cc :NERDComToggleComment<CR>
-
-
-"======================================================================
-" scrooloose/syntastic
-"======================================================================
-" let g:syntastic_javascript_checkers = ['eslint']
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-"this will make html file by Angular.js ignore errors
-"let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 
 "======================================================================
@@ -261,6 +245,8 @@ autocmd FileType vue vnoremap <buffer> <leader>fj :call RangeJsBeautify()<cr>
 "======================================================================
 " skywind3000/asyncrun.vim
 "======================================================================
+
+let g:asyncrun_open = 6
 augroup vimrc
     autocmd QuickFixCmdPost * botright copen 8
 augroup END
@@ -272,8 +258,6 @@ augroup END
 if g:iswindows
     let g:asyncrun_encs = 'gbk'
 endif
-
-
 
 " open quickfix
 function! Toggle_QuickFix(size, ...)
