@@ -128,7 +128,7 @@ call quickui#menu#install('&Edit', [
             \ [ '&comment=', 'call menu#snip_comment_block("=")', 'help 3' ],
             \ ])
 call quickui#menu#install('&Build', [
-            \ [ '&Build', 'call AsyncTask file-build', 'build current file' ],
+            \ [ '&Build', 'call AsyncTask file-build()', 'build current file' ],
             \ [ '&Run', 'call AsyncTask file-run', 'run current file' ],
             \ [ '&Prev Diagnostice', 'call coc-diagnostic-prev("")' ],
             \ [ '&Next Diagnostice', '<Plug>(coc-diagnostic-next)' ],
