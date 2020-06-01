@@ -62,8 +62,15 @@ function! LightLineAsync()
     return "asyn-fail"
   else
     return ""
+  endif
 endfunction
 
+"----------------------------------------------------------------------
+" asynctask
+"----------------------------------------------------------------------
+
+noremap <silent><f5> :AsyncTask project-run<cr>
+noremap <silent><f6> :AsyncTask project-build<cr>
 
 "======================================================================
 " scrooloose/nerdtree

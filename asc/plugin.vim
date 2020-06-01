@@ -104,10 +104,12 @@ Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
 Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
 
-Plug 'skywind3000/asyncrun.vim'
+
 "右侧辅助菜单
 " Plug 'skywind3000/quickmenu.vim'
 Plug 'skywind3000/vim-quickui'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 "语法检查插件
 Plug 'w0rp/ale'

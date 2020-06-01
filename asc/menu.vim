@@ -130,6 +130,8 @@ call quickui#menu#install('&Edit', [
 
 " script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&System", [
+			\ ['Build', 'call AsyncTask project-build'],
+			\ ['Run', 'call AsyncTask project-run'],
 			\ ['Open Current In Terminal', 'call menu#WinOpen("cmd")'],
 			\ ['Open Current In FileExplore', 'call menu#WinOpen("")'],
 			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],

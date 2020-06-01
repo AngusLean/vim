@@ -30,10 +30,6 @@ nnoremap <leader>qq :so %
 IncScript asc/basic.vim
 IncScript asc/ui.vim
 
-" IncScript asc/vimmake.vim
-" VimmakeKeymap
-
-
 IncScript asc/plugin.vim
 IncScript asc/plugin.config.vim
 
