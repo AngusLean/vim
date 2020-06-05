@@ -73,7 +73,7 @@ noremap <tab>O O<ESC>
 " 平台相关设置
 "======================================================================
 if g:islinux
-    " set guifont=Source\ Code\ Pro\ Bold\ 13
+    set guifont=Source\ Code\ Pro\ Bold\ 13
     "fix webpack-hot-reload not work in linux
     set backupcopy=yes
 endif

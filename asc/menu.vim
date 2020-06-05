@@ -128,16 +128,16 @@ call quickui#menu#install('&Edit', [
             \ [ '&comment=', 'call menu#snip_comment_block("=")', 'help 3' ],
             \ ])
 call quickui#menu#install('&Build', [
-            \ [ '&Build', 'call AsyncTask file-build()', 'build current file' ],
-            \ [ '&Run', 'call AsyncTask file-run', 'run current file' ],
+            \ [ '&Build', 'AsyncTask file-build', 'build current file' ],
+            \ [ '&Run', 'AsyncTask file-run', 'run current file' ],
             \ [ '&Prev Diagnostice', 'call coc-diagnostic-prev("")' ],
             \ [ '&Next Diagnostice', '<Plug>(coc-diagnostic-next)' ],
             \ [ '&GoToDefinition', 'call menu#snip_comment_block("-")', 'help 3' ],
             \ ])
 " script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&Project", [
-			\ ['Build', 'call AsyncTask project-build'],
-			\ ['Run', 'call AsyncTask project-run'],
+			\ ['Build', 'AsyncTask project-build'],
+			\ ['Run', 'AsyncTask project-run'],
 			\ ['Open Current In Terminal', 'call menu#WinOpen("cmd")'],
 			\ ['Open Current In FileExplore', 'call menu#WinOpen("")'],
 			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],

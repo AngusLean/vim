@@ -28,8 +28,8 @@ if has('gui_running')
     function! s:set_gui_font()
         if has('gui_gtk2')
             if getfontname('SourceCodePro') != ''
-                "set guifont=SourceCodePro\ 14
-                set guifont=Droid\ Sans\ Mono\ 14
+                set guifont=SourceCodePro\ Italic\ 14
+                "set guifont=Droid\ Sans\ Mono\ 14
             elseif getfontname( 'DejaVu Sans Mono for Powerline' ) != ''
                 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
             elseif getfontname( 'DejaVu Sans Mono' ) != ''
