@@ -70,7 +70,8 @@ endfunction
 "----------------------------------------------------------------------
 noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f6> :AsyncTask file-build<cr>
-
+let g:asynctasks_term_pos = 'external'
+let g:asynctasks_term_focus='0'
 "======================================================================
 " scrooloose/nerdtree
 "======================================================================
@@ -246,14 +247,11 @@ autocmd FileType vue vnoremap <buffer> <leader>fj :call RangeJsBeautify()<cr>
 " skywind3000/asyncrun.vim
 "======================================================================
 
-let g:asyncrun_open = 6
-augroup vimrc
-    autocmd QuickFixCmdPost * botright copen 8
-augroup END
+let g:asyncrun_open = 0
+" augroup vimrc
+    " autocmd QuickFixCmdPost * botright copen 8
+" augroup END
 
-" function! RunBackendTask()
-    " exe 'AsyncRun ctags -R -f $(VIM_FILEDIR)/ctags.out --fields=+iaS %:p:h'
-" endfunction
 
 if g:iswindows
     let g:asyncrun_encs = 'gbk'

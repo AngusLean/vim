@@ -93,8 +93,8 @@ Plug 'Chiel92/vim-autoformat'
 " Plug 'mxw/vim-jsx'
 " Plug 'chemzqm/vim-jsx-improve'
 "Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': 'javascript' }
-Plug 'mhartington/nvim-typescript', { 'for': 'javascript' }
+" Plug 'HerringtonDarkholme/yats.vim', { 'for': 'javascript' }
+" Plug 'mhartington/nvim-typescript', { 'for': 'javascript' }
 
 Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
 " Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
