@@ -116,7 +116,7 @@ Plug 'w0rp/ale'
 Plug 'dyng/ctrlsf.vim'
 
 "启动画面处理
-"Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
 Plug 'ludovicchabant/vim-gutentags'
 
