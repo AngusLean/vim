@@ -27,6 +27,10 @@ exec 'set rtp+='.g:vimrc_home
 
 nnoremap <leader>qq :so %
 
+let g:asynctasks_extra_config = [
+    \ g:vimrc_home.'/.vim/tasks.ini'
+    \ ]
+
 IncScript asc/basic.vim
 IncScript asc/ui.vim
 
@@ -37,11 +41,10 @@ IncScript asc/plugin.config.vim
 " 加载配置
 "/////////////////////////////////////////////////////////////////////////////
 
-"IncScript asc/start.vim
+IncScript asc/start.vim
 IncScript asc/config.vim
 IncScript asc/ignores.vim
 " IncScript asc/misc.vim
 IncScript asc/complete.vim
 "IncScript asc/quickmenu.vim
 IncScript asc/menu.vim
-"IncScript asc/runcurrent.vim
