@@ -138,9 +138,9 @@ call quickui#menu#install('&Build', [
 call quickui#menu#install("&Project", [
 			\ ['Build', 'AsyncTask project-build'],
 			\ ['Run', 'AsyncTask project-run'],
-			\ ['Open Current In Terminal', 'call menu#WinOpen("cmd")'],
-			\ ['Open Current In FileExplore', 'call menu#WinOpen("")'],
-			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
+			\ ['Open &Current In Terminal', 'call menu#WinOpen("cmd")'],
+			\ ['Open Current In &FileExplore', 'call menu#WinOpen("")'],
+			\ ['Set C&ursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
 			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
 			\ ])
 
