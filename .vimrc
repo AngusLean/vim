@@ -40,5 +40,5 @@ IncScript asc/plugin.config.vim
 IncScript asc/start.vim
 IncScript asc/config.vim
 IncScript asc/ignores.vim
-IncScript asc/complete.vim
+" IncScript asc/complete.vim
 IncScript asc/menu.vim

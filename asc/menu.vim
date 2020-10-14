@@ -130,10 +130,9 @@ call quickui#menu#install('&Edit', [
 call quickui#menu#install('&Build', [
             \ [ '&Build', 'AsyncTask file-build', 'build current file' ],
             \ [ '&Run', 'AsyncTask file-run', 'run current file' ],
-            \ [ '&Prev Diagnostice', 'call coc-diagnostic-prev("")' ],
-            \ [ '&Next Diagnostice', '<Plug>(coc-diagnostic-next)' ],
-            \ [ '&GoToDefinition', 'call menu#snip_comment_block("-")', 'help 3' ],
+            \ [ '[g pre, ]g next, fd/gy/gi/gr', 'echo 1' ],
             \ ])
+
 " script inside %{...} will be evaluated and expanded in the string
 call quickui#menu#install("&Project", [
 			\ ['Build', 'AsyncTask project-build'],
@@ -142,6 +141,13 @@ call quickui#menu#install("&Project", [
 			\ ['Open Current In &FileExplore', 'call menu#WinOpen("")'],
 			\ ['Set C&ursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
 			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
+			\ ])
+
+call quickui#menu#install("&Coc", [
+			\ ['diagnostics', 'CocList diagnostics'],
+			\ ['extensios', 'CocList extensions'],
+			\ ['commands', 'CocList commands'],
+			\ ['symbols', 'CocList -I symbols'],
 			\ ])
 
 " register HELP menu with weight 10000
