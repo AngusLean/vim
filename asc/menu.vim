@@ -130,7 +130,9 @@ call quickui#menu#install('&Edit', [
 call quickui#menu#install('&Build', [
             \ [ '&Build', 'AsyncTask file-build', 'build current file' ],
             \ [ '&Run', 'AsyncTask file-run', 'run current file' ],
-            \ [ '[g pre, ]g next, fd/gy/gi/gr', 'echo 1' ],
+            \ [ '[g pre, ]g next, fd/gy/gi/gr'],
+            \ [ '\fb buffer,\ff function. \fm mru, \fl line. '],
+            \ [ 'c-b search crt, c-f sarch, v-search, go-recall'],
             \ ])
 
 " script inside %{...} will be evaluated and expanded in the string

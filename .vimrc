@@ -1,5 +1,4 @@
 let g:vimrc_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
 let g:iswindows = 0
 let g:islinux = 0
 if(has("win32") || has("win64") || has("win95") || has("win16"))
@@ -24,6 +23,7 @@ endif
 
 command! -nargs=1 IncScript exec 'so '.g:vimrc_home.'/'.'<args>'
 exec 'set rtp+='.g:vimrc_home
+set autochdir
 
 nnoremap <leader>qq :so %
 
