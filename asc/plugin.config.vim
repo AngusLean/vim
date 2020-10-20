@@ -13,18 +13,6 @@ let g:Lf_WildIgnore = {
         \   '*.py[co]']
         \}
 
-" nnoremap <leader>fc :LeaderfFunction<CR>
-" nnoremap <leader>mr :LeaderfFunction<CR>
-" popup mode
-" let g:Lf_WindowPosition = 'popup'
-" let g:Lf_PreviewInPopup = 1
-" let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-" let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-
-"----------------------------------------------------------------------
-"top
-"----------------------------------------------------------------------
-
 " don't show the help in normal mode
 let g:Lf_HideHelp = 0
 let g:Lf_UseCache = 1
@@ -117,6 +105,8 @@ noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f6> :AsyncTask file-build<cr>
 let g:asynctasks_term_pos = 'external'
 let g:asynctasks_term_focus='0'
+
+
 "======================================================================
 " scrooloose/nerdtree
 "======================================================================
@@ -344,7 +334,7 @@ function! Toggle_QuickFix(size, ...)
 endfunc
 
 nnoremap <c-F9> :AsyncStop <cr>
-noremap <F10> :call Toggle_QuickFix(8)<cr>
+noremap  <F10> :call Toggle_QuickFix(8)<cr>
 " noremap <F12> runBackTask
 
 "----------------------------------------------------------------------

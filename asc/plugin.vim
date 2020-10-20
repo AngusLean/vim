@@ -72,18 +72,18 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 
 "文本对齐插件
-"
 Plug 'godlygeek/tabular'
 
 "大文件处理
 Plug 'vim-scripts/LargeFile'
 
 "代码片段
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 "代码格式化
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
+
 "JavaScript doc syntax
 "Plug 'othree/jsdoc-syntax.vim', { 'for': 'javascript' }
 "Plug 'maksimr/vim-jsbeautify'
@@ -112,8 +112,8 @@ Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 
 "语法检查插件
-Plug 'w0rp/ale'
-Plug 'dyng/ctrlsf.vim'
+" Plug 'w0rp/ale'
+" Plug 'dyng/ctrlsf.vim'
 
 "启动画面处理
 Plug 'mhinz/vim-startify'
