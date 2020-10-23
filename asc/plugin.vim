@@ -7,40 +7,14 @@ endif
 call plug#begin(g:vimrc_home.'/vimfiles/plugged')
 
 "配置补全插件
-let g:exvim_plug_groups = ['coc']
-" let g:exvim_plug_groups = ['YouCompleteMe']
-
-if count(g:exvim_plug_groups , 'neocomplete')
-    Plug 'Shougo/neocomplete.vim'
-elseif count(g:exvim_plug_groups , 'YouCompleteMe')
-	"Plug 'Valloric/YouCompleteMe'
-    if has("win64")
-      Plug 'snakeleon/YouCompleteMe-x64'
-    elseif has("win32")
-      Plug 'snakeleon/YouCompleteMe-x86'
-    else
-      Plug 'Valloric/YouCompleteMe'
-    endif
-
-elseif count(g:exvim_plug_groups , 'deoplete')
-    if has('nvim')
-      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-      Plug 'roxma/nvim-yarp'
-      Plug 'roxma/vim-hug-neovim-rpc'
-      Plug 'Shougo/deoplete.nvim'
-      Plug 'zchee/deoplete-jedi',{'for': 'python'}
-    endif
-elseif count(g:exvim_plug_groups , 'coc')
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "匹配插件
-Plug 'exvim/ex-matchit'
+" Plug 'exvim/ex-matchit'
 "对齐线
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 "自动括号插件
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 "多光标选择输入插件.下面的第一个与neocpmplete冲突"
 Plug  'kristijanhusak/vim-multiple-cursors'
 

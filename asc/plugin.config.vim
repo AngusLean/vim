@@ -35,16 +35,9 @@ noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 " search visually selected text literally
 xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ")<CR>
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
-" should use `Leaderf gtags --update` first
-" let g:Lf_GtagsAutoGenerate = 0
-" let g:Lf_Gtagslabel = 'native-pygments'
-" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 "======================================================================
 " tpope/vim-surround
 "======================================================================
@@ -156,31 +149,6 @@ nmap <silent> <C-down> <Plug>(ale_next_wrap)
 
 
 "======================================================================
-" dyng/ctrlsf.vim
-"======================================================================
-let g:ctrlsf_case_sensitive = 'no'
-let g:ctrlsf_auto_close = 1
-" 高亮匹配行: o->打开的目标文件;p->预览文件
-let g:ctrlsf_selected_line_hl = 'op'
-" 默认搜索路径, 设置为project则从本文件的工程目录搜索
-" let g:ctrlsf_default_root = 'project+wf'
-" 工程目录的顶级文件夹
-" let g:ctrlsf_vcs_folder = ['.exvim', '.git', '.hg', '.svn', '.bzr', '_darcs']
-" make result windows compact
-let g:ctrlsf_ackprg='pt'
-let g:ctrlsf_indent = 2
-let g:ctrlsf_regex_pattern = 1
-vmap     <C-F> <Plug>CtrlSFVwordPath
-nmap     <C-F> <Plug>CtrlSFCwordPath
-nmap     <C-S-F> <Plug>CtrlSFPwordPath
-" nmap     <C-F>f <Plug>CtrlSFPrompt
-" vmap     <C-F>F <Plug>CtrlSFVwordExec
-" nnoremap <C-F>o :CtrlSFOpen<CR>
-" nnoremap <C-F>t :CtrlSFToggle<CR>
-" inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
-
-
-"======================================================================
 " kristijanhusak/vim-multiple-cursors
 "======================================================================
 " let g:multi_cursor_use_default_mapping = 0
@@ -283,10 +251,6 @@ autocmd FileType vue vnoremap <buffer> <leader>fj :call RangeJsBeautify()<cr>
 "======================================================================
 
 let g:asyncrun_open = 0
-" augroup vimrc
-    " autocmd QuickFixCmdPost * botright copen 8
-" augroup END
-
 if g:iswindows
     let g:asyncrun_encs = 'gbk'
 endif
@@ -347,11 +311,6 @@ let g:UltiSnipsListSnippets="<m-l>"
 " let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 " let g:UltiSnipsSnippetDirectories=['UltiSnips', s:home."/usnips"]
 
-
-"======================================================================
-"deoplete
-"======================================================================
-"see complete.vim
 
 "======================================================================
 "vim-gutentags
@@ -440,3 +399,11 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+
+"======================================================================
+"vim-floaterm
+"======================================================================
+let g:floaterm_keymap_new    = '<F11>'
+let g:floaterm_keymap_toggle = '<F12>'
