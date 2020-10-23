@@ -119,5 +119,5 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
 Plug 'ludovicchabant/vim-gutentags'
-
+Plug 'voldikss/vim-floaterm'
 call plug#end()

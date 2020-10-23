@@ -12,7 +12,7 @@ if g:islinux
     let g:configPath =g:vimrc_home.'/vimfiles/requirefile/linux/'
 endif
 
-let g:ctags_path=g:configPath.'/ctags/ctags.exe'
+let g:ctags_path=g:configPath.'/ctags.exe'
 if g:islinux
     let g:ctags_path ='ctags'
 endif
