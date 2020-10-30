@@ -34,8 +34,7 @@ noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 " search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-noremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ")<CR>
+" xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
 "======================================================================
@@ -98,7 +97,7 @@ noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f6> :AsyncTask file-build<cr>
 let g:asynctasks_term_pos = 'external'
 let g:asynctasks_term_focus='0'
-
+let g:asyncrun_shell='pwsh'
 
 "======================================================================
 " scrooloose/nerdtree
@@ -110,9 +109,9 @@ map <F3> :NERDTreeToggle<CR>
 "======================================================================
 " Chiel92/vim-autoformat
 "======================================================================
-let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
-let g:formatters_python = ['autopep8']
-noremap <F4> :Autoformat<CR>
+" let g:formatdef_autopep8 = "'autopep8 - --range '.a:firstline.' '.a:lastline"
+" let g:formatters_python = ['autopep8']
+" noremap <F4> :Autoformat<CR>
 
 "======================================================================
 "scrooloose/nerdcommenter
@@ -297,9 +296,8 @@ function! Toggle_QuickFix(size, ...)
 	noautocmd silent! exec ''.l:winnr.'wincmd w'
 endfunc
 
-nnoremap <c-F9> :AsyncStop <cr>
-noremap  <F10> :call Toggle_QuickFix(8)<cr>
-" noremap <F12> runBackTask
+nnoremap <c-F7> :AsyncStop <cr>
+noremap  <F7> :call Toggle_QuickFix(8)<cr>
 
 "----------------------------------------------------------------------
 " UltiSnips
@@ -376,7 +374,7 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 " Symbol renaming.
-inoremap <s-F6> <Plug>(coc-rename)
+inoremap <S-F6> <Plug>(coc-rename)
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -401,9 +399,41 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 
+"======================================================================
+"coc.vim coc-snipper
+"======================================================================
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
 
 "======================================================================
 "vim-floaterm
 "======================================================================
-let g:floaterm_keymap_new    = '<F11>'
-let g:floaterm_keymap_toggle = '<F12>'
+let g:floaterm_keymap_new    = '<c-F8>'
+let g:floaterm_keymap_toggle = '<F8>'
+let g:floaterm_shell = 'pwsh'
+
+
+"======================================================================
+"vimspector
+"======================================================================
+"let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+nmap <F11> <Plug>VimspectorToggleBreakpoint
+nmap <F10> <Plug>VimspectorStepOver
+nmap <C-F10> <Plug>VimspectorStepInto
+nmap <M-F10> <Plug>VimspectorStepOut
+nmap <F9> <Plug>VimspectorContinue
+nmap <C-F9> <Plug>VimspectorStop
+nmap <M-F9> :VimspectorReset<CR>
+
+let g:vimspector_install_gadgets = [ 'vscode-python' ]

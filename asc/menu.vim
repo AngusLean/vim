@@ -5,6 +5,8 @@ function! menu#WinOpen(what)
     exec cd . root
     if a:what == 'cmd'
         exec "silent !start cmd.exe"
+    elseif a:what == 'pwsh'
+        exec "silent !start pwsh"
     else
         exec "silent !start /b cmd.exe /C start ."
     endif
@@ -122,17 +124,20 @@ call quickui#menu#install('&File', [
 
 " items containing tips, tips will display in the cmdline
 call quickui#menu#install('&Edit', [
-            \ [ '&Copy', 'echo 1', 'help 1' ],
-            \ [ '&Paste', 'echo 2', 'help 2' ],
             \ [ '&comment-', 'call menu#snip_comment_block("-")', 'help 3' ],
             \ [ '&comment=', 'call menu#snip_comment_block("=")', 'help 3' ],
             \ ])
 call quickui#menu#install('&Build', [
             \ [ '&Build', 'AsyncTask file-build', 'build current file' ],
             \ [ '&Run', 'AsyncTask file-run', 'run current file' ],
+            \ [ "--", '' ],
             \ [ '[g pre, ]g next, fd/gy/gi/gr'],
             \ [ '\fb buffer,\ff function. \fm mru, \fl line. '],
             \ [ 'c-b search crt, c-f sarch, v-search, go-recall'],
+            \ [ 'F5-build. F6-run, F7-quicfix,C-F7,close task'],
+            \ [ "--", '' ],
+            \ [ 'F11-point, F9-start,F10-stepover,c-f9-stop,S-f9 reset'],
+            \ [ 'C-F10 tepinto, M-F10 stepout'],
             \ ])
 
 " script inside %{...} will be evaluated and expanded in the string
@@ -140,9 +145,9 @@ call quickui#menu#install("&Project", [
 			\ ['Build', 'AsyncTask project-build'],
 			\ ['Run', 'AsyncTask project-run'],
 			\ ['Open &Current In Terminal', 'call menu#WinOpen("cmd")'],
+			\ ['Open Current In &PowerShell', 'call menu#WinOpen("pwsh")'],
 			\ ['Open Current In &FileExplore', 'call menu#WinOpen("")'],
 			\ ['Set C&ursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
-			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
 			\ ])
 
 call quickui#menu#install("&Coc", [

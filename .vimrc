@@ -23,7 +23,6 @@ endif
 
 command! -nargs=1 IncScript exec 'so '.g:vimrc_home.'/'.'<args>'
 exec 'set rtp+='.g:vimrc_home
-set autochdir
 
 nnoremap <leader>qq :so %
 

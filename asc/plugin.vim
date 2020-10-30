@@ -10,11 +10,11 @@ call plug#begin(g:vimrc_home.'/vimfiles/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "匹配插件
-" Plug 'exvim/ex-matchit'
+Plug 'exvim/ex-matchit'
 "对齐线
 " Plug 'Yggdroot/indentLine'
 "自动括号插件
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 "多光标选择输入插件.下面的第一个与neocpmplete冲突"
 Plug  'kristijanhusak/vim-multiple-cursors'
 
@@ -94,4 +94,6 @@ Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'voldikss/vim-floaterm'
+
+Plug 'puremourning/vimspector'
 call plug#end()

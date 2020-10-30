@@ -1,5 +1,6 @@
 
 set nocompatible " be iMproved, required
+set autochdir "auto change to currentfile dir
 
 function! OSX()
     return has('macunix')
