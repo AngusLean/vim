@@ -32,7 +32,7 @@ function! s:filter_header(lines) abort
                 \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
     return centered_lines
 endfunction
-
+let g:startify_bookmarks = systemlist("cut -sd' ' -f 2 ~/.NERDTreeBookmarks")
 let g:startify_list_order = [
             \ ['   My most recently used files in the current directory:'],
             \ 'dir',
