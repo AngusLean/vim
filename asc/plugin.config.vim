@@ -48,7 +48,7 @@ xmap s <Plug>VSurround
 let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
-  \   'left': [ [ 'mode'],['filename'],
+  \   'left': [ [ 'mode'],['relativepath'],
   \             [ 'syntastic', 'cocstatus', 'readonly', 'asyncrun' ] ]
   \ },
   \ 'component': {
