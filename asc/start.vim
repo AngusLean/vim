@@ -32,7 +32,7 @@ function! s:filter_header(lines) abort
                 \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
     return centered_lines
 endfunction
-let g:startify_bookmarks = systemlist("cut -sd' ' -f 2 ~/.NERDTreeBookmarks")
+" let g:startify_bookmarks = systemlist("cut -sd' ' -f 2 ~/.NERDTreeBookmarks")
 let g:startify_list_order = [
             \ ['   My most recently used files in the current directory:'],
             \ 'dir',
@@ -49,3 +49,4 @@ let g:startify_custom_footer = s:filter_header(['Time: ' . strftime("%Y/%m/%d %H
 let g:startify_custom_header = s:filter_header(s:starttext)
 let g:startify_files_number = 6
 let g:startify_enable_special = 0
+let g:startify_session_autoload = 1
