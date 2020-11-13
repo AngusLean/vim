@@ -22,6 +22,9 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
+let g:Lf_RootMarkers = ['.project', '.root', '.git', '.hg', '.svn']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+
 " let g:Lf_ShortcutF = "<leader>ff"
 noremap <leader>fc :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
@@ -42,6 +45,7 @@ noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand
 noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
 "======================================================================
 " tpope/vim-surround
 "======================================================================
