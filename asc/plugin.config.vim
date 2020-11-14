@@ -93,8 +93,8 @@ let g:asynctasks_extra_config = [
     \ g:vimrc_home.'/.vim/tasks.ini'
     \ ]
 
-noremap <silent><f5> :AsyncTask file-run<cr>
-noremap <silent><f6> :AsyncTask file-build<cr>
+noremap <silent><f6> :AsyncTask file-run<cr>
+noremap <silent><f5> :AsyncTask file-build<cr>
 let g:asynctasks_term_pos = 'external'
 let g:asynctasks_term_focus='0'
 let g:asyncrun_shell='pwsh'
