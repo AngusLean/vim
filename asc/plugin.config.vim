@@ -1,5 +1,3 @@
-let $GTAGSLABEL = 'native-pygments'
-let $GTAGSCONF = '/usr/local/lib/gtags/gtags.conf'
 
 "======================================================================
 " Yggdroot/LeaderF  ctrlp replacement
@@ -24,6 +22,9 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
+let g:Lf_RootMarkers = ['.project', '.root', '.git', '.hg', '.svn']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+
 " let g:Lf_ShortcutF = "<leader>ff"
 noremap <leader>fc :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
@@ -37,6 +38,14 @@ noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 " xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
 "======================================================================
 " tpope/vim-surround
 "======================================================================
@@ -48,7 +57,7 @@ xmap s <Plug>VSurround
 let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ 'active': {
-  \   'left': [ [ 'mode'],['filename'],
+  \   'left': [ [ 'mode'],['relativepath'],
   \             [ 'syntastic', 'cocstatus', 'readonly', 'asyncrun' ] ]
   \ },
   \ 'component': {
@@ -344,7 +353,6 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:gutentags_auto_add_gtags_cscope = 1
 
 
-
 "======================================================================
 "colorscheme
 "======================================================================
@@ -398,6 +406,41 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]',
+\     'file-child-labeling-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+nmap <space>e :CocCommand explorer --preset simplify<CR>
 
 "======================================================================
 "coc.vim coc-snipper

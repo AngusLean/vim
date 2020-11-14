@@ -22,14 +22,14 @@ Plug  'kristijanhusak/vim-multiple-cursors'
 Plug 'ntpeters/vim-better-whitespace'
 
 "主题插件
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 
 "多选
 Plug 'tpope/vim-surround'
 
 "左边文件浏览
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 "Ctrlp文件查找
 Plug 'Yggdroot/LeaderF'
@@ -70,20 +70,19 @@ Plug 'vim-scripts/LargeFile'
 " Plug 'HerringtonDarkholme/yats.vim', { 'for': 'javascript' }
 " Plug 'mhartington/nvim-typescript', { 'for': 'javascript' }
 
-Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
+" Plug 'mattn/emmet-vim', { 'for': 'html,vue' }
 " Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'posva/vim-vue', { 'for': 'html,vue' }
+" Plug 'posva/vim-vue', { 'for': 'html,vue' }
 
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
-Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
+" Plug 'Vimjas/vim-python-pep8-indent',{'for': 'python'}
 
 
 "右侧辅助菜单
-" Plug 'skywind3000/quickmenu.vim'
-Plug 'skywind3000/vim-quickui'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/vim-quickui'
 
 "语法检查插件
 " Plug 'w0rp/ale'
@@ -92,8 +91,11 @@ Plug 'skywind3000/asyncrun.vim'
 "启动画面处理
 Plug 'mhinz/vim-startify'
 " Plug 'vim-scripts/DrawIt'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'voldikss/vim-floaterm'
 
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
+
+" Plug 'skywind3000/gutentags_plus'
+
 call plug#end()

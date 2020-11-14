@@ -126,13 +126,14 @@ call quickui#menu#install('&File', [
 call quickui#menu#install('&Edit', [
             \ [ '&comment-', 'call menu#snip_comment_block("-")', 'help 3' ],
             \ [ '&comment=', 'call menu#snip_comment_block("=")', 'help 3' ],
+            \ [ '[g pre, ]g next, fd/gy/gi/gr'],
+            \ [ '\fb buffer,\ff function. \fm mru, \fl line. '],
+            \ [ '\fr search refer, \fd search def. \fn, \fp next/prev'],
             \ ])
 call quickui#menu#install('&Build', [
             \ [ '&Build', 'AsyncTask file-build', 'build current file' ],
             \ [ '&Run', 'AsyncTask file-run', 'run current file' ],
             \ [ "--", '' ],
-            \ [ '[g pre, ]g next, fd/gy/gi/gr'],
-            \ [ '\fb buffer,\ff function. \fm mru, \fl line. '],
             \ [ 'c-b search crt, c-f sarch, v-search, go-recall'],
             \ [ 'F5-build. F6-run, F7-quicfix,C-F7,close task'],
             \ [ "--", '' ],
