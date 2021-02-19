@@ -452,6 +452,8 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" make workspace autoload when open vim session
+set sessionoptions+=globals
 
 "======================================================================
 "vim-floaterm
