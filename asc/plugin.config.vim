@@ -230,12 +230,6 @@ let g:vim_markdown_initial_foldlevel=9999
 autocmd BufWritePre * StripWhitespace
 
 "======================================================================
-" othree/yajs.vim
-"======================================================================
-let g:smc = 100
-let g:used_javascript_libs = 'vue'
-
-"======================================================================
 " maksimr/vim-jsbeautify
 "======================================================================
 autocmd FileType javascript noremap <buffer>  <leader>f :call JsBeautify()<cr>
@@ -458,6 +452,8 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" make workspace autoload when open vim session
+set sessionoptions+=globals
 
 "======================================================================
 "vim-floaterm

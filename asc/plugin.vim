@@ -29,7 +29,11 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 
 "左边文件浏览
+<<<<<<< HEAD
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+=======
+ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+>>>>>>> develop_new
 
 "Ctrlp文件查找
 Plug 'Yggdroot/LeaderF'

@@ -1,4 +1,3 @@
-
 set nocompatible " be iMproved, required
 set autochdir "auto change to currentfile dir
 
