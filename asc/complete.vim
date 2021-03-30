@@ -1,11 +1,10 @@
 
-let g:complete_plugin = 'ycm'
 "======================================================================
 "设置补全插件
 "======================================================================
 
 "neocomplete {{{
-if g:complete_plugin ==? 'neo'
+if count(g:exvim_plug_groups , 'neocomplete')
     " Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
@@ -91,20 +90,21 @@ if g:complete_plugin ==? 'neo'
 
     "}}}
     "Valloric/YouCompleteMe {{{
-elseif g:complete_plugin ==? 'ycm'
+elseif count(g:exvim_plug_groups , 'YouCompleteMe')
     let g:ycm_confirm_extra_conf=0   "设置加载py文件不提示
     "设置离开插入模式自动关闭预览窗口
     let g:ycm_autoclose_preview_window_after_insertion=1
     "设置选择预览数据过后自动关闭
     let g:ycm_autoclose_preview_window_after_completion =1
     if g:iswindows
-        let g:ycm_python_binary_path="C:/Program Files/Python36/python.exe"
-        let g:ycm_global_ycm_extra_conf = 'D:\Program Files (x86)\software\dev\vimconfig\vimfiles\requirefile\windows/.ycm_extra_conf.py'
+        let g:ycm_python_binary_path="C:\Users\admin\AppData\Local\Programs\Python\Python38/python.exe"
+        " let g:ycm_python_binary_path="D:\development\anaconda"
+
+        let g:ycm_global_ycm_extra_conf = g:vimrc_home.'/vimfiles/requirefile/windows/.ycm_extra_conf.py'
     else
         let g:ycm_python_binary_path="/usr/bin/python3.5"
-        let g:ycm_global_ycm_extra_conf = '~/software/exvim1/vimfiles/requirefile/linux/.ycm_extra_conf.py'
+        let g:ycm_global_ycm_extra_conf = '/home/it033/software/vimconfig/vim-master/vimfiles/requirefile/linux/.ycm_extra_conf.py'
     endif
-    let g:ycm_filetype_whitelist = { 'c': 1 ,'cpp' : 1,'h':1,'javascript':1,'html':1,'htm':1,'python':1 }
 
     " YCM 集成 OmniCppComplete 补全引擎
     inoremap <leader>; <C-x><C-o>
@@ -129,9 +129,78 @@ elseif g:complete_plugin ==? 'ycm'
     " 语法关键字补全
     let g:ycm_seed_identifiers_with_syntax=1
     " 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
-    let g:ycm_key_invoke_completion = '<M-;>'
+    " let g:ycm_key_invoke_completion = '<M-;>'
+    let g:ycm_key_invoke_completion = '<c-z>'
     " 回车即选中当前项
     inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+    let g:ycm_filetype_whitelist = {
+			\ "c":1,
+			\ "cpp":1,
+			\ "objc":1,
+			\ "objcpp":1,
+			\ "python":1,
+			\ "java":1,
+			\ "javascript":1,
+			\ "coffee":1,
+			\ "vim":1,
+			\ "go":1,
+			\ "cs":1,
+			\ "lua":1,
+			\ "perl":1,
+			\ "perl6":1,
+			\ "php":1,
+			\ "ruby":1,
+			\ "rust":1,
+			\ "erlang":1,
+			\ "asm":1,
+			\ "nasm":1,
+			\ "masm":1,
+			\ "tasm":1,
+			\ "asm68k":1,
+			\ "asmh8300":1,
+			\ "asciidoc":1,
+			\ "basic":1,
+			\ "vb":1,
+			\ "make":1,
+			\ "cmake":1,
+			\ "html":1,
+			\ "css":1,
+			\ "less":1,
+			\ "json":1,
+			\ "cson":1,
+			\ "typedscript":1,
+			\ "haskell":1,
+			\ "lhaskell":1,
+			\ "lisp":1,
+			\ "scheme":1,
+			\ "sdl":1,
+			\ "sh":1,
+			\ "zsh":1,
+			\ "bash":1,
+			\ "man":1,
+			\ "markdown":1,
+			\ "matlab":1,
+			\ "maxima":1,
+			\ "dosini":1,
+			\ "conf":1,
+			\ "config":1,
+			\ "zimbu":1,
+			\ }
+    let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+elseif count(g:exvim_plug_groups , 'deoplete')
+    let g:deoplete#enable_at_startup = 1
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+    set completeopt-=preview
+    if g:iswindows
+        "vim8 in windows must install neovim by pip or pip3
+        let g:python3_host_prog = 'C:\Users\admin\AppData\Local\Programs\Python\Python38\python.exe'
+        let pyxversion=3
+    endif
 endif
 "}}}
 
