@@ -163,9 +163,9 @@ call quickui#menu#install('H&elp', [
 			\ ["&Cheatsheet", 'help index', ''],
 			\ ['T&ips', 'help tips', ''],
 			\ ['--',''],
-			\ ["&Tutorial", 'help tutor', ''],
-			\ ['&Quick Reference', 'help quickref', ''],
-			\ ['&Summary', 'help summary', ''],
+			\ ["&fc", 'leaderf function', ''],
+			\ ['&fb', 'leaderf buffer', ''],
+			\ ['&fm', 'leaderf mru', ''],
 			\ ], 10000)
 
 " enable to display tips in the cmdline

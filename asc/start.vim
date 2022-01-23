@@ -36,12 +36,12 @@ endfunction
 let g:startify_list_order = [
             \ ['   My most recently used files in the current directory:'],
             \ 'dir',
+            \ ['   These are my bookmarks:'],
+            \ 'bookmarks',
             \ ['   My most recently used files:'],
             \ 'files',
             \ ['   These are my sessions:'],
             \ 'sessions',
-            \ ['   These are my bookmarks:'],
-            \ 'bookmarks',
             \ ]
 
 let g:startify_session_dir = $HOME .  '/.data/' . 'vim/session'

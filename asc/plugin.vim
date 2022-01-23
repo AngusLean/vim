@@ -6,12 +6,12 @@ endif
 
 call plug#begin(g:vimrc_home.'/vimfiles/plugged')
 
-"配置补全插件
+" "配置补全插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"匹配插件
-Plug 'exvim/ex-matchit'
 "对齐线
+Plug 'andymass/vim-matchup'
+
 " Plug 'Yggdroot/indentLine'
 "自动括号插件
 Plug 'jiangmiao/auto-pairs'
@@ -29,11 +29,8 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 
 "左边文件浏览
-<<<<<<< HEAD
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-=======
- Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
->>>>>>> develop_new
+
 
 "Ctrlp文件查找
 Plug 'Yggdroot/LeaderF'
