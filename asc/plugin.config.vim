@@ -112,9 +112,12 @@ let g:asynctasks_term_focus='0'
 " scrooloose/nerdtree
 "======================================================================
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.o$']
 map <F3> :NERDTreeToggle<CR>
-
+map <C-F3> :NERDTreeFind<CR>
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 "======================================================================
 " Chiel92/vim-autoformat
 "======================================================================
