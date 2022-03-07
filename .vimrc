@@ -15,7 +15,8 @@ endif
 let g:ctags_path=g:configPath.'/ctags.exe'
 if g:islinux
     let g:ctags_path ='ctags'
-    let $GTAGSCONF = '/usr/local/lib/gtags/gtags.conf'
+    " let $GTAGSCONF = '/usr/local/lib/gtags/gtags.conf'
+    " let $GTAGSCONF='/usr/local/share/gtags/gtags.conf'
 endif
 let $GTAGSLABEL = 'native-pygments'
 
